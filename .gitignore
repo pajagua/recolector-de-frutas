@@ -1,0 +1,31 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# PlatformIO / editores
+.pio/
+.vscode/
+.theia/
+
+# Visión: capturas y fotos de calibración (pesan mucho)
+vision/data/capturas/*
+vision/data/calibracion_imagenes/*/*
+!**/.gitkeep
+
+# SolidWorks: archivos temporales y de bloqueo
+~$*
+*.SLDBAK
+*.swbak
+
+# MATLAB autosave
+*.asv
+
+# OpenSCAD backups
+*.scad~
+
+# Sistema
+desktop.ini
+Thumbs.db
+.DS_Store

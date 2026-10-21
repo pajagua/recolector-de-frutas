@@ -1,0 +1,11 @@
+camaras:
+  izq: 0          # índice de la webcam izquierda
+  der: 1          # índice de la webcam derecha
+  ancho: 1280
+  alto: 720
+  fps: 30
+
+tablero:
+  columnas: 9     # esquinas internas
+  filas: 6
+  cuadro_mm: 25.0 # lado real de cada cuadro impreso

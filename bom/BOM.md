@@ -1,0 +1,273 @@
+# BOM completa – CitriBot
+
+> Generado por `bom/generar_bom.py` desde `bom/BOM_CitriBot.csv`. **No editar a mano**: editá el CSV y volvé a correr el script.
+
+## Resumen
+
+| Origen | Ítems |
+|---|---|
+| Préstamo laboratorio | 6 |
+| Compra grupal | 13 |
+| Propio | 4 |
+| Impresión 3D | 20 |
+| Por comprar | 40 |
+| Por definir | 7 |
+
+| Estado | Ítems |
+|---|---|
+| En mano | 1 |
+| Prestado | 5 |
+| Pedido | 10 |
+| Falta | 67 |
+| Por confirmar | 7 |
+
+**Gastado (compra grupal, sin envío): USD 135.69**
+
+## Préstamos del laboratorio (a devolver)
+
+Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
+
+| ID | Componente | Especificación | Cant. | Uso | Estado | Devuelto |
+|---|---|---|---|---|---|---|
+| E01 | Arduino MEGA 2560 | ATmega2560, 5 V | 1 | Controlador principal | Prestado | ☐ |
+| E02 | RAMPS 1.4 | Shield para MEGA, 5 zócalos de driver | 1 | Drivers paso a paso, finales de carrera y salidas MOSFET | Prestado | ☐ |
+| E03 | Driver A4988 | Paso a paso, 2 A pico, 8–35 V | 1 | J3 prismático (NEMA 14), en zócalo de la RAMPS | Prestado | ☐ |
+| E04 | Sabertooth dual 25A | 2 canales DC, 6–30 V | 1 | J1 cintura (37D) y J2 hombro (5840) | Prestado | ☐ |
+| E05 | Driver TB6600 | Paso a paso 4 A (5 A pico), 9–40 V | 1 | J0 riel (NEMA 17) | Prestado | ☐ |
+| E06 | ProtoScrew Shield | Borneras para Arduino | 1 | Cableado | Por confirmar | ☐ |
+
+## Compras del grupo
+
+| ID | Componente | Cant. | Proveedor | USD | Estado | Notas |
+|---|---|---|---|---|---|---|
+| M02 | Motorreductor sinfín 5840-36ZY | 1 | AliExpress | 36.50 | Pedido | Confirmar si los 90 kg·cm son torque nominal o de bloqueo. Medir agujeros con calibre antes de imprimir CB-210 |
+| M05 | Servo MG996R | 2 | AliExpress | 11.53 | Pedido | Precio del pedido 'Servos' |
+| S01 | Módulo AS5600 | 1 | Amazon | 7.99 | Por confirmar | En el pedido figura 'Encoder' (Amazon, USD 7.99): confirmar que es el AS5600 |
+| S02 | Imán de neodimio diametral | 1 |  |  | Por confirmar | Suele venir con el módulo AS5600 |
+| S03 | Sensor de presión MPS20N0040D | 1 | AliExpress | 4.15 | Pedido |  |
+| V01 | Cámara web USB | 2 | Amazon | 16.89 | Pedido | Precio del pedido 'Cámaras': confirmar si es por unidad o por las dos |
+| N01 | Ventosa JXD SAB40 (fuelle) | 1 | AliExpress | 13.70 | Pedido | Pedido 'Ventosa 1' |
+| N02 | Ventosa JXD SAF-40 (plana) | 1 | AliExpress | 14.02 | Pedido | Pedido 'Ventosa 2' |
+| N03 | Racor recto push-in | 1 | AliExpress | 7.25 | Pedido | Pedido 'Unión neumática' |
+| T03 | Correa GT2 cerrada | 1 |  |  | Por confirmar | Puede venir en el 'Kit correa y polea' (T04) |
+| T04 | Kit correa GT2 y poleas | 1 | AliExpress | 9.39 | Pedido | Anotar el contenido real del kit |
+| T05 | Tuerca/rosca para varilla | 1 | AliExpress | 8.84 | Pedido | Pedido 'Rosca p/ Varilla'. Con el tornillo TSF-E3 impreso puede no usarse |
+| R03 | Rodamiento 6806-ZZ | 2 | AliExpress | 5.43 | Pedido | Pedido 'Rodamientos': confirmar que son estos |
+
+**Total: USD 135.69**
+
+## Falta comprar o definir
+
+| ID | Componente | Especificación | Cant. | Un. | Origen | Notas |
+|---|---|---|---|---|---|---|
+| E07 | Módulo MOSFET 12 V | Canal lógico 5 V, ≥ 3 A | 2 | u | Por comprar | Alternativa: salidas D8/D9/D10 de la RAMPS |
+| M03 | Motor paso a paso NEMA 14 | 35 mm, eje Ø5 (tipo SM35HT36) | 1 | u | Por definir | Un NEMA 17 no entra en E2 sin rediseñar la parte trasera |
+| S04 | Final de carrera | Microswitch con palanca | 3 | u | Por comprar |  |
+| N04 | Manguera PU | 6 × 4 mm | 2 | m | Por comprar | Largo según el recorrido final |
+| N05 | Bomba de vacío 12 V | Mini bomba de diafragma | 1 | u | Por definir | No figura en ninguna lista. Dimensionar con entregas/entrega_06/analisis_torque_ventosa.md |
+| N06 | Electroválvula 12 V | 2/2 o 3/2, normalmente cerrada | 1 | u | Por definir |  |
+| T01 | Polea T5 | 10 dientes, ancho 17 mm, agujero 6 mm, con prisionero | 1 | u | Por comprar |  |
+| T02 | Correa T5 cerrada | 16 mm de ancho, 600 mm (120 dientes) | 1 | u | Por comprar | Verificar largo con el montaje real |
+| T06 | Prisionero | M3 × 4 | 1 | u | Por comprar | Alternativa: epoxi |
+| R01 | Rodamiento 625ZZ | 5 × 16 × 5 mm | 8 | u | Por comprar |  |
+| R02 | Rodamiento 608ZZ | 8 × 22 × 7 mm | 3 | u | Por comprar |  |
+| R04 | Buje autolubricado (bronce sinterizado) | 5 × 8 × 10 mm | 8 | u | Por comprar |  |
+| R05 | Buje autolubricado (bronce sinterizado) | 8 × 12 × 20 mm | 2 | u | Por comprar |  |
+| L01 | Estructura del riel | 1,2 m (perfil de aluminio o 2 varillas lisas) | 1 | u | Por definir | Riel todavía sin diseñar |
+| L02 | Carro del riel | Patines o rodamientos lineales | 1 | u | Por definir |  |
+| L03 | Correa GT2 abierta + poleas | ≈ 2,6 m, polea 20 dientes + polea tensora | 1 | u | Por definir | Revisar si el kit T04 la cubre |
+| A01 | Fuente 12 V DC | Corriente a dimensionar (≥ 10 A estimado) | 1 | u | Por definir | Sumar corriente de bloqueo de 37D + 5840 + paso a paso + bomba |
+| A02 | Regulador UBEC 6 V | ≥ 5 A | 1 | u | Por comprar | No alimentar los servos desde el 5 V del MEGA |
+| A03 | Parada de emergencia + fusible | Pulsador hongo NC, portafusible | 1 | u | Por comprar |  |
+| A04 | Cables, borneras y conectores | Dupont, JST, termocontraíble | 1 | lote | Por comprar |  |
+| H01 | Tornillo M3 × 6 Allen | DIN 912 | 8 | u | Por comprar |  |
+| H02 | Tornillo M3 × 8 |  | 21 | u | Por comprar |  |
+| H03 | Tornillo M3 × 10 |  | 17 | u | Por comprar |  |
+| H04 | Tornillo M3 × 12 |  | 4 | u | Por comprar |  |
+| H05 | Tornillo M4 × 30 |  | 10 | u | Por comprar |  |
+| H06 | Tornillo M4 × 40 |  | 4 | u | Por comprar |  |
+| H07 | Tornillo M4 × 45 |  | 6 | u | Por comprar |  |
+| H08 | Tornillo M5 × 20 |  | 8 | u | Por comprar |  |
+| H09 | Tornillo M5 × 30 |  | 4 | u | Por comprar |  |
+| H10 | Tornillo M5 × 40 |  | 4 | u | Por comprar | No modelado: verificar largo |
+| H11 | Tornillo M6 × 10 Allen | DIN 912 | 2 | u | Por comprar |  |
+| H12 | Tornillo M8 × 25 |  | 1 | u | Por comprar | No modelado |
+| H13 | Tornillo M8 × 65 hexagonal |  | 1 | u | Por comprar |  |
+| H14 | Tuerca M4 autoblocante |  | 18 | u | Por comprar |  |
+| H15 | Tuerca M4 |  | 2 | u | Por comprar |  |
+| H16 | Tuerca M5 autoblocante |  | 16 | u | Por comprar |  |
+| H17 | Tuerca M8 autoblocante |  | 1 | u | Por comprar |  |
+| H18 | Tuerca M8 |  | 1 | u | Por comprar |  |
+| H19 | Arandela M4 |  | 12 | u | Por comprar |  |
+| H20 | Arandela M5 |  | 4 | u | Por comprar |  |
+| H21 | Arandela M5 ancha | DIN 9021 | 4 | u | Por comprar |  |
+| H22 | Separador M5 × 10 |  | 8 | u | Por comprar |  |
+| H23 | Separador M8 × 20 |  | 2 | u | Por comprar |  |
+| X01 | Tablero contrachapado o MDF | 550 × 550 × 16 mm | 1 | u | Por comprar | Agujeros: Ø42 motor J1 y 4 × Ø4.5 bandeja (ver CB-111) |
+| X02 | Filamento PETG | 1,75 mm | 4 | kg | Por comprar | Estimado 3–4 kg: calcular con el slicer |
+| X03 | Epoxi bicomponente |  | 1 | u | Por comprar |  |
+| X04 | Cianoacrilato |  | 1 | u | Por comprar |  |
+
+## Por confirmar
+
+| ID | Componente | Origen | Notas |
+|---|---|---|---|
+| E06 | ProtoScrew Shield | Préstamo laboratorio | Figuraba en la BOM anterior para pedir; confirmar si se usa con la RAMPS |
+| M01 | Motorreductor 37D con encoder | Propio | Confirmar reducción real del motor que tienen |
+| M03 | Motor paso a paso NEMA 14 | Por definir | Un NEMA 17 no entra en E2 sin rediseñar la parte trasera |
+| M04 | Motor paso a paso NEMA 17 | Propio |  |
+| S01 | Módulo AS5600 | Compra grupal | En el pedido figura 'Encoder' (Amazon, USD 7.99): confirmar que es el AS5600 |
+| S02 | Imán de neodimio diametral | Compra grupal | Suele venir con el módulo AS5600 |
+| T03 | Correa GT2 cerrada | Compra grupal | Puede venir en el 'Kit correa y polea' (T04) |
+
+## BOM por subsistema
+
+### Control y potencia
+
+| ID | Componente | Especificación | Cant. | Un. | Uso | Origen | Estado | Notas |
+|---|---|---|---|---|---|---|---|---|
+| E01 | Arduino MEGA 2560 | ATmega2560, 5 V | 1 | u | Controlador principal | Préstamo laboratorio | Prestado | Devolver al terminar el TPF |
+| E02 | RAMPS 1.4 | Shield para MEGA, 5 zócalos de driver | 1 | u | Drivers paso a paso, finales de carrera y salidas MOSFET | Préstamo laboratorio | Prestado | Devolver al terminar el TPF |
+| E03 | Driver A4988 | Paso a paso, 2 A pico, 8–35 V | 1 | u | J3 prismático (NEMA 14), en zócalo de la RAMPS | Préstamo laboratorio | Prestado | El laboratorio tiene 14: conviene pedir 1 de repuesto |
+| E04 | Sabertooth dual 25A | 2 canales DC, 6–30 V | 1 | u | J1 cintura (37D) y J2 hombro (5840) | Préstamo laboratorio | Prestado | El CAD (CB-510) modela un Sabertooth 2x60; el del laboratorio es 2x25: revisar agujeros en la bandeja CB-141 |
+| E05 | Driver TB6600 | Paso a paso 4 A (5 A pico), 9–40 V | 1 | u | J0 riel (NEMA 17) | Préstamo laboratorio | Prestado | Devolver al terminar el TPF |
+| E06 | ProtoScrew Shield | Borneras para Arduino | 1 | u | Cableado | Préstamo laboratorio | Por confirmar | Figuraba en la BOM anterior para pedir; confirmar si se usa con la RAMPS |
+| E07 | Módulo MOSFET 12 V | Canal lógico 5 V, ≥ 3 A | 2 | u | Bomba de vacío y electroválvula | Por comprar | Falta | Alternativa: salidas D8/D9/D10 de la RAMPS |
+
+### Motores y actuadores
+
+| ID | Componente | Especificación | Cant. | Un. | Uso | Origen | Estado | Notas |
+|---|---|---|---|---|---|---|---|---|
+| M01 | Motorreductor 37D con encoder | 37Dx70.1L, 12 V, 90:1, encoder cuadratura 64 CPR | 1 | u | J1 cintura (lazo cerrado) | Propio | Por confirmar | Confirmar reducción real del motor que tienen |
+| M02 | Motorreductor sinfín 5840-36ZY | 12 V, 12 rpm, eje D8 | 1 | u | J2 hombro (direct drive) | Compra grupal | Pedido | Confirmar si los 90 kg·cm son torque nominal o de bloqueo. Medir agujeros con calibre antes de imprimir CB-210 |
+| M03 | Motor paso a paso NEMA 14 | 35 mm, eje Ø5 (tipo SM35HT36) | 1 | u | J3 prismático (dentro de E2) | Por definir | Por confirmar | Un NEMA 17 no entra en E2 sin rediseñar la parte trasera |
+| M04 | Motor paso a paso NEMA 17 | 17HS2408 | 1 | u | J0 riel | Propio | Por confirmar |  |
+| M05 | Servo MG996R | 180°, engranajes metálicos, 4.8–7.2 V | 2 | u | J4 muñeca (cabeceo) y J5 torsión | Compra grupal | Pedido | Precio del pedido 'Servos' |
+
+### Sensores
+
+| ID | Componente | Especificación | Cant. | Un. | Uso | Origen | Estado | Notas |
+|---|---|---|---|---|---|---|---|---|
+| S01 | Módulo AS5600 | Encoder magnético 12 bit, I2C | 1 | u | J2 hombro (ángulo real de E2) | Compra grupal | Por confirmar | En el pedido figura 'Encoder' (Amazon, USD 7.99): confirmar que es el AS5600 |
+| S02 | Imán de neodimio diametral | Ø6 × 2.5 mm | 1 | u | AS5600 del hombro | Compra grupal | Por confirmar | Suele venir con el módulo AS5600 |
+| S03 | Sensor de presión MPS20N0040D | 0–40 kPa, con conversor HX710B | 1 | u | Detectar agarre por vacío | Compra grupal | Pedido |  |
+| S04 | Final de carrera | Microswitch con palanca | 3 | u | Homing de J0, J1 y J3 | Por comprar | Falta |  |
+
+### Visión
+
+| ID | Componente | Especificación | Cant. | Un. | Uso | Origen | Estado | Notas |
+|---|---|---|---|---|---|---|---|---|
+| V01 | Cámara web USB | 720p, 30 fps | 2 | u | Visión estéreo | Compra grupal | Pedido | Precio del pedido 'Cámaras': confirmar si es por unidad o por las dos |
+| V02 | Notebook | Python + OpenCV | 1 | u | Visión y control de alto nivel | Propio | En mano |  |
+| V03 | Tablero de calibración | Damero 9 × 6 esquinas, cuadro 25 mm, sobre base rígida | 1 | u | Stereo calibration | Propio | Falta | Medidas en vision/config/camaras.yaml |
+
+### Neumática
+
+| ID | Componente | Especificación | Cant. | Un. | Uso | Origen | Estado | Notas |
+|---|---|---|---|---|---|---|---|---|
+| N01 | Ventosa JXD SAB40 (fuelle) | Ø40, rosca hembra G1/4 | 1 | u | Agarre de la naranja | Compra grupal | Pedido | Pedido 'Ventosa 1' |
+| N02 | Ventosa JXD SAF-40 (plana) | Ø40, rosca hembra G1/4 | 1 | u | Alternativa para pruebas | Compra grupal | Pedido | Pedido 'Ventosa 2' |
+| N03 | Racor recto push-in | Macho 1/4 a manguera 6 mm (tipo PC6-02) | 1 | u | Dentro del eje hueco de la torsión | Compra grupal | Pedido | Pedido 'Unión neumática' |
+| N04 | Manguera PU | 6 × 4 mm | 2 | m | Ventosa a bomba | Por comprar | Falta | Largo según el recorrido final |
+| N05 | Bomba de vacío 12 V | Mini bomba de diafragma | 1 | u | Generar el vacío | Por definir | Falta | No figura en ninguna lista. Dimensionar con entregas/entrega_06/analisis_torque_ventosa.md |
+| N06 | Electroválvula 12 V | 2/2 o 3/2, normalmente cerrada | 1 | u | Romper el vacío para soltar la naranja | Por definir | Falta |  |
+
+### Transmisión
+
+| ID | Componente | Especificación | Cant. | Un. | Uso | Origen | Estado | Notas |
+|---|---|---|---|---|---|---|---|---|
+| T01 | Polea T5 | 10 dientes, ancho 17 mm, agujero 6 mm, con prisionero | 1 | u | Motor 37D de J1 | Por comprar | Falta |  |
+| T02 | Correa T5 cerrada | 16 mm de ancho, 600 mm (120 dientes) | 1 | u | J1, relación 10:1 con el plato 1M1B | Por comprar | Falta | Verificar largo con el montaje real |
+| T03 | Correa GT2 cerrada | 6 mm de ancho, 232 mm (116 dientes) | 1 | u | Torsión de la herramienta (poleas impresas 66:66) | Compra grupal | Por confirmar | Puede venir en el 'Kit correa y polea' (T04) |
+| T04 | Kit correa GT2 y poleas | Según pedido | 1 | u | Torsión y/o riel | Compra grupal | Pedido | Anotar el contenido real del kit |
+| T05 | Tuerca/rosca para varilla | Según pedido | 1 | u | Prismático (diseño anterior con husillo) | Compra grupal | Pedido | Pedido 'Rosca p/ Varilla'. Con el tornillo TSF-E3 impreso puede no usarse |
+| T06 | Prisionero | M3 × 4 | 1 | u | Tornillo TSF-E3 al eje del NEMA 14 | Por comprar | Falta | Alternativa: epoxi |
+
+### Rodamientos y bujes
+
+| ID | Componente | Especificación | Cant. | Un. | Uso | Origen | Estado | Notas |
+|---|---|---|---|---|---|---|---|---|
+| R01 | Rodamiento 625ZZ | 5 × 16 × 5 mm | 8 | u | Rodillos de la lazy susan J1 | Por comprar | Falta |  |
+| R02 | Rodamiento 608ZZ | 8 × 22 × 7 mm | 3 | u | 2 eje central de J1, 1 pivote de la muñeca | Por comprar | Falta |  |
+| R03 | Rodamiento 6806-ZZ | 30 × 42 × 7 mm | 2 | u | Eje hueco de la torsión | Compra grupal | Pedido | Pedido 'Rodamientos': confirmar que son estos |
+| R04 | Buje autolubricado (bronce sinterizado) | 5 × 8 × 10 mm | 8 | u | Rodillos de la lazy susan | Por comprar | Falta |  |
+| R05 | Buje autolubricado (bronce sinterizado) | 8 × 12 × 20 mm | 2 | u | Eje central de J1 | Por comprar | Falta |  |
+
+### Riel J0
+
+| ID | Componente | Especificación | Cant. | Un. | Uso | Origen | Estado | Notas |
+|---|---|---|---|---|---|---|---|---|
+| L01 | Estructura del riel | 1,2 m (perfil de aluminio o 2 varillas lisas) | 1 | u | Desplazamiento lineal de la base | Por definir | Falta | Riel todavía sin diseñar |
+| L02 | Carro del riel | Patines o rodamientos lineales | 1 | u | Lleva la base del brazo | Por definir | Falta |  |
+| L03 | Correa GT2 abierta + poleas | ≈ 2,6 m, polea 20 dientes + polea tensora | 1 | u | Transmisión del riel | Por definir | Falta | Revisar si el kit T04 la cubre |
+
+### Alimentación y cableado
+
+| ID | Componente | Especificación | Cant. | Un. | Uso | Origen | Estado | Notas |
+|---|---|---|---|---|---|---|---|---|
+| A01 | Fuente 12 V DC | Corriente a dimensionar (≥ 10 A estimado) | 1 | u | Motores DC, paso a paso y bomba | Por definir | Falta | Sumar corriente de bloqueo de 37D + 5840 + paso a paso + bomba |
+| A02 | Regulador UBEC 6 V | ≥ 5 A | 1 | u | Servos MG996R | Por comprar | Falta | No alimentar los servos desde el 5 V del MEGA |
+| A03 | Parada de emergencia + fusible | Pulsador hongo NC, portafusible | 1 | u | Seguridad: corta la potencia de motores | Por comprar | Falta |  |
+| A04 | Cables, borneras y conectores | Dupont, JST, termocontraíble | 1 | lote | Cableado general | Por comprar | Falta |  |
+
+### Tornillería
+
+| ID | Componente | Especificación | Cant. | Un. | Uso | Origen | Estado | Notas |
+|---|---|---|---|---|---|---|---|---|
+| H01 | Tornillo M3 × 6 Allen | DIN 912 | 8 | u | 4 NEMA 14 → E2 · 4 AS5600 → tapa de E2 | Por comprar | Falta |  |
+| H02 | Tornillo M3 × 8 |  | 21 | u | 6 motor 37D → soporte · 5 Arduino MEGA → bandeja · 2 anillo del eje hueco · 8 horns metálicos | Por comprar | Falta |  |
+| H03 | Tornillo M3 × 10 |  | 17 | u | 3 tapa de E2 → E2 · 4 Sabertooth → bandeja · 8 pestañas de los servos · 2 porta-servo | Por comprar | Falta |  |
+| H04 | Tornillo M3 × 12 |  | 4 | u | Tapa de la caja de torsión | Por comprar | Falta |  |
+| H05 | Tornillo M4 × 30 |  | 10 | u | 4 soporte motor J1 → tablero · 2 soporte del imán → torre · 4 bandeja → tablero | Por comprar | Falta |  |
+| H06 | Tornillo M4 × 40 |  | 4 | u | Placa fija 1M2A → tablero | Por comprar | Falta |  |
+| H07 | Tornillo M4 × 45 |  | 6 | u | Torre 2M1D → plato 1M1B | Por comprar | Falta |  |
+| H08 | Tornillo M5 × 20 |  | 8 | u | Ejes de los rodillos | Por comprar | Falta |  |
+| H09 | Tornillo M5 × 30 |  | 4 | u | Patas → tablero | Por comprar | Falta |  |
+| H10 | Tornillo M5 × 40 |  | 4 | u | Horquilla → E3 | Por comprar | Falta | No modelado: verificar largo |
+| H11 | Tornillo M6 × 10 Allen | DIN 912 | 2 | u | Motor 5840 → torre | Por comprar | Falta |  |
+| H12 | Tornillo M8 × 25 |  | 1 | u | Pivote libre de la muñeca | Por comprar | Falta | No modelado |
+| H13 | Tornillo M8 × 65 hexagonal |  | 1 | u | Eje central de J1 | Por comprar | Falta |  |
+| H14 | Tuerca M4 autoblocante |  | 18 | u | 6 torre/plato · 4 placa 1M2A · 4 soporte J1 · 4 bandeja | Por comprar | Falta |  |
+| H15 | Tuerca M4 |  | 2 | u | Soporte del imán (dentro de la torre) | Por comprar | Falta |  |
+| H16 | Tuerca M5 autoblocante |  | 16 | u | 8 rodillos · 4 patas · 4 horquilla → E3 | Por comprar | Falta |  |
+| H17 | Tuerca M8 autoblocante |  | 1 | u | Eje central de J1 | Por comprar | Falta |  |
+| H18 | Tuerca M8 |  | 1 | u | Pivote libre de la muñeca | Por comprar | Falta |  |
+| H19 | Arandela M4 |  | 12 | u | Bajo el tablero | Por comprar | Falta |  |
+| H20 | Arandela M5 |  | 4 | u | Patas | Por comprar | Falta |  |
+| H21 | Arandela M5 ancha | DIN 9021 | 4 | u | Horquilla → E3 (agujeros de E3 de Ø10.2) | Por comprar | Falta |  |
+| H22 | Separador M5 × 10 |  | 8 | u | Rodillos de la lazy susan | Por comprar | Falta |  |
+| H23 | Separador M8 × 20 |  | 2 | u | Eje central de J1 | Por comprar | Falta |  |
+
+### Materia prima y consumibles
+
+| ID | Componente | Especificación | Cant. | Un. | Uso | Origen | Estado | Notas |
+|---|---|---|---|---|---|---|---|---|
+| X01 | Tablero contrachapado o MDF | 550 × 550 × 16 mm | 1 | u | Base del brazo | Por comprar | Falta | Agujeros: Ø42 motor J1 y 4 × Ø4.5 bandeja (ver CB-111) |
+| X02 | Filamento PETG | 1,75 mm | 4 | kg | Piezas impresas | Por comprar | Falta | Estimado 3–4 kg: calcular con el slicer |
+| X03 | Epoxi bicomponente |  | 1 | u | Buje D8 en E2 | Por comprar | Falta |  |
+| X04 | Cianoacrilato |  | 1 | u | Imán en el soporte CB-232 | Por comprar | Falta |  |
+
+### Piezas impresas
+
+| ID | Componente | Especificación | Cant. | Un. | Uso | Origen | Estado | Notas |
+|---|---|---|---|---|---|---|---|---|
+| P01 | CB-112 Pata de la base | PETG, ≥ 4 perímetros | 4 | u |  | Impresión 3D | Falta |  |
+| P02 | CB-121 Placa fija J1 (1M2A) | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta |  |
+| P03 | CB-131 Soporte motor J1 (37D) | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta |  |
+| P04 | CB-141 Bandeja de electrónica | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | 210 × 100 mm |
+| P05 | CB-201 Plato giratorio con dientes T5 (1M1B) | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta |  |
+| P06 | CB-210 Torre de cintura (2M1D mod) | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | 318 mm de alto: hay que partirla para la Ender 3 V2 |
+| P07 | CB-232 Soporte del imán | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta |  |
+| P08 | CB-301 Eslabón E2 | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | 260 mm: hay que partirlo |
+| P09 | CB-302 Tornillo sinfín TSF-E3 | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | Relleno 100 % o mecanizado |
+| P10 | CB-303 Tapa de E2 / soporte AS5600 | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta |  |
+| P11 | CB-305 Buje D8 del hombro | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | PETG al 100 % o aluminio |
+| P12 | CB-401 Eslabón E3 | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta |  |
+| P13 | CB-601 Horquilla U | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta |  |
+| P14 | CB-602 Porta-servo | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta |  |
+| P15 | CB-603 Caja de torsión | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta |  |
+| P16 | CB-604 Tapa de la caja | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta |  |
+| P17 | CB-605 Polea del servo GT2 66 dientes | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | Relleno 100 % |
+| P18 | CB-606 Eje hueco con polea GT2 66 dientes | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | Relleno 100 % |
+| P19 | CB-607 Separador del pivote | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta |  |
+| P20 | Anillo de retención del eje hueco | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | Solo en el .scad (pieza 5), no en el STEP de la herramienta |

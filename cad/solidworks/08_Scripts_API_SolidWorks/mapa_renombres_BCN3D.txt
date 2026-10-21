@@ -1,0 +1,26 @@
+Base assembly.SLDASM|C:\Users\tikip\Desktop\CitriBot_Ensamblaje\01_Base_J0\CB-110_Base_BCN3D.SLDASM
+Base fusta.SLDPRT|C:\Users\tikip\Desktop\CitriBot_Ensamblaje\01_Base_J0\CB-111_Tablero_Madera_550x550x16.SLDPRT
+Potes base B.SLDPRT|C:\Users\tikip\Desktop\CitriBot_Ensamblaje\01_Base_J0\CB-112_Pata_Base.SLDPRT
+Box Assembly B.SLDASM|C:\Users\tikip\Desktop\CitriBot_Ensamblaje\01_Base_J0\Caja_Electronica\CB-113_Caja_Electronica.SLDASM
+Box C.SLDPRT|C:\Users\tikip\Desktop\CitriBot_Ensamblaje\01_Base_J0\Caja_Electronica\CB-113-01_Caja_Electronica_Cuerpo.SLDPRT
+Drivers Support Assembly B.SLDASM|C:\Users\tikip\Desktop\CitriBot_Ensamblaje\01_Base_J0\Caja_Electronica\CB-113-02_Soporte_Drivers.SLDASM
+Suport Drivers E.SLDPRT|C:\Users\tikip\Desktop\CitriBot_Ensamblaje\01_Base_J0\Caja_Electronica\CB-113-02-01_Placa_Soporte_Drivers.SLDPRT
+Driver.SLDASM|C:\Users\tikip\Desktop\CitriBot_Ensamblaje\01_Base_J0\Caja_Electronica\CB-113-03_Driver_TB6560.SLDASM
+PCB TB6560.SLDPRT|C:\Users\tikip\Desktop\CitriBot_Ensamblaje\01_Base_J0\Caja_Electronica\CB-113-03-01_PCB_TB6560.SLDPRT
+Capacitor 1.SLDPRT|C:\Users\tikip\Desktop\CitriBot_Ensamblaje\01_Base_J0\Caja_Electronica\CB-113-03-02_Capacitor_1.SLDPRT
+Capacitor 2.SLDPRT|C:\Users\tikip\Desktop\CitriBot_Ensamblaje\01_Base_J0\Caja_Electronica\CB-113-03-03_Capacitor_2.SLDPRT
+Chip.SLDPRT|C:\Users\tikip\Desktop\CitriBot_Ensamblaje\01_Base_J0\Caja_Electronica\CB-113-03-04_Chip.SLDPRT
+Sink.SLDPRT|C:\Users\tikip\Desktop\CitriBot_Ensamblaje\01_Base_J0\Caja_Electronica\CB-113-03-05_Disipador.SLDPRT
+Terminal.SLDPRT|C:\Users\tikip\Desktop\CitriBot_Ensamblaje\01_Base_J0\Caja_Electronica\CB-113-03-06_Bornera.SLDPRT
+Module Fan Assembly.SLDASM|C:\Users\tikip\Desktop\CitriBot_Ensamblaje\01_Base_J0\Caja_Electronica\CB-113-04_Modulo_Ventilador.SLDASM
+Fan Module.SLDPRT|C:\Users\tikip\Desktop\CitriBot_Ensamblaje\01_Base_J0\Caja_Electronica\CB-113-04-01_Soporte_Ventilador.SLDPRT
+Fan.SLDPRT|C:\Users\tikip\Desktop\CitriBot_Ensamblaje\01_Base_J0\Caja_Electronica\CB-113-04-02_Ventilador.SLDPRT
+M3x35.SLDPRT|C:\Users\tikip\Desktop\CitriBot_Ensamblaje\05_Comerciales\Tornilleria\HW_M3x35.SLDPRT
+Rotary Plate.SLDASM|C:\Users\tikip\Desktop\CitriBot_Ensamblaje\01_Base_J0\CB-120_LazySusan_Fija_J1.SLDASM
+1M2A.SLDPRT|C:\Users\tikip\Desktop\CitriBot_Ensamblaje\01_Base_J0\CB-121_Placa_Fija_J1_1M2A.SLDPRT
+Sistema rodaments.SLDASM|C:\Users\tikip\Desktop\CitriBot_Ensamblaje\01_Base_J0\CB-122_Rodillo_LazySusan.SLDASM
+Bearing 5mm.SLDPRT|C:\Users\tikip\Desktop\CitriBot_Ensamblaje\05_Comerciales\HW_Rodamiento_625ZZ_5x16x5.SLDPRT
+M5x20.SLDPRT|C:\Users\tikip\Desktop\CitriBot_Ensamblaje\05_Comerciales\Tornilleria\HW_M5x20.SLDPRT
+Spacer M5x10.SLDPRT|C:\Users\tikip\Desktop\CitriBot_Ensamblaje\05_Comerciales\Tornilleria\HW_Separador_M5x10.SLDPRT
+Spacer M8x20.SLDPRT|C:\Users\tikip\Desktop\CitriBot_Ensamblaje\05_Comerciales\Tornilleria\HW_Separador_M8x20.SLDPRT
+8mm Bearing.SLDPRT|C:\Users\tikip\Desktop\CitriBot_Ensamblaje\05_Comerciales\HW_Rodamiento_608ZZ_8x22x7.SLDPRT
