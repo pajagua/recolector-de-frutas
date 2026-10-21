@@ -1,4 +1,4 @@
-# CitriBot – Robot recolector de naranjas
+# Robot recolector de naranjas
 
 Trabajo Práctico Final de **Robótica 1** – FIUNA, 2026 (2.º semestre). Grupo 4.
 
