@@ -46,7 +46,7 @@ Detalle y puntos abiertos: [docs/arquitectura.md](docs/arquitectura.md).
 ## Estructura
 
 ```
-CitriBot/
+recolector-de-frutas/
 ├─ bom/            BOM completa (CSV editable, Excel y Markdown generados)
 ├─ cad/
 │  ├─ solidworks/  ensamblaje completo del brazo + herramienta (abrir CB-000)
@@ -78,7 +78,7 @@ El CAD (SolidWorks, STEP, STL) se guarda con **Git LFS**. Instalá Git LFS una v
 
 ```
 git lfs install
-git clone https://github.com/<usuario>/CitriBot.git
+git clone https://github.com/pajagua/recolector-de-frutas.git
 ```
 
 ### Reglas del grupo
