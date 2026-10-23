@@ -10,7 +10,7 @@ Todavía sin diagrama. Acá van el diagrama de conexiones, la asignación de pin
 | Motor 5840 (J2) | Sabertooth canal 2 | |
 | AS5600 (J2) | I2C del MEGA (SDA 20, SCL 21) | |
 | NEMA 17 (J0) | TB6600 (STEP/DIR desde el MEGA) | |
-| NEMA 14 (J3) | A4988 en un zócalo de la RAMPS | |
+| NEMA 17 (J3, husillo T8) | A4988 en un zócalo de la RAMPS | regular la corriente a ≈ 1,2 A, con disipador |
 | 2 × MG996R (J4, J5) | PWM del MEGA; alimentación desde UBEC 6 V | no usar el 5 V del MEGA |
 | Bomba y electroválvula | MOSFET (D8/D9/D10 de la RAMPS o módulo aparte) | |
 | MPS20N0040D | HX710B al MEGA (2 pines digitales) | |

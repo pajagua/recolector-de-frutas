@@ -1,6 +1,8 @@
 # Control (PC)
 
-Todavía sin código. Plan:
+Por ahora solo está `espacio_trabajo.py`: verifica que la esfera del árbol entra en el alcance del brazo ([docs/espacio_de_trabajo.md](../docs/espacio_de_trabajo.md)). Se corre así: `python control/espacio_trabajo.py [--carro MM] [--figura]`.
+
+Plan:
 
 | Módulo | Qué hace |
 |---|---|

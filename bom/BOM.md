@@ -10,7 +10,7 @@
 | Compra grupal | 13 |
 | Propio | 4 |
 | Impresión 3D | 20 |
-| Por comprar | 40 |
+| Por comprar | 41 |
 | Por definir | 7 |
 
 | Estado | Ítems |
@@ -18,7 +18,7 @@
 | En mano | 1 |
 | Prestado | 5 |
 | Pedido | 10 |
-| Falta | 67 |
+| Falta | 68 |
 | Por confirmar | 7 |
 
 **Gastado (compra grupal, sin envío): USD 135.69**
@@ -31,7 +31,7 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 |---|---|---|---|---|---|---|
 | E01 | Arduino MEGA 2560 | ATmega2560, 5 V | 1 | Controlador principal | Prestado | ☐ |
 | E02 | RAMPS 1.4 | Shield para MEGA, 5 zócalos de driver | 1 | Drivers paso a paso, finales de carrera y salidas MOSFET | Prestado | ☐ |
-| E03 | Driver A4988 | Paso a paso, 2 A pico, 8–35 V | 1 | J3 prismático (NEMA 14), en zócalo de la RAMPS | Prestado | ☐ |
+| E03 | Driver A4988 | Paso a paso, 2 A pico, 8–35 V | 1 | J3 prismático (NEMA 17 + husillo T8), en zócalo de la RAMPS | Prestado | ☐ |
 | E04 | Sabertooth dual 25A | 2 canales DC, 6–30 V | 1 | J1 cintura (37D) y J2 hombro (5840) | Prestado | ☐ |
 | E05 | Driver TB6600 | Paso a paso 4 A (5 A pico), 9–40 V | 1 | J0 riel (NEMA 17) | Prestado | ☐ |
 | E06 | ProtoScrew Shield | Borneras para Arduino | 1 | Cableado | Por confirmar | ☐ |
@@ -40,7 +40,7 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 
 | ID | Componente | Cant. | Proveedor | USD | Estado | Notas |
 |---|---|---|---|---|---|---|
-| M02 | Motorreductor sinfín 5840-36ZY | 1 | AliExpress | 36.50 | Pedido | Confirmar si los 90 kg·cm son torque nominal o de bloqueo. Medir agujeros con calibre antes de imprimir CB-210 |
+| M02 | Motorreductor sinfín 5840-36ZY | 1 | AliExpress | 36.50 | Pedido | Un vendedor da ≈ 70 kg·cm sin decir si es nominal o de bloqueo (bloqueo 6,5 A). El hombro pide 25 kg·cm de pico (control/torques.py). Medir con calibre antes de imprimir CB-210 |
 | M05 | Servo MG996R | 2 | AliExpress | 11.53 | Pedido | Precio del pedido 'Servos' |
 | S01 | Módulo AS5600 | 1 | Amazon | 7.99 | Por confirmar | En el pedido figura 'Encoder' (Amazon, USD 7.99): confirmar que es el AS5600 |
 | S02 | Imán de neodimio diametral | 1 |  |  | Por confirmar | Suele venir con el módulo AS5600 |
@@ -51,7 +51,7 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 | N03 | Racor recto push-in | 1 | AliExpress | 7.25 | Pedido | Pedido 'Unión neumática' |
 | T03 | Correa GT2 cerrada | 1 |  |  | Por confirmar | Puede venir en el 'Kit correa y polea' (T04) |
 | T04 | Kit correa GT2 y poleas | 1 | AliExpress | 9.39 | Pedido | Anotar el contenido real del kit |
-| T05 | Tuerca/rosca para varilla | 1 | AliExpress | 8.84 | Pedido | Pedido 'Rosca p/ Varilla'. Con el tornillo TSF-E3 impreso puede no usarse |
+| T05 | Husillo T8 + tuerca de brida | 1 | AliExpress | 8.84 | Pedido | Pedido 'Rosca p/ Varilla': confirmar largo (≥ 400 mm) y avance. CAD: CB-511 y CB-512 |
 | R03 | Rodamiento 6806-ZZ | 2 | AliExpress | 5.43 | Pedido | Pedido 'Rodamientos': confirmar que son estos |
 
 **Total: USD 135.69**
@@ -61,14 +61,14 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 | ID | Componente | Especificación | Cant. | Un. | Origen | Notas |
 |---|---|---|---|---|---|---|
 | E07 | Módulo MOSFET 12 V | Canal lógico 5 V, ≥ 3 A | 2 | u | Por comprar | Alternativa: salidas D8/D9/D10 de la RAMPS |
-| M03 | Motor paso a paso NEMA 14 | 35 mm, eje Ø5 (tipo SM35HT36) | 1 | u | Por definir | Un NEMA 17 no entra en E2 sin rediseñar la parte trasera |
+| M03 | Motor paso a paso NEMA 17 | 40 mm, ≈ 4,5 kg·cm, 1,7 A, eje Ø5 (tipo 17HS4401) | 1 | u | Por definir | El 17HS2408 del riel (M04) es más corto y tiene menos torque: no sirve para J3. CAD: CB-505 |
 | S04 | Final de carrera | Microswitch con palanca | 3 | u | Por comprar |  |
 | N04 | Manguera PU | 6 × 4 mm | 2 | m | Por comprar | Largo según el recorrido final |
 | N05 | Bomba de vacío 12 V | Mini bomba de diafragma | 1 | u | Por definir | No figura en ninguna lista. Dimensionar con entregas/entrega_06/analisis_torque_ventosa.md |
 | N06 | Electroválvula 12 V | 2/2 o 3/2, normalmente cerrada | 1 | u | Por definir |  |
 | T01 | Polea T5 | 10 dientes, ancho 17 mm, agujero 6 mm, con prisionero | 1 | u | Por comprar |  |
 | T02 | Correa T5 cerrada | 16 mm de ancho, 600 mm (120 dientes) | 1 | u | Por comprar | Verificar largo con el montaje real |
-| T06 | Prisionero | M3 × 4 | 1 | u | Por comprar | Alternativa: epoxi |
+| T06 | Acople flexible | 5 × 8 mm, Ø19 × 25 | 1 | u | Por comprar | CAD: CB-513 |
 | R01 | Rodamiento 625ZZ | 5 × 16 × 5 mm | 8 | u | Por comprar |  |
 | R02 | Rodamiento 608ZZ | 8 × 22 × 7 mm | 3 | u | Por comprar |  |
 | R04 | Buje autolubricado (bronce sinterizado) | 5 × 8 × 10 mm | 8 | u | Por comprar |  |
@@ -82,15 +82,15 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 | A04 | Cables, borneras y conectores | Dupont, JST, termocontraíble | 1 | lote | Por comprar |  |
 | H01 | Tornillo M3 × 6 Allen | DIN 912 | 8 | u | Por comprar |  |
 | H02 | Tornillo M3 × 8 |  | 21 | u | Por comprar |  |
-| H03 | Tornillo M3 × 10 |  | 17 | u | Por comprar |  |
+| H03 | Tornillo M3 × 10 |  | 21 | u | Por comprar |  |
 | H04 | Tornillo M3 × 12 |  | 4 | u | Por comprar |  |
 | H05 | Tornillo M4 × 30 |  | 10 | u | Por comprar |  |
 | H06 | Tornillo M4 × 40 |  | 4 | u | Por comprar |  |
 | H07 | Tornillo M4 × 45 |  | 6 | u | Por comprar |  |
 | H08 | Tornillo M5 × 20 |  | 8 | u | Por comprar |  |
 | H09 | Tornillo M5 × 30 |  | 4 | u | Por comprar |  |
-| H10 | Tornillo M5 × 40 |  | 4 | u | Por comprar | No modelado: verificar largo |
-| H11 | Tornillo M6 × 10 Allen | DIN 912 | 2 | u | Por comprar |  |
+| H10 | Tornillo M5 × 25 |  | 4 | u | Por comprar | No modelado: brida de 10 mm + placa de la horquilla de 8 mm + tuerca |
+| H11 | Tornillo M4 × 10 Allen | DIN 912 | 2 | u | Por comprar |  |
 | H12 | Tornillo M8 × 25 |  | 1 | u | Por comprar | No modelado |
 | H13 | Tornillo M8 × 65 hexagonal |  | 1 | u | Por comprar |  |
 | H14 | Tuerca M4 autoblocante |  | 18 | u | Por comprar |  |
@@ -100,13 +100,14 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 | H18 | Tuerca M8 |  | 1 | u | Por comprar |  |
 | H19 | Arandela M4 |  | 12 | u | Por comprar |  |
 | H20 | Arandela M5 |  | 4 | u | Por comprar |  |
-| H21 | Arandela M5 ancha | DIN 9021 | 4 | u | Por comprar |  |
 | H22 | Separador M5 × 10 |  | 8 | u | Por comprar |  |
 | H23 | Separador M8 × 20 |  | 2 | u | Por comprar |  |
+| H24 | Tornillo M3 × 35 + tuerca |  | 2 | u | Por comprar | No modelado; además pegar con epoxi |
 | X01 | Tablero contrachapado o MDF | 550 × 550 × 16 mm | 1 | u | Por comprar | Agujeros: Ø42 motor J1 y 4 × Ø4.5 bandeja (ver CB-111) |
 | X02 | Filamento PETG | 1,75 mm | 4 | kg | Por comprar | Estimado 3–4 kg: calcular con el slicer |
 | X03 | Epoxi bicomponente |  | 1 | u | Por comprar |  |
 | X04 | Cianoacrilato |  | 1 | u | Por comprar |  |
+| X05 | Tubo cuadrado de aluminio | 30 × 30 × 2 mm, largo 460 mm | 1 | u | Por comprar | CAD: CB-401. Se desliza en el canal 31 × 31 de E2: cinta de PTFE si hay juego |
 
 ## Por confirmar
 
@@ -114,7 +115,7 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 |---|---|---|---|
 | E06 | ProtoScrew Shield | Préstamo laboratorio | Figuraba en la BOM anterior para pedir; confirmar si se usa con la RAMPS |
 | M01 | Motorreductor 37D con encoder | Propio | Confirmar reducción real del motor que tienen |
-| M03 | Motor paso a paso NEMA 14 | Por definir | Un NEMA 17 no entra en E2 sin rediseñar la parte trasera |
+| M03 | Motor paso a paso NEMA 17 | Por definir | El 17HS2408 del riel (M04) es más corto y tiene menos torque: no sirve para J3. CAD: CB-505 |
 | M04 | Motor paso a paso NEMA 17 | Propio |  |
 | S01 | Módulo AS5600 | Compra grupal | En el pedido figura 'Encoder' (Amazon, USD 7.99): confirmar que es el AS5600 |
 | S02 | Imán de neodimio diametral | Compra grupal | Suele venir con el módulo AS5600 |
@@ -128,7 +129,7 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 |---|---|---|---|---|---|---|---|---|
 | E01 | Arduino MEGA 2560 | ATmega2560, 5 V | 1 | u | Controlador principal | Préstamo laboratorio | Prestado | Devolver al terminar el TPF |
 | E02 | RAMPS 1.4 | Shield para MEGA, 5 zócalos de driver | 1 | u | Drivers paso a paso, finales de carrera y salidas MOSFET | Préstamo laboratorio | Prestado | Devolver al terminar el TPF |
-| E03 | Driver A4988 | Paso a paso, 2 A pico, 8–35 V | 1 | u | J3 prismático (NEMA 14), en zócalo de la RAMPS | Préstamo laboratorio | Prestado | El laboratorio tiene 14: conviene pedir 1 de repuesto |
+| E03 | Driver A4988 | Paso a paso, 2 A pico, 8–35 V | 1 | u | J3 prismático (NEMA 17 + husillo T8), en zócalo de la RAMPS | Préstamo laboratorio | Prestado | El laboratorio tiene 14: conviene pedir 1 de repuesto. Con un NEMA 17 de 1,7 A, regular a ≈ 1,2 A y poner disipador |
 | E04 | Sabertooth dual 25A | 2 canales DC, 6–30 V | 1 | u | J1 cintura (37D) y J2 hombro (5840) | Préstamo laboratorio | Prestado | El CAD (CB-510) modela un Sabertooth 2x60; el del laboratorio es 2x25: revisar agujeros en la bandeja CB-141 |
 | E05 | Driver TB6600 | Paso a paso 4 A (5 A pico), 9–40 V | 1 | u | J0 riel (NEMA 17) | Préstamo laboratorio | Prestado | Devolver al terminar el TPF |
 | E06 | ProtoScrew Shield | Borneras para Arduino | 1 | u | Cableado | Préstamo laboratorio | Por confirmar | Figuraba en la BOM anterior para pedir; confirmar si se usa con la RAMPS |
@@ -139,8 +140,8 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 | ID | Componente | Especificación | Cant. | Un. | Uso | Origen | Estado | Notas |
 |---|---|---|---|---|---|---|---|---|
 | M01 | Motorreductor 37D con encoder | 37Dx70.1L, 12 V, 90:1, encoder cuadratura 64 CPR | 1 | u | J1 cintura (lazo cerrado) | Propio | Por confirmar | Confirmar reducción real del motor que tienen |
-| M02 | Motorreductor sinfín 5840-36ZY | 12 V, 12 rpm, eje D8 | 1 | u | J2 hombro (direct drive) | Compra grupal | Pedido | Confirmar si los 90 kg·cm son torque nominal o de bloqueo. Medir agujeros con calibre antes de imprimir CB-210 |
-| M03 | Motor paso a paso NEMA 14 | 35 mm, eje Ø5 (tipo SM35HT36) | 1 | u | J3 prismático (dentro de E2) | Por definir | Por confirmar | Un NEMA 17 no entra en E2 sin rediseñar la parte trasera |
+| M02 | Motorreductor sinfín 5840-36ZY | 12 V, 12 rpm (9 con carga), eje D8 con plano a 7, fijación 4 × M4 prof. 6 | 1 | u | J2 hombro (direct drive) | Compra grupal | Pedido | Un vendedor da ≈ 70 kg·cm sin decir si es nominal o de bloqueo (bloqueo 6,5 A). El hombro pide 25 kg·cm de pico (control/torques.py). Medir con calibre antes de imprimir CB-210 |
+| M03 | Motor paso a paso NEMA 17 | 40 mm, ≈ 4,5 kg·cm, 1,7 A, eje Ø5 (tipo 17HS4401) | 1 | u | J3 prismático (atrás de E2, mueve el husillo T8) | Por definir | Por confirmar | El 17HS2408 del riel (M04) es más corto y tiene menos torque: no sirve para J3. CAD: CB-505 |
 | M04 | Motor paso a paso NEMA 17 | 17HS2408 | 1 | u | J0 riel | Propio | Por confirmar |  |
 | M05 | Servo MG996R | 180°, engranajes metálicos, 4.8–7.2 V | 2 | u | J4 muñeca (cabeceo) y J5 torsión | Compra grupal | Pedido | Precio del pedido 'Servos' |
 
@@ -180,8 +181,8 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 | T02 | Correa T5 cerrada | 16 mm de ancho, 600 mm (120 dientes) | 1 | u | J1, relación 10:1 con el plato 1M1B | Por comprar | Falta | Verificar largo con el montaje real |
 | T03 | Correa GT2 cerrada | 6 mm de ancho, 232 mm (116 dientes) | 1 | u | Torsión de la herramienta (poleas impresas 66:66) | Compra grupal | Por confirmar | Puede venir en el 'Kit correa y polea' (T04) |
 | T04 | Kit correa GT2 y poleas | Según pedido | 1 | u | Torsión y/o riel | Compra grupal | Pedido | Anotar el contenido real del kit |
-| T05 | Tuerca/rosca para varilla | Según pedido | 1 | u | Prismático (diseño anterior con husillo) | Compra grupal | Pedido | Pedido 'Rosca p/ Varilla'. Con el tornillo TSF-E3 impreso puede no usarse |
-| T06 | Prisionero | M3 × 4 | 1 | u | Tornillo TSF-E3 al eje del NEMA 14 | Por comprar | Falta | Alternativa: epoxi |
+| T05 | Husillo T8 + tuerca de brida | Ø8, avance 8 mm (4 entradas × paso 2), largo 400 mm | 1 | u | J3 prismático (carrera 350 mm) | Compra grupal | Pedido | Pedido 'Rosca p/ Varilla': confirmar largo (≥ 400 mm) y avance. CAD: CB-511 y CB-512 |
+| T06 | Acople flexible | 5 × 8 mm, Ø19 × 25 | 1 | u | NEMA 17 → husillo T8 de J3 | Por comprar | Falta | CAD: CB-513 |
 
 ### Rodamientos y bujes
 
@@ -214,29 +215,29 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 
 | ID | Componente | Especificación | Cant. | Un. | Uso | Origen | Estado | Notas |
 |---|---|---|---|---|---|---|---|---|
-| H01 | Tornillo M3 × 6 Allen | DIN 912 | 8 | u | 4 NEMA 14 → E2 · 4 AS5600 → tapa de E2 | Por comprar | Falta |  |
+| H01 | Tornillo M3 × 6 Allen | DIN 912 | 8 | u | 4 NEMA 17 → placa de E2 · 4 AS5600 → tapa de E2 | Por comprar | Falta |  |
 | H02 | Tornillo M3 × 8 |  | 21 | u | 6 motor 37D → soporte · 5 Arduino MEGA → bandeja · 2 anillo del eje hueco · 8 horns metálicos | Por comprar | Falta |  |
-| H03 | Tornillo M3 × 10 |  | 17 | u | 3 tapa de E2 → E2 · 4 Sabertooth → bandeja · 8 pestañas de los servos · 2 porta-servo | Por comprar | Falta |  |
+| H03 | Tornillo M3 × 10 |  | 21 | u | 3 tapa de E2 → E2 · 4 Sabertooth → bandeja · 8 pestañas de los servos · 2 porta-servo · 4 tuerca T8 → portatuerca | Por comprar | Falta |  |
 | H04 | Tornillo M3 × 12 |  | 4 | u | Tapa de la caja de torsión | Por comprar | Falta |  |
 | H05 | Tornillo M4 × 30 |  | 10 | u | 4 soporte motor J1 → tablero · 2 soporte del imán → torre · 4 bandeja → tablero | Por comprar | Falta |  |
 | H06 | Tornillo M4 × 40 |  | 4 | u | Placa fija 1M2A → tablero | Por comprar | Falta |  |
 | H07 | Tornillo M4 × 45 |  | 6 | u | Torre 2M1D → plato 1M1B | Por comprar | Falta |  |
 | H08 | Tornillo M5 × 20 |  | 8 | u | Ejes de los rodillos | Por comprar | Falta |  |
 | H09 | Tornillo M5 × 30 |  | 4 | u | Patas → tablero | Por comprar | Falta |  |
-| H10 | Tornillo M5 × 40 |  | 4 | u | Horquilla → E3 | Por comprar | Falta | No modelado: verificar largo |
-| H11 | Tornillo M6 × 10 Allen | DIN 912 | 2 | u | Motor 5840 → torre | Por comprar | Falta |  |
+| H10 | Tornillo M5 × 25 |  | 4 | u | Horquilla → brida de E3 | Por comprar | Falta | No modelado: brida de 10 mm + placa de la horquilla de 8 mm + tuerca |
+| H11 | Tornillo M4 × 10 Allen | DIN 912 | 2 | u | Motor 5840 → torre (rosca M4 prof. 6 del motor) | Por comprar | Falta |  |
 | H12 | Tornillo M8 × 25 |  | 1 | u | Pivote libre de la muñeca | Por comprar | Falta | No modelado |
 | H13 | Tornillo M8 × 65 hexagonal |  | 1 | u | Eje central de J1 | Por comprar | Falta |  |
 | H14 | Tuerca M4 autoblocante |  | 18 | u | 6 torre/plato · 4 placa 1M2A · 4 soporte J1 · 4 bandeja | Por comprar | Falta |  |
 | H15 | Tuerca M4 |  | 2 | u | Soporte del imán (dentro de la torre) | Por comprar | Falta |  |
-| H16 | Tuerca M5 autoblocante |  | 16 | u | 8 rodillos · 4 patas · 4 horquilla → E3 | Por comprar | Falta |  |
+| H16 | Tuerca M5 autoblocante |  | 16 | u | 8 rodillos · 4 patas · 4 horquilla → brida de E3 | Por comprar | Falta |  |
 | H17 | Tuerca M8 autoblocante |  | 1 | u | Eje central de J1 | Por comprar | Falta |  |
 | H18 | Tuerca M8 |  | 1 | u | Pivote libre de la muñeca | Por comprar | Falta |  |
 | H19 | Arandela M4 |  | 12 | u | Bajo el tablero | Por comprar | Falta |  |
 | H20 | Arandela M5 |  | 4 | u | Patas | Por comprar | Falta |  |
-| H21 | Arandela M5 ancha | DIN 9021 | 4 | u | Horquilla → E3 (agujeros de E3 de Ø10.2) | Por comprar | Falta |  |
 | H22 | Separador M5 × 10 |  | 8 | u | Rodillos de la lazy susan | Por comprar | Falta |  |
 | H23 | Separador M8 × 20 |  | 2 | u | Eje central de J1 | Por comprar | Falta |  |
+| H24 | Tornillo M3 × 35 + tuerca |  | 2 | u | Pasantes: tubo de E3 → brida y portatuerca | Por comprar | Falta | No modelado; además pegar con epoxi |
 
 ### Materia prima y consumibles
 
@@ -244,8 +245,9 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 |---|---|---|---|---|---|---|---|---|
 | X01 | Tablero contrachapado o MDF | 550 × 550 × 16 mm | 1 | u | Base del brazo | Por comprar | Falta | Agujeros: Ø42 motor J1 y 4 × Ø4.5 bandeja (ver CB-111) |
 | X02 | Filamento PETG | 1,75 mm | 4 | kg | Piezas impresas | Por comprar | Falta | Estimado 3–4 kg: calcular con el slicer |
-| X03 | Epoxi bicomponente |  | 1 | u | Buje D8 en E2 | Por comprar | Falta |  |
+| X03 | Epoxi bicomponente |  | 1 | u | Buje D8 en E2 · tapones del tubo de E3 | Por comprar | Falta |  |
 | X04 | Cianoacrilato |  | 1 | u | Imán en el soporte CB-232 | Por comprar | Falta |  |
+| X05 | Tubo cuadrado de aluminio | 30 × 30 × 2 mm, largo 460 mm | 1 | u | Eslabón E3 (prismático J3) | Por comprar | Falta | CAD: CB-401. Se desliza en el canal 31 × 31 de E2: cinta de PTFE si hay juego |
 
 ### Piezas impresas
 
@@ -258,11 +260,11 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 | P05 | CB-201 Plato giratorio con dientes T5 (1M1B) | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta |  |
 | P06 | CB-210 Torre de cintura (2M1D mod) | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | 318 mm de alto: hay que partirla para la Ender 3 V2 |
 | P07 | CB-232 Soporte del imán | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta |  |
-| P08 | CB-301 Eslabón E2 | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | 260 mm: hay que partirlo |
-| P09 | CB-302 Tornillo sinfín TSF-E3 | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | Relleno 100 % o mecanizado |
+| P08 | CB-301 Eslabón E2 | PETG: cubo ≥ 6 perímetros 50 %, cola 3 perímetros 15 % | 1 | u |  | Impresión 3D | Falta | 504,5 mm de largo: partir en 3 tramos (cubo del hombro + 2 tramos de cola). La cola liviana es parte del balance de J2 |
+| P09 | CB-402 Brida de E3 (herramienta) | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | Tapón al 100 % de relleno |
 | P10 | CB-303 Tapa de E2 / soporte AS5600 | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta |  |
-| P11 | CB-305 Buje D8 del hombro | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | PETG al 100 % o aluminio |
-| P12 | CB-401 Eslabón E3 | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta |  |
+| P11 | CB-305 Buje D8 del hombro | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | Mejor en aluminio: transmite el torque del hombro (≈ 25 kg·cm de pico) |
+| P12 | CB-403 Portatuerca T8 | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | Relleno 100 % |
 | P13 | CB-601 Horquilla U | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta |  |
 | P14 | CB-602 Porta-servo | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta |  |
 | P15 | CB-603 Caja de torsión | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta |  |
