@@ -9,3 +9,13 @@ tablero:
   columnas: 9     # esquinas internas
   filas: 6
   cuadro_mm: 25.0 # lado real de cada cuadro impreso
+
+# Montaje (CAD: cad/solidworks/01_Base_J0/CB-150_Modulo_Camaras.SLDASM). Valores nominales del CAD, para arrancar;
+# la calibración estéreo y la cámara -> robot dan los reales.
+# Marco "árbol": origen en el eje J1 sobre la cara del tablero, x hacia el árbol, y lateral, z arriba (mm).
+montaje:
+  linea_base_mm: 120.0                  # distancia entre lentes, cámaras paralelas
+  lente_izq_mm: [-217.3, 261.5, 670.0]
+  lente_der_mm: [-254.3, 147.4, 670.0]
+  eje_optico: [0.8145, -0.2640, -0.5167] # rumbo -18.0°, 31.1° hacia abajo, apunta al centro de la esfera
+  centro_esfera_mm: [394.8, 0.0, 270.0]  # esfera de trabajo de 300 mm (docs/espacio_de_trabajo.md)

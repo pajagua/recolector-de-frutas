@@ -16,7 +16,7 @@ Actualizado: 2026-10-22.
 
 | Parte | Estado |
 |---|---|
-| Diseño 3D del brazo (J1–J3) | Ensamblaje SolidWorks v6 completo, con J3 de 330 mm de carrera para cubrir la esfera de trabajo: ver [cad/solidworks](cad/solidworks/README.md) y [docs/espacio_de_trabajo.md](docs/espacio_de_trabajo.md) |
+| Diseño 3D del brazo (J1–J3) | Ensamblaje SolidWorks v7 completo, con J3 de 340 mm de carrera movido por correa GT2 para cubrir la esfera de trabajo: ver [cad/solidworks](cad/solidworks/README.md) y [docs/espacio_de_trabajo.md](docs/espacio_de_trabajo.md) |
 | Herramienta (J4–J5) | Diseñada (OpenSCAD + SolidWorks). Todavía fija, sin articular en el ensamblaje |
 | Riel (J0) | Sin diseñar |
 | BOM | Completa, con préstamos del laboratorio y compras: [bom/BOM.md](bom/BOM.md) |
@@ -34,7 +34,7 @@ Actualizado: 2026-10-22.
 | J0 riel | P | NEMA 17 (17HS2408) | TB6600 | final de carrera |
 | J1 cintura | R | motorreductor 37D 90:1, correa T5 ≈ 10:1 | Sabertooth canal 1 | encoder 64 CPR del motor |
 | J2 hombro | R | motorreductor sinfín 5840-36ZY, directo | Sabertooth canal 2 | AS5600 en el eje |
-| J3 brazo | P | NEMA 17 + husillo T8 (carrera 330 mm) | A4988 en la RAMPS | final de carrera |
+| J3 brazo | P | NEMA 17 + correa GT2 (carrera 340 mm) | A4988 en la RAMPS | final de carrera |
 | J4 muñeca | R | servo MG996R | PWM del MEGA | – |
 | J5 torsión | R | servo MG996R + correa GT2 66:66 | PWM del MEGA | – |
 | Vacío | – | bomba 12 V + electroválvula | MOSFET | sensor de presión MPS20N0040D |
@@ -99,5 +99,5 @@ git clone https://github.com/pajagua/recolector-de-frutas.git
 ## Créditos
 
 - **BCN3D Moveo** (BCN3D Technologies, licencia MIT): tablero, patas, lazy susan, plato dentado `1M1B` y tornillería de la base. Licencia en [cad/solidworks/LICENSE_BCN3D_Moveo.txt](cad/solidworks/LICENSE_BCN3D_Moveo.txt).
-- **Rx-rcp-003**: eslabón `E2`, usado como base del cubo del hombro (el prismático original `E3` + `TSF-E3` se reemplazó en la v6).
+- **Rx-rcp-003**: eslabón `E2`, usado como base del cubo del hombro (el prismático original `E3` + `TSF-E3` se reemplazó en la v6; desde la v7 J3 va con correa GT2).
 - Componentes electrónicos y motores prestados por el **Laboratorio de Robótica de la FIUNA** (lista en [bom/BOM.md](bom/BOM.md#préstamos-del-laboratorio-a-devolver)).

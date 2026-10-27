@@ -25,15 +25,15 @@ D_ESFERA = 300.0      # esfera de 30 cm de diámetro
 SEPARACION = 50.0     # entre el borde de la base y la esfera
 Z_CENTRO = 350.0      # suelo -> centro de la esfera
 
-# ---- robot (medido en cad/solidworks, CB-000 v6), mm ----
+# ---- robot (medido en cad/solidworks, CB-000 v7), mm ----
 BORDE = 194.8         # eje J1 -> borde del tablero del lado del árbol (el más cercano, lado de la bandeja de electrónica)
 BORDE_OPUESTO = 355.2 # eje J1 -> borde opuesto (solo para la figura)
 Z_TABLERO = 80.0      # suelo -> cara superior del tablero (patas + tablero, sin riel)
 Z_J2 = 355.5          # cara superior del tablero -> eje J2
 U_BRIDA = 105.0       # eje J2 -> cara exterior de la brida de E3 con J3 retraído
-CARRERA = 350.0       # J3
+CARRERA = 340.0       # J3 (v7: tubo de 440 mm movido por correa GT2)
 HERRAMIENTA = 122.8   # brida -> labio de la ventosa SAB40, alineada con el brazo (cabeceo -90°), según el .scad v4.2
-J2_MIN, J2_MAX = -45.0, 45.0   # elevación del brazo sin choques en toda la carrera de J3, apuntando al árbol (Alcance.cs, cada 5°)
+J2_MIN, J2_MAX = -45.0, 45.0   # elevación del brazo sin choques en toda la carrera de J3, apuntando al árbol (Sweep7.cs, cada 15°)
 
 RHO_MIN = U_BRIDA + HERRAMIENTA
 RHO_MAX = U_BRIDA + CARRERA + HERRAMIENTA
@@ -94,8 +94,8 @@ def figura(carro, salida):
         def caja(u0, u1, h, color):
             pts = [(u0, -h), (u1, -h), (u1, h), (u0, h)]
             ax.add_patch(Polygon([(u * c - v * s, zh + u * s + v * c) for u, v in pts], color=color, alpha=alpha))
-        caja(-451.5, 93, 27.5, "#f0f0f0")                    # E2 con el NEMA 17 atrás
-        caja(-365 + q3, 95 + q3, 15, "#b0b8c8")              # tubo de E3
+        caja(-377, 93, 27.5, "#f0f0f0")                      # E2 (cola corta; el NEMA 17 va arriba del cubo)
+        caja(-345 + q3, 95 + q3, 15, "#b0b8c8")              # tubo de E3 (440 mm)
         caja(95 + q3, 105 + q3, 40, "#fd8d3c")               # brida
         caja(105 + q3, RHO_MIN + q3, 22, "#555555")          # herramienta con la ventosa alineada
         ax.plot([0, (RHO_MIN + q3) * c], [zh, zh + (RHO_MIN + q3) * s], color="k", lw=0.6, ls=":")
@@ -114,7 +114,7 @@ def figura(carro, salida):
     ax.set_ylim(0, 900)
     ax.set_xlabel("distancia horizontal desde el eje J1, hacia el árbol [mm]")
     ax.set_ylabel("altura sobre el suelo [mm]")
-    ax.set_title(f"CitriBot v6 – corte perpendicular al riel (carro de {carro:.0f} mm). Brazo a −8°, J3 retraído y extendido")
+    ax.set_title(f"CitriBot v7 – corte perpendicular al riel (carro de {carro:.0f} mm). Brazo a −8°, J3 retraído y extendido")
     ax.legend(loc="upper left", fontsize=8)
     ax.grid(alpha=0.3)
     fig.tight_layout()

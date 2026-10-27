@@ -1,6 +1,6 @@
 # Espacio de trabajo
 
-Cómo se verifica que CitriBot alcanza toda la esfera del árbol, y con qué números quedó la v6 del CAD.
+Cómo se verifica que CitriBot alcanza toda la esfera del árbol, y con qué números quedó la v7 del CAD.
 Para recalcular: `python control/espacio_trabajo.py` (con `--carro 50` si el carro del riel levanta el robot 50 mm, y `--figura` para regenerar la imagen).
 
 ![Corte perpendicular al riel](imagenes/espacio_trabajo.png)
@@ -38,13 +38,13 @@ Con la ventosa alineada con el brazo (muñeca a −90°), la distancia es:
 
 ```
 ρ = 105 mm (eje J2 → cara de la brida de E3, J3 retraído) + q3 + 122,8 mm (brida → labio de la ventosa SAB40)
-q3 = 0 … 350 mm   →   ρ = 227,8 … 577,8 mm
+q3 = 0 … 340 mm   →   ρ = 227,8 … 567,8 mm
 ```
 
 Entonces, en el corte perpendicular al riel, la ventosa barre un **sector de corona circular** con centro en el eje J2:
 
-- radios de 227,8 a 577,8 mm;
-- ángulos entre los límites de J2 sin choques: **−45° a +45°** con el brazo apuntando al árbol, en toda la carrera de J3. A −50° con J3 retraído la horquilla toca la torre; a +50° el NEMA 17 de la cola toca el tablero.
+- radios de 227,8 a 567,8 mm;
+- ángulos entre los límites de J2 sin choques: **−45° a +45°** con el brazo apuntando al árbol, verificado cada 15° con J3 retraído y extendido (`Sweep7.cs`). No se probó más allá de ±45°.
 
 Ese sector es la zona celeste de la figura. Al girar J1 se forma un casquete esférico grueso alrededor de la torre, y al mover el riel ese casquete se estira a lo largo del árbol. Eso es el espacio de trabajo del robot.
 
@@ -58,17 +58,17 @@ d   = √( 394,8² + (350 − 435,5)² ) = 404,0 mm
 θ   necesario: atan2(−85,5, 394,8) ± asin(R/d) = −12,2° ± 21,8° = −34,0° … +9,6°
 ```
 
-| | Necesita | Tiene el brazo (v6) | Margen |
+| | Necesita | Tiene el brazo (v7) | Margen |
 |---|---|---|---|
 | ρ mínimo (lado cercano de la esfera) | 254,0 mm | 227,8 mm | 26 mm |
-| ρ máximo (lado lejano) | 554,0 mm | 577,8 mm | 24 mm |
+| ρ máximo (lado lejano) | 554,0 mm | 567,8 mm | 14 mm |
 | Ángulo de J2 | −34,0° … +9,6° | −45° … +45° | 11° abajo, 35° arriba |
 
 El script revisa uno por uno los puntos del corte central de la esfera, porque los demás cortes son discos más chicos. Con estos datos alcanza el **100 %** de los puntos.
 
-**Carro del riel.** Todavía no está diseñado, y si sube el robot, el lado lejano se aleja. El brazo cubre toda la esfera mientras el carro mida **hasta 79 mm** de alto. Con 50 mm, por ejemplo, el margen lejano baja a 10,5 mm y J2 necesita llegar a −40°.
+**Carro del riel.** Todavía no está diseñado, y si sube el robot, el lado lejano se aleja. El brazo cubre toda la esfera mientras el carro mida **hasta 51 mm** de alto (con la v6, de 350 mm de carrera, eran 79 mm). Con 50 mm el margen lejano baja a 0,5 mm. Si el carro tiene que ser más alto, alargar 10 mm el tubo y la cola de E2 devuelve los 350 mm de carrera.
 
-## 4. Por qué hubo que cambiar el CAD (v5 → v6)
+## 4. Por qué hubo que cambiar el CAD (v5 → v6 → v7)
 
 En la v5 la ventosa quedaba entre 357 y 411 mm del eje J2: solo 5,35 cm de carrera, con E3 y el tornillo TSF del Rx-rcp-003. Eso no llegaba ni al lado cercano (254 mm) ni al lejano (554 mm). Hacía falta una carrera de al menos 300 mm.
 
@@ -80,9 +80,13 @@ Además, el brazo tenía que poder **acortarse** hasta ≈ 23 cm. Con un prismá
 
 Detalle de piezas y montaje: [cad/solidworks/README.md](../cad/solidworks/README.md).
 
+### v6 → v7
+
+La v6 dejaba 451,5 mm de brazo detrás del hombro: la cola de E2 más el NEMA 17 en la punta. En la v7 el tubo de E3 (440 mm) se mueve con una **correa GT2** y el NEMA 17 sube al cubo de E2, así que la cola termina a **377 mm** detrás del eje J2. La carrera queda en **340 mm** y la ventosa va de 227,8 a 567,8 mm. Comparación con la variante telescópica (204 mm detrás de J2): [v7_prismatico.md](v7_prismatico.md).
+
 ## 5. Cuidados
 
-- La ventosa del CAD (`CB-617`, McMaster) es 20 mm más larga que la SAB40 de la BOM. Con ella ρ va de 247,6 a 597,6 mm: también cubre la esfera, con 6 mm de margen del lado cercano.
+- La ventosa del CAD (`CB-617`, McMaster) es 20 mm más larga que la SAB40 de la BOM. Con ella ρ va de 247,6 a 587,6 mm: también cubre la esfera, con 6 mm de margen del lado cercano.
 - El cálculo usa la **ventosa alineada con el brazo** (acercamiento de frente). Con la muñeca en otra posición la punta queda más cerca del eje J2.
 - Los límites de J2 son con el brazo **apuntando al árbol**. Si J1 apunta para otro lado, la cola o la herramienta pueden tocar la bandeja de electrónica o el tablero antes: ver los rangos en el README del CAD.
 - J1 se gira para que el brazo apunte de frente al árbol. Si el riel no se puede mover para compensar los 83 mm de corrimiento lateral, el brazo entra un poco en diagonal. Eso cambia ρ en menos de 1 cm.
