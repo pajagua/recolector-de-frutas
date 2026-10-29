@@ -26,7 +26,8 @@ public static class SW
     // Close only documents that belong to this job (never the user's other documents)
     public static readonly string[] Mine = {
         @"C:\Users\tikip\Desktop\CitriBot_Ensamblaje", @"C:\Users\tikip\Desktop\BCN3D-Moveo-master",
-        @"C:\Users\tikip\Desktop\FIUNA\2026_2\R1\Proyecto\3D\Rx-rcp-003", @"C:\Users\tikip\Desktop\" + "\u00a0", @"C:\Users\tikip\AppData\Local\Temp\swx" };
+        @"C:\Users\tikip\Desktop\FIUNA\2026_2\R1\Proyecto\3D\Rx-rcp-003", @"C:\Users\tikip\Desktop\" + "\u00a0", @"C:\Users\tikip\AppData\Local\Temp\swx",
+        @"C:\Users\tikip\Desktop\FIUNA\recolector-de-frutas\cad\solidworks" };
     public static System.Collections.Generic.HashSet<string> Created = new System.Collections.Generic.HashSet<string>();
     // Close only documents this job opened. NEVER close a document with unsaved changes and never close everything at once
     // (the user may have the assembly open in the same SolidWorks session).

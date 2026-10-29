@@ -9,3 +9,13 @@ tablero:
   columnas: 9     # esquinas internas
   filas: 6
   cuadro_mm: 25.0 # lado real de cada cuadro impreso
+
+# Montaje (CAD: cad/solidworks/01_Base_J0/CB-150_Modulo_Camaras.SLDASM). Valores nominales del CAD, para arrancar;
+# la calibración estéreo y la cámara -> robot dan los reales.
+# Marco "árbol": origen en el eje J1 sobre la cara del tablero, x hacia el árbol, y lateral, z arriba (mm).
+montaje:
+  linea_base_mm: 71.0                   # distancia entre lentes (soporte StereoVision_03), cámaras paralelas
+  lente_izq_mm: [-210.4, 233.5, 676.2]   # aprox.: la posición de la C270 en su pinza no está medida
+  lente_der_mm: [-232.3, 166.0, 676.2]
+  eje_optico: [0.8059, -0.2612, -0.5313] # rumbo -18.0°, 32.1° hacia abajo, apunta al centro de la esfera
+  centro_esfera_mm: [394.8, 0.0, 270.0]  # esfera de trabajo de 300 mm (docs/espacio_de_trabajo.md)
