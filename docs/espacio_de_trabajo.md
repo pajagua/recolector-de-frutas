@@ -86,7 +86,7 @@ La v6 dejaba 451,5 mm de brazo detrás del hombro: la cola de E2 más el NEMA 17
 
 ## 5. Cuidados
 
-- La ventosa del CAD (`CB-617`, McMaster) es 20 mm más larga que la SAB40 de la BOM. Con ella ρ va de 247,6 a 587,6 mm: también cubre la esfera, con 6 mm de margen del lado cercano.
+- En el CAD la ventosa es la medida (`CB-618`, Ø40 × 22). Su parte de arriba entra 6,8 mm en la punta del eje hueco y el labio queda a 63,5 mm del eje de cabeceo (la caja de la herramienta del STEP es más larga que la de la `.scad` v4.2). Con ella ρ va de 233,9 a 573,9 mm: también cubre la esfera, con 20 mm de margen de cada lado.
 - El cálculo usa la **ventosa alineada con el brazo** (acercamiento de frente). Con la muñeca en otra posición la punta queda más cerca del eje J2.
 - Los límites de J2 son con el brazo **apuntando al árbol**. Si J1 apunta para otro lado, la cola o la herramienta pueden tocar la bandeja de electrónica o el tablero antes: ver los rangos en el README del CAD.
 - J1 se gira para que el brazo apunte de frente al árbol. Si el riel no se puede mover para compensar los 83 mm de corrimiento lateral, el brazo entra un poco en diagonal. Eso cambia ρ en menos de 1 cm.

@@ -35,7 +35,8 @@ Todo está hecho en **SolidWorks 2026** (plantillas Z-arriba). Archivo principal
 | **v3 (2026-10-17)** | **Sin errores ni advertencias** en el ensamblaje: venían de los modelos de electrónica. Arduino Mega reconvertido a sólido sin historial; Sabertooth importado desde su STEP. **RAMPS reemplazada por el STEP** `Shield Ramps 1.4.stp` (en lugar del STL) y A4988 en su zócalo real. El soporte CB-232 y el AS5600 quedan como en v2. |
 | **v4 (2026-10-17)** | **Herramienta agregada** (CB-600, desde `09_Herramienta\Ensamblaje.step`) en el extremo de E3, como un bloque rígido dentro de CB-400. |
 | **v5 (2026-10-17)** | **Colores realistas en los componentes comprados** (las piezas impresas no se tocaron): tornillos Allen pavonados, tuercas y arandelas cincadas, rodamientos de acero, polea de aluminio, imán niquelado, Sabertooth con PCB verde, disipador de aluminio y condensadores negros, AS5600 azul, ventosa de goma negra con racor metálico, MG996R negros, horns de aluminio. La RAMPS, el Mega, el A4988, el NEMA 14 y los motores 37D/5840 ya tenían colores realistas. |
-| **v7.1 (2026-10-27)** | **Cámaras estéreo**: módulo **CB-150** dentro de CB-100 (fijo a la base, se mueve con el riel): pie CB-151 atornillado en la esquina trasera del tablero del lado opuesto al brazo, mástil de aluminio 20 × 20 × 1.5 (CB-152), cabezal con pivote de cabeceo M5 (CB-153), barra estéreo (CB-154) y 2 soportes (CB-155) con 2 **Logitech C270** (CB-515) a 120 mm entre lentes. Lentes a 670 mm del tablero, mirando al centro de la esfera (774 mm, rumbo −18°, 31° hacia abajo). **J1 queda limitado a −40° … +120°** respecto del árbol (barrido `SweepJ1.cs`). Scripts: `Vision.cs`, `SweepJ1.cs`, `OccSweep.cs`. |
+| **v7.2 (2026-10-28)** | **Ventosa JXD Ø40 × 22 (medida) en el eje hueco, la torsión gira la ventosa**: la parte de arriba de la ventosa (Ø19 con dos planos a 17) entra en un alojamiento doble D en la punta de CB-606. El racor de 6 mm × G1/4 baja por dentro del eje, apoya en un fondo de 3 mm y aprieta la ventosa contra el fondo (llave de montaje CB-620). En CB-600 la McMaster CB-617 se cambió por **CB-618** (ventosa) + **CB-619** (racor). Labio a 63.5 mm del eje de cabeceo. Ver §6.12. |
+| **v7.1 (2026-10-27)** | **Cámaras estéreo**: módulo **CB-150** dentro de CB-100 (fijo a la base, se mueve con el riel): pie CB-151 atornillado en la esquina trasera del tablero del lado opuesto al brazo, mástil de aluminio 20 × 20 × 1.5 (CB-152), cabezal con pivote de cabeceo M5 (CB-153), adaptador (CB-154) y el **soporte StereoVision_03 del usuario** (base CB-156 + 2 tapas CB-157), donde cada **Logitech C270** (CB-515) se cuelga con su propia pinza: **71 mm entre lentes**. Lentes a 676 mm del tablero, mirando al centro de la esfera (765 mm, rumbo −18°, 32° hacia abajo). **J1 queda limitado a −40° … +120°** respecto del árbol (barrido `SweepJ1.cs`). Scripts: `Vision.cs`, `SweepJ1.cs`, `OccSweep.cs`. |
 | **v7 (2026-10-27)** | **Prismático J3 con correa GT2, más corto.** Pasa al ensamblaje principal la variante A de [docs/v7_prismatico.md](../../docs/v7_prismatico.md): E3 = tubo 30 × 30 × 2 de **440 mm** movido por un lazo de **correa GT2** (polea 20T en el NEMA 17, polea loca 20T en la punta de la cola). El **NEMA 17 va vertical arriba del cubo de E2**, sobre la placa **CB-306**, y la cola de E2 queda en **377 mm** detrás de J2 (antes 451.5 mm con el motor). Carrera **340 mm**. Salen el husillo T8, la tuerca, el acople y el portatuerca (CB-511/512/513/403 v6, en el historial de git); entran el tapón con pinza **CB-403**, la correa **CB-514** y las poleas `HW_Polea_*`. El hombro (5840 + AS5600), la cintura y la herramienta no cambian. Brida y tubo con **pasadores al ras** en vez de M3 pasantes. La variante B (telescópica) queda como alternativa en `11_v7B_Prismatico_Telescopico\` (`CB-000B_CitriBot_v7B_Telescopico.SLDASM`). Scripts: `V7.cs`, `Promote.cs`, `Sweep7.cs`. |
 | **v6 (2026-10-22)** | **Prismático J3 de carrera larga para cubrir la esfera de trabajo** (con E3 v2 + TSF-E3 la ventosa quedaba entre 357 y 411 mm del eje J2; hace falta de 254 a 554 mm). E2 cortado a 93 mm por delante del eje J2 y con una **cola de 55 × 55** hacia atrás. **E3 = tubo de aluminio 30 × 30 × 2 de 460 mm** que se retrae por detrás del hombro. **NEMA 17 + husillo T8 de 400 mm** en el extremo de la cola. Carrera **350 mm**. Herramienta en la brida nueva CB-402. Se sacaron del ensamblaje E3 v2, TSF-E3 y NEMA 14. Script: `J3Largo.cs`; verificación: `Alcance.cs`. **Motor del hombro según el plano del vendedor** (`Hombro5840.cs`): rosca **M4** (no M6), resaltes de apoyo de 2 mm, buje Ø18.5 × 5, eje a 20 mm del borde; torre con agujeros M4 y tornillos M4x10. Verificación de torques: `control/torques.py`. |
 
@@ -69,6 +70,7 @@ CitriBot_Ensamblaje\
 ├─ 07_STEP\                 STEP del conjunto + 2M1D.STEP original del usuario
 ├─ 08_Scripts_API_SolidWorks\  código C# (API SolidWorks) con el que se generó todo
 ├─ 09_Herramienta\          herramienta (CB-600) + STEP original del usuario
+├─ 12_Pruebas\               piezas que no van en el robot: CB-158 adaptador con bola para la rótula del trípode + CB-159 cámaras en el trípode
 ├─ 11_v7B_Prismatico_Telescopico\  variante B (telescópica), alternativa que no se eligió: CB-000B_CitriBot_v7B_Telescopico.SLDASM
 └─ Cambios\                 archivos originales de electrónica que pasó el usuario (no se usan directo)
 ```
@@ -90,7 +92,7 @@ CB-000_CitriBot_Ensamblaje_General
 │   ├─ CB-120_LazySusan_Fija_J1           1M2A + 8 rodillos 625ZZ + 2 x 608ZZ
 │   ├─ CB-130_Modulo_Motor_J1             soporte nuevo + motor 37D + polea T5 + 6 x M3x8
 │   ├─ CB-140_Modulo_Electronica          bandeja + Mega + RAMPS + A4988 + Sabertooth + tornillería
-│   ├─ CB-150_Modulo_Camaras              pie + mástil 20x20 + cabezal + barra estéreo + 2 soportes + 2 C270
+│   ├─ CB-150_Modulo_Camaras              pie + mástil 20x20 + cabezal + adaptador + soporte StereoVision_03 + 2 C270
 │   └─ tornillería de base (M4x40, M4x30, M5x30, arandelas, tuercas, tuercas de rodillos)
 ├─ CB-200_Cintura_J1                      (gira en J1)
 │   ├─ CB-201 plato dentado 1M1B, CB-210 torre 2M1D mod
@@ -107,7 +109,7 @@ CB-000_CitriBot_Ensamblaje_General
         ├─ CB-601 horquilla U, CB-602 porta-servo, CB-603 caja de torsión, CB-604 tapa
         ├─ CB-605 polea servo GT2, CB-606 eje hueco con polea, CB-607 separador
         ├─ CB-610 / CB-611 servos MG996R (muñeca / torsión), con CB-612 cuerpo y CB-613
-        └─ 2 × CB-614 horn D20, 2 × CB-615 + CB-616 rodamientos, CB-617 ventosa
+        └─ 2 × CB-614 horn D20, 2 × CB-615 + CB-616 rodamientos, CB-618 ventosa JXD Ø40, CB-619 racor 6 mm × G1/4
 ```
 
 ### Relaciones de posición (articulaciones) en `CB-000`
@@ -137,7 +139,7 @@ Verificado con la API: 0 errores de relaciones. Barrido de J2 con J3 retraído y
 - El plano medio de E2 (y el eje del prismático J3) está desplazado **83.0 mm** del eje J1, medido a lo largo del eje J2 (offset lateral del hombro).
 - El eje del prismático (canal de E2) **corta al eje J2**.
 - Cara exterior de la brida de E3: **105 mm + q3** del eje J2 (q3 = 0 … 340).
-- Herramienta (CAD), con la cara de la brida como referencia: eje de cabeceo y torsión a **65.4 mm**. La ventosa del CAD (McMaster 5427A638) tiene el labio a 77.2 mm del eje de cabeceo, y la SAB40 de la BOM a 55.2 mm (`.scad` v4.2).
+- Herramienta (CAD), con la cara de la brida como referencia: eje de cabeceo y torsión a **65.4 mm**. La ventosa del CAD (CB-618, medida: Ø40 × 22) entra 6.8 mm en la punta del eje hueco: labio a **63.5 mm** del eje de cabeceo. La `.scad` v4.2 da 55.2 mm con la SAB40 (28.8 de alto) porque su caja es 21.9 mm más corta que la del STEP.
 - Coordenadas de E2 (todas las piezas de CB-300 y CB-400): eje J2 = eje Z en (x = −80, y = 0), eje del prismático = eje X. Frente de E2 en x = 13, extremo trasero en x = −457 (377 mm detrás de J2). NEMA 17 vertical sobre el cubo: eje en x = −58, cara a y = 47.
 - Pose guardada: **E2 a +32.3° sobre la horizontal**, J3 retraído (q3 = 0).
 
@@ -174,8 +176,9 @@ La esfera de trabajo necesita J2 entre −34° y +10° (sin carro de riel). Con 
 | CB-151_Pie_Mastil_Camaras | **nuevo** | impreso PETG 100 % | 1 | 60 × 60 × 6 + encastre del tubo; 4 tirafondos 4 × 12 al tablero, prisionero M4 |
 | CB-152_Mastil_Camaras_20x20x1.5 | **nuevo** | aluminio | 1 | tubo cuadrado 20 × 20 × 1.5, 627 mm |
 | CB-153_Cabezal_Mastil | **nuevo** | impreso PETG 100 % | 1 | encastre del tubo + orejas del pivote de cabeceo (M5 × 30 + tuerca autoblocante) |
-| CB-154_Barra_Estereo | **nuevo** | impreso PETG 100 % | 1 | 180 × 54 × 8, lengüeta del pivote; cámaras a 120 mm entre lentes |
-| CB-155_Soporte_C270 | **nuevo** | impreso PETG | 2 | cuna con respaldo; 2 × M3x10 + tuerca a la barra, precinto alrededor de la cámara |
+| CB-154_Adaptador_Soporte_Estereo | **nuevo** | impreso PETG 100 % | 1 | placa 121 × 37 × 8 con lengüeta del pivote; la base del soporte va encima con 4 × M3x12 + tuerca (alojamientos hexagonales) |
+| CB-156_Soporte_Estereo_C270_Base | **usuario** (StereoVision_03) | impreso PETG | 1 | remodelada con las cotas del STL (sin los redondeos de 1 mm) + **4 agujeros Ø3.2 para el adaptador**: pared de 5.3 mm para las pinzas de las C270, 71 mm entre centros de tramo. Imprimir `cad/imprimir/CB-156_Soporte_Estereo_C270_Base.stl` (exportado de este modelo) |
+| CB-157_Soporte_Estereo_C270_Tapa | **usuario** (StereoVision_03) | impreso PETG | 2 | importada del STL; traba la pinza de cada cámara (2 tornillos autorroscantes Ø3.5 × 10 a los postes) |
 
 ### 02_Cintura_J1 (eslabón 1)
 
@@ -219,7 +222,10 @@ La esfera de trabajo necesita J2 entre −34° y +10° (sin carro de riel). Con 
 | CB-610_Servo_MG996R_Muneca / CB-611_Servo_MG996R_Torsion | MG996R_1-0 / MG996R | subensamblajes; comparten CB-612_MG996R_Cuerpo y CB-613_MG996R_Componente1 |
 | CB-614_Horn_Servo_D20 | servo_Horn_round_20mm | 2 |
 | CB-615_Rodamiento_5972K217 / CB-616_Rodamiento_5972K91 | rodamientos McMaster | 2 + 1 |
-| CB-617_Ventosa_5427A638 | 5427A638_Vacuum Cup | |
+| CB-617_Ventosa_5427A638 | 5427A638_Vacuum Cup | ya no está en CB-600 (v7.2): reemplazada por CB-618 |
+| CB-618_Ventosa_JXD_40 | (nuevo, v7.2) | ventosa medida por el usuario: goma con labio Ø40 y cuello Ø25 (15) + inserto de 7, Ø19 con planos a 17 y rosca hembra G1/4 |
+| CB-619_Racor_6mm_G1-4 | (nuevo, v7.2) | racor recto push-in 6 mm × 1/4" BSP con junta, alto 22.9; hexágono 14 y anillo Ø16.5 estimados de la foto |
+| CB-620_Llave_Montaje_Racor | (nuevo, v7.2) | herramienta impresa, no va en el robot: tubo Ø19.8 con hexágono de 14.4 en la punta para apretar el racor desde el lado de la polea |
 
 ### 05_Comerciales
 
@@ -247,7 +253,7 @@ La esfera de trabajo necesita J2 entre −34° y +10° (sin carro de riel). Con 
 | CB-507_Arduino_Mega_2560 | `arduino-mega-19\Adruino Mega.SLDPRT` | reconvertido a sólido sin historial: el original tenía errores en `Body-Move/Copy1..3` |
 | CB-508_RAMPS_1.4 | `shield-ramps-1-4-1\Shield Ramps 1.4.stp` | trae solo la RAMPS (sin Mega); cuerpo principal como superficie (ver §1). Encastrada sobre los conectores del Mega |
 | CB-509_Driver_A4988 | `a4988-8\A4988.stp` | convertido a pieza multicuerpo; ubicado en un zócalo de la RAMPS (el del prismático) |
-| CB-515_Camara_Logitech_C270 | **nuevo** (modelo simplificado) | cuerpo 73 × 32 × 22, lente Ø14 centrada (en la real está algo corrida), sin la pinza de monitor |
+| CB-515_Camara_Logitech_C270 | **nuevo** (modelo simplificado) | cuerpo 73 × 32 × 22, lente Ø14 centrada (en la real está algo corrida); la pinza de monitor no está modelada y la altura de la cámara sobre el soporte es aproximada |
 | CB-510_Sabertooth_2x60 | `sabertooth-dual-60a…\sabertooth.STEP` | importado del STEP: el SLDPRT original tenía un chaflán fallido (`Chamfer4`) y una referencia externa rota (`Sketch49`) |
 
 ### Tornillería (05_Comerciales\Tornilleria)
@@ -365,7 +371,7 @@ Si el sensor va en la tapa (que gira con E2), el imán tiene que quedar quieto r
   | 15 … 25 | brida |
 
   Correa: lazo de 810 mm entre las dos poleas, en y = 22.5 … 28.5, por encima del tubo. Con J3 = 340 la pinza llega a x = −72, a 6 mm de la polea del motor.
-- **Ventosa** alineada con el brazo: de **227.8 a 567.8 mm** del eje J2 con la SAB40 de la BOM, o de 247.6 a 587.6 mm con la ventosa del CAD.
+- **Ventosa** alineada con el brazo: de **227.8 a 567.8 mm** del eje J2 con la SAB40 de la BOM, o de 233.9 a 573.9 mm con la ventosa medida del CAD (CB-618).
 - **Motor**: 40 mm por vuelta → **80 pasos/mm** con el A4988 a 1/16. Con J3 extendido y J2 a 45° pide ≈ 18 N = 1.2 kg·cm (`control/torques.py`), contra 4.5 kg·cm de retención. La correa **no es autobloqueante**: dejar el driver habilitado para que el brazo inclinado no deslice.
 - El A4988 del prismático va en la RAMPS (CB-140). Con un NEMA 17 de 1.7 A, regular a ≈ 1.2 A con disipador.
 - **Antes**: v2–v5, NEMA 14 del BCN3D dentro de E2 con el tornillo impreso TSF-E3 (53.5 mm de carrera); v6, NEMA 17 en la punta de la cola con husillo T8 de 400 mm, acople 5 × 8 y portatuerca. Esas piezas están en el historial de git.
@@ -401,15 +407,37 @@ Si el sensor va en la tapa (que gira con E2), el imán tiene que quedar quieto r
 
   | | Valor |
   |---|---|
-  | Lente izquierda / derecha | (−217.3, 261.5, 670) / (−254.3, 147.4, 670) mm |
-  | Línea de base | 120 mm, cámaras paralelas |
-  | Eje óptico | (0.8145, −0.2640, −0.5167): rumbo −18°, 31° hacia abajo, al centro de la esfera |
-  | Distancia al centro de la esfera | 774 mm |
+  | Soporte | StereoVision_03 del usuario: cada C270 colgada de su pinza (CB-156 + 2 × CB-157), sobre el adaptador CB-154 |
+  | Lente izquierda / derecha | (−210.4, 233.5, 676.2) / (−232.3, 166.0, 676.2) mm (aprox.: falta medir dónde queda la C270 en su pinza) |
+  | Línea de base | 71 mm, cámaras paralelas |
+  | Eje óptico | (0.8059, −0.2612, −0.5313): rumbo −18°, 32° hacia abajo, al centro de la esfera |
+  | Distancia al centro de la esfera | 765 mm |
 
-- **Campo de visión** (C270 nominal, 55° diagonal → 49° × 29° en 720p): la esfera entra entera en las dos cámaras con 8.8° de margen horizontal y 3.1° vertical (≈ 43 mm). 1.8 px/mm sobre la esfera (naranja de 75 mm ≈ 135 px); error de profundidad ≈ ±1.8 mm con medio píxel de disparidad. **Medir el campo real** con el damero: en 720p la C270 puede recortar el sensor.
-- **Oclusión** (`OccSweep.cs`: un cono por cámara desde la lente hasta la esfera, J1 al árbol, J3 retraído): con **J2 = −45° la vista está libre**; de −30° a +45° la herramienta tapa parte de la esfera. E2, el tubo, la torre y la base nunca la tapan. **Pose de observación: J3 retraído y J2 = −45°.**
+- **Campo de visión** (C270 nominal, 55° diagonal → 49° × 29° en 720p): la esfera entra entera en las dos cámaras con 10.6° de margen horizontal y 3.2° vertical (≈ 43 mm). 1.8 px/mm sobre la esfera (naranja de 75 mm ≈ 135 px); disparidad ≈ 130 px y error de profundidad ≈ ±3 mm con medio píxel (con 120 mm de base eran ±1.8 mm).
+- **Ancho de las C270**: con 71 mm entre centros, si el cuerpo mide 72.9 mm (ficha de Logitech, que incluye la pinza) las cámaras quedan pegadas; en el modelo se pisan ≈ 2 mm. Si al armar no entran, separar los dos tramos del soporte. **Medir el campo real** con el damero: en 720p la C270 puede recortar el sensor.
+- **Oclusión** (`OccSweep.cs`: un cono por cámara desde la lente hasta la esfera, J1 al árbol, J3 retraído): con **J2 = −45° o −40° la vista está libre** (verificado también con el soporte StereoVision_03); de −30° a +45° la herramienta tapa parte de la esfera. E2, el tubo, la torre y la base nunca la tapan. **Pose de observación: J3 retraído y J2 = −45°.**
 - **Choques** (`SweepJ1.cs` y `Sweep7.cs`): con J1 al árbol, J2 libre de −45° a +45° con J3 retraído y extendido. **J1 libre de −40° a +120°**: a −45° … −55° el cubo de E2 toca el tubo del mástil (J2 = 0); a +125° … +175° la herramienta toca las cámaras (J3 extendido, J2 = +45°) y a +155° el tubo de E3 toca el mástil. Los cajones de descarga tienen que quedar dentro de −35° … +115°.
 - **Ajuste**: el cabeceo se regula con el M5 del pivote; el rumbo, girando el tubo en el pie y en el cabezal (prisioneros M4).
+
+### 6.12 Ventosa JXD Ø40 en el eje hueco: la torsión gira la ventosa (CB-606, CB-618, CB-619, CB-620) – v7.2
+
+- La punta de CB-606 traía un hexágono abierto de 17.6 entre caras para la ventosa McMaster 5427A638. Se rellenó y la punta quedó así, de afuera hacia adentro:
+  - **Alojamiento doble D** (Ø19.4 con dos planos a 17.4, 6.8 de hondo) para la parte de arriba de la ventosa JXD (inserto de 7 mm, Ø19 con planos a 17). **El eje gira la ventosa por los planos**: el giro no pasa por la rosca.
+  - **Fondo de 3 mm** con un paso de Ø14.2 para la rosca y la junta del racor.
+  - **Asiento de Ø17.2 × 1.8** para el anillo del racor y, arriba, el paso de Ø20.5 de siempre.
+  - El resto del eje (polea de 66 dientes, cubo, Ø30 para los rodamientos) no cambió.
+- El racor (6 mm × 1/4" BSP con junta tórica) baja por dentro del eje, apoya el anillo en el fondo y se enrosca en la ventosa. Al apretarlo, el fondo queda entre el anillo del racor y el inserto de la ventosa: eso retiene la ventosa. El alojamiento es 0.2 mm más corto que el inserto, así que el apriete es contra el fondo y no contra la goma.
+- **Montaje**, en este orden:
+  1. Poner teflón en la rosca del racor y bajarlo por el lado de la polea, con la rosca hacia la punta, hasta que la junta entre en el paso del fondo.
+  2. Meter la ventosa desde afuera, con los planos alineados con el alojamiento, y sostenerla.
+  3. Por el lado de la polea, meter la **llave de montaje CB-620** (tubo de Ø19.8 con hexágono de 14.4 en la punta) y girar el racor hasta apretarlo contra la ventosa. La llave no queda en el robot.
+  4. Meter la manguera de 6 mm por el lado de la polea hasta el racor.
+- **Imprimir CB-606 con la polea abajo** (la punta arriba), PETG al 100 %: no lleva soportes. CB-620 de pie, con el mango arriba. STL en `cad/imprimir/`. El STL original (`cad/herramienta/stl/EjeHueco_Polea.stl`) no se tocó.
+- **Ventosa CB-618** (medidas del usuario): goma de 15 de alto (labio Ø40 con 3 mm a 45°, cono hasta Ø25 a 10 mm del labio, cuello Ø25) + inserto de 7 (Ø19 con planos a 17, rosca hembra G1/4). El ángulo y el labio son aproximados.
+- **Medidas del racor a confirmar con calibre antes de imprimir** (estimadas de la foto, 0.9" de alto total): hexágono (14 entre caras, para la llave), anillo (Ø16.5 × 1.8), cuello con la junta (3 = espesor del fondo) y rosca (4.5; tiene que entrar en el inserto de 7). Si cambian, se corrigen las constantes de `Ventosa3.cs` y se vuelve a correr.
+- Interferencias en CB-600 y en CB-000: ninguna con las piezas nuevas.
+- El labio queda **15.2 mm afuera de la punta del eje y a 63.5 mm del eje de cabeceo** (con la McMaster eran 77.2): ρ = 233.9 … 573.9 mm, la esfera entra con 20 mm de margen de cada lado.
+- Corte del conjunto: `06_Imagenes/CB-600_Herramienta_Ventosa_corte_front.png`.
 
 ## 7. Interferencias (resultado del análisis en la pose inicial)
 
@@ -442,7 +470,7 @@ No quedan choques entre piezas nuevas o adaptadas. Lo que reporta SolidWorks vie
 10. **Imán**: pegar el imán en el boss de CB-232 y atornillar el soporte a la torre (2 × M4x30 + tuerca por dentro). Verificar 1–2 mm entre el chip y el imán.
 11. **E3**: brida CB-402 y tapón CB-403 en el tubo, con epoxi y un pasador Ø3 × 30 al ras cada uno. Meter el tubo por el frente de E2 hasta el fondo. Pasar la correa por la ranura alrededor de las dos poleas, meter los dos extremos en la ranura de la pinza con los dientes enfrentados, tensar y asegurar con 2 precintos. Final de carrera de J3 en la pared trasera de E2.
 12. **Herramienta**: horquilla CB-601 a la brida con 4 × M5 × 25 + tuerca.
-13. **Cámaras**: pie CB-151 al tablero (4 tirafondos), tubo en el pie y cabezal arriba (prisioneros M4). Sacarles la pinza de monitor a las C270, ponerlas en los soportes (precinto) y los soportes en la barra (4 × M3x10 + tuerca). Barra al cabezal con el M5 × 30 y apretar con la barra a ≈ 31° hacia abajo, apuntando al centro de la esfera. Cables USB por el mástil con precintos. Después, calibración estéreo y cámara → robot (`vision/`).
+13. **Cámaras**: pie CB-151 al tablero (4 tirafondos), tubo en el pie y cabezal arriba (prisioneros M4). Atornillar la base CB-156 al adaptador CB-154 por sus 4 agujeros de la placa del centro (4 × M3x12 desde arriba + tuerca en los alojamientos hexagonales del adaptador). Colgar cada C270 de la pared con su pinza y trabarla con su tapa CB-157 (2 autorroscantes Ø3.5 × 10). Adaptador al cabezal con el M5 × 30 y apretar a ≈ 32° hacia abajo, apuntando al centro de la esfera. Cables USB por el mástil con precintos. Después, calibración estéreo y cámara → robot (`vision/`).
 
 ---
 
@@ -456,7 +484,7 @@ No quedan choques entre piezas nuevas o adaptadas. Lo que reporta SolidWorks vie
 - **Cables**: mazo AS5600 + NEMA 17 que cruza J2 cerca del eje y después J1; dejar lazo de servicio.
 - **IMU en vez del AS5600 (opcional)**: una IMU sobre E2 mide la inclinación de E2 respecto de la gravedad, que es directamente el ángulo de J2 porque J1 es vertical. Eliminaría el soporte CB-232 y la restricción de rango. Ver la respuesta en el chat.
 - **TE1**: no estaba ubicada en el Rx-rcp-003 (`CB-304`).
-- **Herramienta**: articular cabeceo (servo MG996R de la muñeca) y torsión (MG996R + polea GT2) con relaciones; agregar los 4 × M5 horquilla–brida. La ventosa del CAD (McMaster 5427A638) es más larga que la SAB40 de la BOM.
+- **Herramienta**: articular cabeceo (servo MG996R de la muñeca) y torsión (MG996R + polea GT2) con relaciones; agregar los 4 × M5 horquilla–brida. La caja de la herramienta del STEP deja la punta del eje hueco 21.9 mm más lejos del eje de cabeceo que la `.scad` v4.2: definir cuál de las dos se imprime. Medir el racor (hexágono, anillo, cuello y rosca) antes de imprimir CB-606 y CB-620.
 
 ---
 
@@ -486,6 +514,12 @@ No quedan choques entre piezas nuevas o adaptadas. Lo que reporta SolidWorks vie
 | `MechShot.cs` | v7: capturas con J3 extendido o con E2, base y torre ocultos, sin guardar |
 | `Vision.cs` | v7.1: piezas del mástil de las cámaras, CB-150 y su inserción en CB-100 |
 | `SweepJ1.cs` | v7.1: gira J1 con J2 y J3 fijos e informa choques (rango de J1 con el mástil) |
+| `Bola.cs` | pieza de pruebas CB-158 (soporte estéreo con bola Ø11.8 para la rótula del trípode) y el conjunto CB-159 |
+| `Ventosa3.cs` | v7.2: punta de CB-606 (alojamiento doble D de la ventosa, fondo de 3 mm, asiento del racor), ventosa CB-618, llave CB-620, cambio en CB-600 y STL; medidas como constantes al principio |
+| `Corte.cs` | v7.2: vista en corte por un plano paralelo al plano derecho y captura PNG, sin guardar |
+| `Agujeros156.cs` | v7.1: agrega a la base CB-156 los 4 agujeros del adaptador y exporta su STL |
+| `Explode.cs` | v7.1: vista explotada del cabezal con el soporte estéreo (sin guardar) |
+| `Vision2.cs` | v7.1: cambia la barra propia por el soporte StereoVision_03 (base remodelada, tapa importada del STL, adaptador CB-154) y rearma CB-150 |
 | `OccSweep.cs` | v7.1: agrega sin guardar un cono de visión por cámara hasta la esfera y lista qué lo tapa en cada pose de J2 |
 
 `Common.cs` cierra solo los documentos de las carpetas listadas en `SW.Mine` (incluye la copia del repo).

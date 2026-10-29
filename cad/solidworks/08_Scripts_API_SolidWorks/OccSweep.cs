@@ -11,7 +11,7 @@ using SolidWorks.Interop.swconst;
 class OccSweep
 {
     static readonly double[] S = { 394.8, 0, 270 };                 // centro de la esfera (marco arbol)
-    static readonly double[][] LENS = { new[] { -217.3, 261.5, 670.0 }, new[] { -254.3, 147.4, 670.0 } };   // izq, der (Vision.exe)
+    static readonly double[][] LENS = { new[] { -210.4, 233.5, 676.2 }, new[] { -232.3, 166.0, 676.2 } };   // izq, der (Vision.exe)
     const double RS = 150, START = 12;
     static double[] Sub(double[] a, double[] b) { return new[] { a[0] - b[0], a[1] - b[1], a[2] - b[2] }; }
     static double Norm(double[] a) { return Math.Sqrt(a[0] * a[0] + a[1] * a[1] + a[2] * a[2]); }

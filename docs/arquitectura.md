@@ -30,7 +30,7 @@ J0 riel (P) – J1 cintura (R) – J2 hombro (R) – J3 brazo (P) – J4 muñeca
 - Horquilla U atornillada a la brida de E3 (CB-402, 4 × M5 en rombo de radio 28,5).
 - La manguera de vacío va por fuera del brazo y baja por el eje hueco de la torsión.
 - Pose natural (J4 = 0): ventosa perpendicular al prismático, hacia abajo.
-- Ventosa JXD SAB40 (fuelle) o SAF-40 (plana), rosca hembra G1/4, con racor push-in macho 1/4 encastrado en el hexágono del eje hueco.
+- Ventosa JXD SAB40 (fuelle) o SAF-40 (plana), rosca hembra G1/4, La parte de arriba de la ventosa (Ø19 con dos planos a 17) entra en un alojamiento doble D de la punta del eje hueco, que la gira. Un racor push-in de 6 mm × 1/4" BSP baja por dentro del eje, apoya en un fondo de 3 mm y aprieta la ventosa contra ese fondo.
 - El sensor de presión MPS20N0040D confirma que la ventosa agarró la naranja.
 
 ## 4. Electrónica
@@ -39,7 +39,7 @@ J0 riel (P) – J1 cintura (R) – J2 hombro (R) – J3 brazo (P) – J4 muñeca
 - **Sabertooth dual 25A** para los dos motores DC (J1, J2).
 - **TB6600** para el riel; **A4988** en la RAMPS para el prismático.
 - Servos con fuente propia de 6 V (UBEC), no desde el 5 V del MEGA.
-- 2 webcams **Logitech C270** en un mástil fijo a la base, a 120 mm entre lentes, mirando la esfera de trabajo (ver [vision/README.md](../vision/README.md#montaje-de-las-cámaras)).
+- 2 webcams **Logitech C270** en un mástil fijo a la base, en el soporte StereoVision_03 (71 mm entre lentes), mirando la esfera de trabajo (ver [vision/README.md](../vision/README.md#montaje-de-las-cámaras)).
 - Visión, cinemática y planificación corren en la **notebook**; el MEGA recibe comandos por serial (ver [protocolo.md](protocolo.md)).
 
 ## 5. Geometría útil para la cinemática
@@ -52,7 +52,7 @@ Medida en el ensamblaje SolidWorks (`cad/solidworks/CB-000`), origen sobre el ej
 - Plano medio de E2 (eje de J3) desplazado 83,0 mm del eje J1, a lo largo del eje J2.
 - El eje del prismático corta al eje J2.
 - Cara exterior de la brida de E3: 105 mm + q3 del eje J2, con q3 = 0 … 340 mm (q3 = 0 retraído).
-- Herramienta (`.scad` v4.2), con la cara de la brida como referencia: eje de cabeceo de la muñeca a 67,6 mm sobre el eje del prismático (65,4 mm en el STEP del CAD). Labio de la ventosa SAB40 a 55,2 mm del eje de cabeceo. Con la ventosa alineada con el brazo, el labio queda a 105 + q3 + 122,8 mm del eje J2 (227,8 … 567,8 mm).
+- Herramienta (`.scad` v4.2), con la cara de la brida como referencia: eje de cabeceo de la muñeca a 67,6 mm sobre el eje del prismático (65,4 mm en el STEP del CAD). Labio de la ventosa SAB40 a 55,2 mm del eje de cabeceo (63,5 mm en el CAD, con la ventosa medida y la caja del STEP, que es más larga). Con la ventosa alineada con el brazo, el labio queda a 105 + q3 + 122,8 mm del eje J2 (227,8 … 567,8 mm).
 - Rangos: J1 de −40° a +120° respecto del árbol por el mástil de las cámaras (límite por software −35° … +115°; los cajones de descarga tienen que quedar en ese rango); J2 de −45° a +45° con el brazo apuntando al árbol (ver [cad/solidworks/README.md](../cad/solidworks/README.md#rangos-de-movimiento-verificados-por-interferencias)); J3 340 mm.
 
 ## 6. Fabricación
