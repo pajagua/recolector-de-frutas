@@ -177,7 +177,7 @@ La esfera de trabajo necesita J2 entre −34° y +10° (sin carro de riel). Con 
 | CB-152_Mastil_Camaras_20x20x1.5 | **nuevo** | aluminio | 1 | tubo cuadrado 20 × 20 × 1.5, 627 mm |
 | CB-153_Cabezal_Mastil | **nuevo** | impreso PETG 100 % | 1 | encastre del tubo + orejas del pivote de cabeceo (M5 × 30 + tuerca autoblocante) |
 | CB-154_Adaptador_Soporte_Estereo | **nuevo** | impreso PETG 100 % | 1 | placa 121 × 37 × 8 con lengüeta del pivote; la base del soporte va encima con 4 × M3x12 + tuerca (alojamientos hexagonales) |
-| CB-156_Soporte_Estereo_C270_Base | **usuario** (StereoVision_03) | impreso PETG | 1 | remodelada con las cotas del STL (sin los redondeos de 1 mm) + **4 agujeros Ø3.2 para el adaptador**: pared de 5.3 mm para las pinzas de las C270, 71 mm entre centros de tramo. Imprimir `cad/imprimir/CB-156_Soporte_Estereo_C270_Base.stl` (exportado de este modelo) |
+| CB-156_Soporte_Estereo_C270_Base | **usuario** (StereoVision_03) | impreso PETG | 1 | remodelada con las cotas del STL (sin los redondeos de 1 mm) + **4 agujeros Ø3.2 para el adaptador**: pared de 5.3 mm para las pinzas de las C270, 71 mm entre centros de tramo. Imprimir `cad/imprimir/01_Base_J0/CB-156_Soporte_Estereo_C270_Base.stl` (exportado de este modelo) |
 | CB-157_Soporte_Estereo_C270_Tapa | **usuario** (StereoVision_03) | impreso PETG | 2 | importada del STL; traba la pinza de cada cámara (2 tornillos autorroscantes Ø3.5 × 10 a los postes) |
 
 ### 02_Cintura_J1 (eslabón 1)
@@ -432,7 +432,7 @@ Si el sensor va en la tapa (que gira con E2), el imán tiene que quedar quieto r
   2. Meter la ventosa desde afuera, con los planos alineados con el alojamiento, y sostenerla.
   3. Por el lado de la polea, meter la **llave de montaje CB-620** (tubo de Ø19.8 con hexágono de 14.4 en la punta) y girar el racor hasta apretarlo contra la ventosa. La llave no queda en el robot.
   4. Meter la manguera de 6 mm por el lado de la polea hasta el racor.
-- **Imprimir CB-606 con la polea abajo** (la punta arriba), PETG al 100 %: no lleva soportes. CB-620 de pie, con el mango arriba. STL en `cad/imprimir/`. El STL original (`cad/herramienta/stl/EjeHueco_Polea.stl`) no se tocó.
+- **Imprimir CB-606 con la polea abajo** (la punta arriba), PETG al 100 %: no lleva soportes. CB-620 de pie, con el mango arriba. STL en `cad/imprimir/00_Herramienta/`. El STL original (`cad/herramienta/stl/EjeHueco_Polea.stl`) no se tocó.
 - **Ventosa CB-618** (medidas del usuario): goma de 15 de alto (labio Ø40 con 3 mm a 45°, cono hasta Ø25 a 10 mm del labio, cuello Ø25) + inserto de 7 (Ø19 con planos a 17, rosca hembra G1/4). El ángulo y el labio son aproximados.
 - **Medidas del racor a confirmar con calibre antes de imprimir** (estimadas de la foto, 0.9" de alto total): hexágono (14 entre caras, para la llave), anillo (Ø16.5 × 1.8), cuello con la junta (3 = espesor del fondo) y rosca (4.5; tiene que entrar en el inserto de 7). Si cambian, se corrigen las constantes de `Ventosa3.cs` y se vuelve a correr.
 - Interferencias en CB-600 y en CB-000: ninguna con las piezas nuevas.
@@ -515,6 +515,7 @@ No quedan choques entre piezas nuevas o adaptadas. Lo que reporta SolidWorks vie
 | `Vision.cs` | v7.1: piezas del mástil de las cámaras, CB-150 y su inserción en CB-100 |
 | `SweepJ1.cs` | v7.1: gira J1 con J2 y J3 fijos e informa choques (rango de J1 con el mástil) |
 | `Bola.cs` | pieza de pruebas CB-158 (soporte estéreo con bola Ø11.8 para la rótula del trípode) y el conjunto CB-159 |
+| `ExportStl.cs` | exporta un STL por pieza impresa a `cad/imprimir/<carpeta>/` (la herramienta a `00_Herramienta`) e informa si entra en la Ender 3 V2 |
 | `Ventosa3.cs` | v7.2: punta de CB-606 (alojamiento doble D de la ventosa, fondo de 3 mm, asiento del racor), ventosa CB-618, llave CB-620, cambio en CB-600 y STL; medidas como constantes al principio |
 | `Corte.cs` | v7.2: vista en corte por un plano paralelo al plano derecho y captura PNG, sin guardar |
 | `Agujeros156.cs` | v7.1: agrega a la base CB-156 los 4 agujeros del adaptador y exporta su STL |
