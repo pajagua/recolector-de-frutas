@@ -95,7 +95,7 @@ P10,Piezas impresas,CB-303 Tapa de E2 / soporte AS5600,"PETG, ≥ 4 perímetros"
 P11,Piezas impresas,CB-305 Buje D8 del hombro,"PETG, ≥ 4 perímetros",1,u,,Impresión 3D,Falta,,Impresora del grupo (Ender 3 V2),,Mejor en aluminio: transmite el torque del hombro (≈ 39 kg·cm de pico)
 P12,Piezas impresas,CB-403 Tapón trasero con pinza de correa,"PETG, ≥ 4 perímetros",1,u,,Impresión 3D,Falta,,Impresora del grupo (Ender 3 V2),,Relleno 100 %
 P13,Piezas impresas,CB-601 Horquilla U,"PETG, ≥ 4 perímetros",1,u,,Impresión 3D,Falta,,Impresora del grupo (Ender 3 V2),,
-P14,Piezas impresas,CB-602 Porta-servo,"PETG, ≥ 4 perímetros",1,u,,Impresión 3D,Falta,,Impresora del grupo (Ender 3 V2),,
+P14,Piezas impresas,CB-602 Porta-servo,"PETG, ≥ 4 perímetros",1,u,,Impresión 3D,Falta,,Impresora del grupo (Ender 3 V2),,Ranura para el cable del servo de torsión (v7.3); el cable sale por la muesca de la caja CB-603. STL: cad/imprimir/00_Herramienta/CB-602_Porta_Servo.stl
 P15,Piezas impresas,CB-603 Caja de torsión,"PETG, ≥ 4 perímetros",1,u,,Impresión 3D,Falta,,Impresora del grupo (Ender 3 V2),,
 P16,Piezas impresas,CB-604 Tapa de la caja,"PETG, ≥ 4 perímetros",1,u,,Impresión 3D,Falta,,Impresora del grupo (Ender 3 V2),,
 P17,Piezas impresas,CB-605 Polea del servo GT2 66 dientes,"PETG, ≥ 4 perímetros",1,u,,Impresión 3D,Falta,,Impresora del grupo (Ender 3 V2),,Relleno 100 %

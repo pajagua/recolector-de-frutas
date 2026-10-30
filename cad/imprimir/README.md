@@ -11,7 +11,7 @@ Un STL por pieza impresa, con el mismo nombre que su `.SLDPRT` y separados por s
 | Archivo | Cant. | Notas |
 |---|---|---|
 | `CB-601_Horquilla_U.stl` | 1 | tiene dos cuerpos (la horquilla y una pestaña chica), igual que el STL original |
-| `CB-602_Porta_Servo.stl` | 1 | |
+| `CB-602_Porta_Servo.stl` | 1 | con la ranura para el cable del MG996R de la torsión (v7.3). El tornillo de abajo del lado del cable agarra solo 5,5 mm |
 | `CB-603_Caja_Torsion.stl` | 1 | |
 | `CB-604_Tapa_Caja.stl` | 1 | |
 | `CB-605_Polea_Servo_GT2.stl` | 1 | |
