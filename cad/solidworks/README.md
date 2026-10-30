@@ -35,6 +35,7 @@ Todo está hecho en **SolidWorks 2026** (plantillas Z-arriba). Archivo principal
 | **v3 (2026-10-17)** | **Sin errores ni advertencias** en el ensamblaje: venían de los modelos de electrónica. Arduino Mega reconvertido a sólido sin historial; Sabertooth importado desde su STEP. **RAMPS reemplazada por el STEP** `Shield Ramps 1.4.stp` (en lugar del STL) y A4988 en su zócalo real. El soporte CB-232 y el AS5600 quedan como en v2. |
 | **v4 (2026-10-17)** | **Herramienta agregada** (CB-600, desde `09_Herramienta\Ensamblaje.step`) en el extremo de E3, como un bloque rígido dentro de CB-400. |
 | **v5 (2026-10-17)** | **Colores realistas en los componentes comprados** (las piezas impresas no se tocaron): tornillos Allen pavonados, tuercas y arandelas cincadas, rodamientos de acero, polea de aluminio, imán niquelado, Sabertooth con PCB verde, disipador de aluminio y condensadores negros, AS5600 azul, ventosa de goma negra con racor metálico, MG996R negros, horns de aluminio. La RAMPS, el Mega, el A4988, el NEMA 14 y los motores 37D/5840 ya tenían colores realistas. |
+| **v7.3 (2026-10-29)** | **Porta-servo de la torsión (CB-602) con ranura para el cable**: el pasacables del MG996R chocaba con la pared y el servo no entraba. Ranura de 6.6 en esa pared y agujeros de las orejas corridos 0.6 mm; el cable sale por la muesca que ya tenía la caja CB-603. Ver §6.13. |
 | **v7.2 (2026-10-28)** | **Ventosa JXD Ø40 × 22 (medida) en el eje hueco, la torsión gira la ventosa**: la parte de arriba de la ventosa (Ø19 con dos planos a 17) entra en un alojamiento doble D en la punta de CB-606. El racor de 6 mm × G1/4 baja por dentro del eje, apoya en un fondo de 3 mm y aprieta la ventosa contra el fondo (llave de montaje CB-620). En CB-600 la McMaster CB-617 se cambió por **CB-618** (ventosa) + **CB-619** (racor). Labio a 63.5 mm del eje de cabeceo. Ver §6.12. |
 | **v7.1 (2026-10-27)** | **Cámaras estéreo**: módulo **CB-150** dentro de CB-100 (fijo a la base, se mueve con el riel): pie CB-151 atornillado en la esquina trasera del tablero del lado opuesto al brazo, mástil de aluminio 20 × 20 × 1.5 (CB-152), cabezal con pivote de cabeceo M5 (CB-153), adaptador (CB-154) y el **soporte StereoVision_03 del usuario** (base CB-156 + 2 tapas CB-157), donde cada **Logitech C270** (CB-515) se cuelga con su propia pinza: **71 mm entre lentes**. Lentes a 676 mm del tablero, mirando al centro de la esfera (765 mm, rumbo −18°, 32° hacia abajo). **J1 queda limitado a −40° … +120°** respecto del árbol (barrido `SweepJ1.cs`). Scripts: `Vision.cs`, `SweepJ1.cs`, `OccSweep.cs`. |
 | **v7 (2026-10-27)** | **Prismático J3 con correa GT2, más corto.** Pasa al ensamblaje principal la variante A de [docs/v7_prismatico.md](../../docs/v7_prismatico.md): E3 = tubo 30 × 30 × 2 de **440 mm** movido por un lazo de **correa GT2** (polea 20T en el NEMA 17, polea loca 20T en la punta de la cola). El **NEMA 17 va vertical arriba del cubo de E2**, sobre la placa **CB-306**, y la cola de E2 queda en **377 mm** detrás de J2 (antes 451.5 mm con el motor). Carrera **340 mm**. Salen el husillo T8, la tuerca, el acople y el portatuerca (CB-511/512/513/403 v6, en el historial de git); entran el tapón con pinza **CB-403**, la correa **CB-514** y las poleas `HW_Polea_*`. El hombro (5840 + AS5600), la cintura y la herramienta no cambian. Brida y tubo con **pasadores al ras** en vez de M3 pasantes. La variante B (telescópica) queda como alternativa en `11_v7B_Prismatico_Telescopico\` (`CB-000B_CitriBot_v7B_Telescopico.SLDASM`). Scripts: `V7.cs`, `Promote.cs`, `Sweep7.cs`. |
@@ -215,7 +216,7 @@ La esfera de trabajo necesita J2 entre −34° y +10° (sin carro de riel). Con 
 |---|---|---|
 | CB-600_Herramienta.SLDASM | `Ensamblaje` | ensamblaje de la herramienta (importado, piezas separadas) |
 | CB-601_Horquilla_U | HorquillaU | placa de 8 mm con 4 × Ø5.4 en rombo de radio 28.5 (mismo patrón que la brida CB-402) |
-| CB-602_Porta_Servo | PortaServo | |
+| CB-602_Porta_Servo | PortaServo | v7.3: ranura para el cable del servo de torsión |
 | CB-603_Caja_Torsion / CB-604_Tapa_Caja | Caja / Tapa | |
 | CB-605_Polea_Servo_GT2 / CB-606_Eje_Hueco_Polea | PoleaServo / EjeHueco_Polea | transmisión de la torsión |
 | CB-607_Separador | Separador | |
@@ -439,6 +440,15 @@ Si el sensor va en la tapa (que gira con E2), el imán tiene que quedar quieto r
 - El labio queda **15.2 mm afuera de la punta del eje y a 63.5 mm del eje de cabeceo** (con la McMaster eran 77.2): ρ = 233.9 … 573.9 mm, la esfera entra con 20 mm de margen de cada lado.
 - Corte del conjunto: `06_Imagenes/CB-600_Herramienta_Ventosa_corte_front.png`.
 
+### 6.13 Cable del servo de torsión (CB-602) – v7.3
+
+- El MG996R de la torsión (CB-611) saca el cable por la cara del extremo que está bajo el eje de salida, a 7-10 mm de su base, con un pasacables que sobresale ≈ 3 mm. La pared de ese extremo del porta-servo CB-602 estaba cerrada: el pasacables se clavaba 5.7 mm en ella y el servo no podía bajar.
+- **Ranura de 6.6 mm** en esa pared, de arriba hasta 5.5 mm del fondo y en todo el espesor (7.7 mm). El servo baja con el pasacables dentro de la ranura.
+- Los dos agujeros de las orejas de ese lado se corrieron **0.6 mm hacia afuera** (quedan a 11.2 mm entre centros en vez de 10) para no quedar pegados a la ranura. Los tornillos siguen entrando en las ranuras de las orejas del MG996R.
+- El agujero del tornillo de abajo de ese lado queda de 5.5 mm de hondo (antes 10): usar un tornillo más corto.
+- **Recorrido del cable**: sube por la ranura y sale por la muesca de 12 × 7 que la pared de la caja CB-603 ya tenía arriba, justo enfrente, debajo de la tapa. La caja no se modificó.
+- Sin interferencias entre el servo y el porta-servo (antes había 110 mm³). Imagen: `06_Imagenes/CB-602_Porta_Servo_trimetric.png`. STL: `cad/imprimir/00_Herramienta/CB-602_Porta_Servo.stl`.
+
 ## 7. Interferencias (resultado del análisis en la pose inicial)
 
 No quedan choques entre piezas nuevas o adaptadas. Lo que reporta SolidWorks viene de los modelos originales o de roscas y ajustes modelados:
@@ -469,7 +479,7 @@ No quedan choques entre piezas nuevas o adaptadas. Lo que reporta SolidWorks vie
 9. **AS5600**: soldar el header con los pines hacia la tapa y atornillar el AS5600 a CB-303 (4 × M3x6). Pasar los cables por las ranuras y la espiga, y después por el túnel de la cola hasta la salida trasera. Atornillar la tapa a E2 (3 × M3x10).
 10. **Imán**: pegar el imán en el boss de CB-232 y atornillar el soporte a la torre (2 × M4x30 + tuerca por dentro). Verificar 1–2 mm entre el chip y el imán.
 11. **E3**: brida CB-402 y tapón CB-403 en el tubo, con epoxi y un pasador Ø3 × 30 al ras cada uno. Meter el tubo por el frente de E2 hasta el fondo. Pasar la correa por la ranura alrededor de las dos poleas, meter los dos extremos en la ranura de la pinza con los dientes enfrentados, tensar y asegurar con 2 precintos. Final de carrera de J3 en la pared trasera de E2.
-12. **Herramienta**: horquilla CB-601 a la brida con 4 × M5 × 25 + tuerca.
+12. **Herramienta**: horquilla CB-601 a la brida con 4 × M5 × 25 + tuerca. Armado completo de la herramienta, paso a paso y con lámina: [docs/montaje_herramienta.md](../../docs/montaje_herramienta.md).
 13. **Cámaras**: pie CB-151 al tablero (4 tirafondos), tubo en el pie y cabezal arriba (prisioneros M4). Atornillar la base CB-156 al adaptador CB-154 por sus 4 agujeros de la placa del centro (4 × M3x12 desde arriba + tuerca en los alojamientos hexagonales del adaptador). Colgar cada C270 de la pared con su pinza y trabarla con su tapa CB-157 (2 autorroscantes Ø3.5 × 10). Adaptador al cabezal con el M5 × 30 y apretar a ≈ 32° hacia abajo, apuntando al centro de la esfera. Cables USB por el mástil con precintos. Después, calibración estéreo y cámara → robot (`vision/`).
 
 ---
@@ -516,6 +526,7 @@ No quedan choques entre piezas nuevas o adaptadas. Lo que reporta SolidWorks vie
 | `SweepJ1.cs` | v7.1: gira J1 con J2 y J3 fijos e informa choques (rango de J1 con el mástil) |
 | `Bola.cs` | pieza de pruebas CB-158 (soporte estéreo con bola Ø11.8 para la rótula del trípode) y el conjunto CB-159 |
 | `ExportStl.cs` | exporta un STL por pieza impresa a `cad/imprimir/<carpeta>/` (la herramienta a `00_Herramienta`) e informa si entra en la Ender 3 V2 |
+| `CableServo.cs` | v7.3: ranura para el cable del servo de torsión en CB-602 y agujeros de las orejas corridos |
 | `Ventosa3.cs` | v7.2: punta de CB-606 (alojamiento doble D de la ventosa, fondo de 3 mm, asiento del racor), ventosa CB-618, llave CB-620, cambio en CB-600 y STL; medidas como constantes al principio |
 | `Corte.cs` | v7.2: vista en corte por un plano paralelo al plano derecho y captura PNG, sin guardar |
 | `Agujeros156.cs` | v7.1: agrega a la base CB-156 los 4 agujeros del adaptador y exporta su STL |

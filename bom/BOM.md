@@ -290,7 +290,7 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 | P11 | CB-305 Buje D8 del hombro | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | Mejor en aluminio: transmite el torque del hombro (≈ 39 kg·cm de pico) |
 | P12 | CB-403 Tapón trasero con pinza de correa | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | Relleno 100 % |
 | P13 | CB-601 Horquilla U | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta |  |
-| P14 | CB-602 Porta-servo | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta |  |
+| P14 | CB-602 Porta-servo | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | Ranura para el cable del servo de torsión (v7.3); el cable sale por la muesca de la caja CB-603. STL: cad/imprimir/00_Herramienta/CB-602_Porta_Servo.stl |
 | P15 | CB-603 Caja de torsión | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta |  |
 | P16 | CB-604 Tapa de la caja | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta |  |
 | P17 | CB-605 Polea del servo GT2 66 dientes | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | Relleno 100 % |
