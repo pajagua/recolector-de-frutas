@@ -12,14 +12,14 @@ El TPF pide una **esfera de 30 cm de diámetro elevada del suelo**. El boceto de
 - a **5 cm del borde de la base**, del lado del árbol;
 - con el **centro a 35 cm del suelo**.
 
-En el CAD la base es el tablero de 550 × 550 del BCN3D, y el eje J1 no está centrado. Las distancias del eje J1 a los bordes son 194,8 / 275,0 / 275,0 / 355,2 mm. El árbol va del lado más cercano, **194,8 mm**, que es el lado de la bandeja de electrónica. Así la esfera queda lo más cerca posible.
+En el CAD la base es un tablero de 400 × 300 (v7.7): 400 mm a lo largo del riel y 300 mm hacia el árbol. El eje J1 queda centrado a lo largo del riel y a 185 mm del borde del árbol (115 mm del borde trasero). Hasta la v7.6 era el tablero de 550 × 550 del BCN3D, con el árbol a 194,8 mm. El árbol va del lado más cercano, **194,8 mm**, que es el lado de la bandeja de electrónica. Así la esfera queda lo más cerca posible.
 
 | Dato | Valor | De dónde sale |
 |---|---|---|
-| Eje J1 → borde del tablero (lado del árbol) | 194,8 mm | CAD (`Alcance.cs`) |
+| Eje J1 → borde del tablero (lado del árbol) | 185 mm | CAD (CB-111, `Base3040.cs`) |
 | Separación borde → esfera | 50 mm | boceto |
 | Radio de la esfera | 150 mm | TPF |
-| **Eje J1 → centro de la esfera (horizontal)** | 194,8 + 50 + 150 = **394,8 mm** | |
+| **Eje J1 → centro de la esfera (horizontal)** | 185 + 50 + 150 = **385 mm** | |
 | **Suelo → centro de la esfera** | **350 mm** | boceto |
 | Suelo → cara del tablero | 80 mm (patas + tablero, sin riel) | CAD |
 | Cara del tablero → eje J2 | 355,5 mm | CAD |
@@ -53,20 +53,20 @@ Ese sector es la zona celeste de la figura. Al girar J1 se forma un casquete esf
 La esfera entra si todos sus puntos caen dentro del sector. Si **d** es la distancia del eje J2 al centro de la esfera y R = 150 mm, se calcula así:
 
 ```
-d   = √( 394,8² + (350 − 435,5)² ) = 404,0 mm
+d   = √( 385² + (350 − 435,5)² ) = 394,4 mm
 ρ   necesario: d − R … d + R             = 254,0 … 554,0 mm
-θ   necesario: atan2(−85,5, 394,8) ± asin(R/d) = −12,2° ± 21,8° = −34,0° … +9,6°
+θ   necesario: atan2(−85,5, 385) ± asin(R/d) = −12,5° ± 22,4° = −34,9° … +9,8°
 ```
 
-| | Necesita | Tiene el brazo (v7) | Margen |
+| | Necesita | Tiene el brazo (v7.7) | Margen |
 |---|---|---|---|
-| ρ mínimo (lado cercano de la esfera) | 254,0 mm | 227,8 mm | 26 mm |
-| ρ máximo (lado lejano) | 554,0 mm | 567,8 mm | 14 mm |
-| Ángulo de J2 | −34,0° … +9,6° | −45° … +45° | 11° abajo, 35° arriba |
+| ρ mínimo (lado cercano de la esfera) | 244,5 mm | 227,8 mm | 17 mm |
+| ρ máximo (lado lejano) | 544,3 mm | 567,8 mm | 24 mm |
+| Ángulo de J2 | −34,9° … +9,8° | −45° … +45° | 10° abajo, 35° arriba |
 
 El script revisa uno por uno los puntos del corte central de la esfera, porque los demás cortes son discos más chicos. Con estos datos alcanza el **100 %** de los puntos.
 
-**Carro del riel.** Todavía no está diseñado, y si sube el robot, el lado lejano se aleja. El brazo cubre toda la esfera mientras el carro mida **hasta 51 mm** de alto (con la v6, de 350 mm de carrera, eran 79 mm). Con 50 mm el margen lejano baja a 0,5 mm. Si el carro tiene que ser más alto, alargar 10 mm el tubo y la cola de E2 devuelve los 350 mm de carrera.
+**Carro del riel.** Todavía no está diseñado, y si sube el robot, el lado lejano se aleja. El brazo cubre toda la esfera mientras el carro mida **hasta 77 mm** de alto (con el tablero de 550 × 550 eran 51 mm; con la v6, de 350 mm de carrera, eran 79 mm). Con 50 mm el margen lejano baja a 9,7 mm. Si el carro tiene que ser más alto, alargar 10 mm el tubo y la cola de E2 devuelve los 350 mm de carrera.
 
 ## 4. Por qué hubo que cambiar el CAD (v5 → v6 → v7)
 
@@ -84,9 +84,13 @@ Detalle de piezas y montaje: [cad/solidworks/README.md](../cad/solidworks/README
 
 La v6 dejaba 451,5 mm de brazo detrás del hombro: la cola de E2 más el NEMA 17 en la punta. En la v7 el tubo de E3 (440 mm) se mueve con una **correa GT2** y el NEMA 17 sube al cubo de E2, así que la cola termina a **377 mm** detrás del eje J2. La carrera queda en **340 mm** y la ventosa va de 227,8 a 567,8 mm. Comparación con la variante telescópica (204 mm detrás de J2): [v7_prismatico.md](v7_prismatico.md).
 
+### v7.6 → v7.7: tablero de 400 × 300
+
+El tablero de 550 × 550 del BCN3D pasa a 400 × 300. El eje J1 queda a **185 mm** del borde del árbol (antes 194,8), así que la esfera se acerca 9,8 mm al hombro. Los márgenes quedan más parejos: 17 mm del lado cercano y 24 mm del lejano (antes 26 y 14), y el carro del riel puede medir hasta 77 mm (antes 51). La bandeja de electrónica pasa al costado de J1, y el mástil de las cámaras a la esquina trasera. Detalle en el README del CAD (v7.7).
+
 ## 5. Cuidados
 
-- En el CAD la ventosa es la medida (`CB-618`, Ø40 × 22). Su parte de arriba entra 6,8 mm en la punta del eje hueco y el labio queda a 63,5 mm del eje de cabeceo (la caja de la herramienta del STEP es más larga que la de la `.scad` v4.2). Con ella ρ va de 233,9 a 573,9 mm: también cubre la esfera, con 20 mm de margen de cada lado.
+- En el CAD la ventosa es la medida (`CB-618`, Ø40 × 22). Su parte de arriba entra 6,8 mm en la punta del eje hueco y el labio queda a 41,2 mm del eje de cabeceo, con el eje de cabeceo a 67,6 mm de la brida (ver [sistemas_de_referencia.md](sistemas_de_referencia.md)). Con ella ρ va de 213,8 a 553,8 mm: con el tablero de 400 × 300 cubre toda la esfera, con 9,5 mm de margen del lado lejano (con el de 550 × 550 quedaba 0,2 mm afuera).
 - El cálculo usa la **ventosa alineada con el brazo** (acercamiento de frente). Con la muñeca en otra posición la punta queda más cerca del eje J2.
 - Los límites de J2 son con el brazo **apuntando al árbol**. Si J1 apunta para otro lado, la cola o la herramienta pueden tocar la bandeja de electrónica o el tablero antes: ver los rangos en el README del CAD.
 - J1 se gira para que el brazo apunte de frente al árbol. Si el riel no se puede mover para compensar los 83 mm de corrimiento lateral, el brazo entra un poco en diagonal. Eso cambia ρ en menos de 1 cm.

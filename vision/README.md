@@ -23,7 +23,7 @@ python scripts/02_capturar_calibracion.py  # fotos del damero para la stereo cal
 Las dos **Logitech C270** van en un mástil fijo a la base (CAD: `cad/solidworks/01_Base_J0/CB-150_Modulo_Camaras.SLDASM`, detalle en
 [cad/solidworks/README.md §6.11](../cad/solidworks/README.md#611-cámaras-estéreo-cb-150--v71)). Valores nominales en `config/camaras.yaml` (`montaje`).
 
-- Soporte **StereoVision_03** (STL en `cad/imprimir/01_Base_J0/`: base CB-156 + 2 tapas CB-157): cada C270 se cuelga con su pinza; **71 mm entre lentes**, paralelas, a ≈ 676 mm sobre el tablero y a 765 mm del centro de la esfera de trabajo.
+- Soporte **StereoVision_03** (STL en `cad/imprimir/01_Base_J0/`: base CB-156 + 2 tapas CB-157): cada C270 se cuelga con su pinza; **71 mm entre lentes**, paralelas, a ≈ 661 mm sobre el tablero y a 565 mm del centro de la esfera de trabajo. A esa distancia, en 720p la esfera queda ≈ 1° más alta que el campo vertical (se pierden ≈ 9 mm arriba y abajo): usar 640 × 480, que ve más en vertical, o verificarlo con el damero.
 - Para calibrar el par estéreo alcanza con el soporte solo (no hace falta el mástil): la calibración estéreo depende únicamente de cómo quedan las cámaras entre sí. Después no hay que moverlas dentro del soporte.
 - **Pose de observación del brazo**: J3 retraído y J2 = −45°. En otras poses la herramienta tapa parte de la esfera.
 - Sacar las fotos con el robot quieto: las dos webcams no están sincronizadas.

@@ -10,8 +10,8 @@ using SolidWorks.Interop.swconst;
 // (J1 apuntando al arbol, J3 = q3, J2 = cada elev).
 class OccSweep
 {
-    static readonly double[] S = { 394.8, 0, 270 };                 // centro de la esfera (marco arbol)
-    static readonly double[][] LENS = { new[] { -210.4, 233.5, 676.2 }, new[] { -232.3, 166.0, 676.2 } };   // izq, der (Vision.exe)
+    static readonly double[] S = { 385, 0, 270 };                   // centro de la esfera (marco arbol; v7.7, tablero 400 x 300)
+    static readonly double[][] LENS = { new[] { 2.1, 143.9, 661.1 }, new[] { -17.0, 75.5, 661.1 } };   // izq, der (v7.7: pie del mastil en -80, 130)
     const double RS = 150, START = 12;
     static double[] Sub(double[] a, double[] b) { return new[] { a[0] - b[0], a[1] - b[1], a[2] - b[2] }; }
     static double Norm(double[] a) { return Math.Sqrt(a[0] * a[0] + a[1] * a[1] + a[2] * a[2]); }

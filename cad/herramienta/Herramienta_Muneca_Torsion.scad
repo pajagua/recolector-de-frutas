@@ -1,5 +1,5 @@
 // ============================================================
-// HERRAMIENTA FINAL: MUÑECA (PITCH) + TORSIÓN + SUCCIÓN   v4.2
+// HERRAMIENTA FINAL: MUÑECA (PITCH) + TORSIÓN + SUCCIÓN   v4.3
 // Robot Recolector de Naranjas "CitriBot RRP"  (P-RRP-RR)
 // ============================================================
 //
@@ -56,8 +56,8 @@
 //                                    porta-servo al piso (2)
 //   M3 x 12 (rosca en el plástico) : tapa (4)
 //   M3 x 8                         : anillo al eje (2, no usar más largos)
-//   Horn de plástico (HORN = 1)    : tornillos chicos del kit del servo, por los
-//                                    agujeros del horn, a la polea y a la caja
+//   Horn de plástico (HORN = 1)    : tornillos chicos del kit (M2-M2.5 x 6-10), 4 por
+//                                    horn, desde el lado del estriado, a la polea y a la caja
 //   Horn metálico (HORN = 2)       : M3 x 8, polea al horn (4) y horn a la caja (4)
 //   M5 + tuerca                    : brida de la horquilla a E3 (4), largo según E3
 //   M8 x 25 + tuerca               : pivote libre (1)
@@ -69,15 +69,18 @@
 //   Ventosa                        : JXD SAB40 (fuelle) o SAF-40 (plana), G1/4 hembra
 //
 // ORDEN DE ARMADO (importa: después no hay acceso):
-//   1. Con la caja vacía: atornillar el horn de muñeca a la pared +X y
-//      poner la tuerca M8 en su alojamiento de la pared -X.
+//   1. Con la caja vacía: apoyar el horn de muñeca en el asiento de la pared
+//      +X (cara plana contra la pared) y atornillarlo desde afuera con 4
+//      tornillos del kit. Poner la tuerca M8 en su alojamiento de la pared -X.
 //   2. Rodamientos 6806, tapa, eje hueco desde arriba y anillo desde abajo.
 //      El eje deja atrapada la tuerca M8.
 //   3. Encajar la manguera en el racor, bajarlo por dentro del eje hasta
 //      que el hexágono calce en el fondo y enroscar la ventosa desde abajo
 //      sobre la rosca que asoma (teflón en la rosca).
 //   4. Porta-servo con el servo de torsión, polea, correa y tensar.
-//   5. Montar el servo de muñeca en la horquilla y la horquilla en E3.
+//   5. Montar el servo de muñeca en la horquilla (pestañas por afuera,
+//      tornillos desde afuera: el lado del servo no tiene cuña) y la
+//      horquilla en E3.
 //      Llevar ese servo al centro de su recorrido.
 //   6. Meter la caja entre los brazos, corrida hacia el pivote libre, y
 //      deslizarla sobre el estriado del servo de muñeca con la caja en la
@@ -120,28 +123,34 @@ rod_labio_d = 38.4;  // Paso libre sobre la pista interior
 rod_pared   = 4;     // Pared del alojamiento
 rod_margen  = 6;     // Entre el alojamiento y la pared -X (lugar para la tuerca del pivote)
 
-// --- Servo (medidas del plano del fabricante: 40 x 20 x 36.5) ---
+// --- Servo MG996R (medido con calibre, oct 2026) ---
 servo_l       = 40.0;  // Largo del cuerpo
 servo_a       = 20.0;  // Ancho del cuerpo
-servo_tab_l   = 52.8;  // Largo total con pestañas
-servo_tab_e   = 2.5;   // Grosor de las pestañas (el plano no lo acota: medir)
-servo_h_tab   = 26.5;  // Base -> cara de abajo de las pestañas
-servo_h_caja  = 36.5;  // Base -> tope de la carcasa
-servo_h_estria = 38.2; // Base -> donde apoya el horn. Sale del plano: 26.5 + 16.6 - alto del horn de plástico
-servo_eje_off = 10.0;  // Centro del cuerpo -> eje de salida (el plano no lo acota: medir)
-servo_ag_l    = 47.8;  // Entre agujeros de pestañas, a lo largo
-servo_ag_a    = 10.2;  // Entre agujeros de pestañas, a lo ancho
+servo_tab_l   = 54.5;  // Largo total con pestañas (no medido: agujeros a 49 + borde)
+servo_tab_e   = 2.5;   // Grosor de las pestañas (no medido)
+servo_h_tab   = 29.0;  // Base -> cara de abajo de las pestañas (medido)
+servo_h_caja  = 39.0;  // Base -> tope de la carcasa (solo para dibujar)
+servo_h_estria = 41.0; // Base -> donde apoya el horn (medido)
+servo_eje_off = 10.0;  // Centro del cuerpo -> eje de salida (medido)
+servo_ag_l    = 49.0;  // Entre agujeros de pestañas, a lo largo (medido)
+servo_ag_a    = 9.0;   // Entre agujeros de pestañas, a lo ancho (medido)
 
 // --- Horn: disco que va sobre el estriado del servo ---
 // Define la altura de las poleas y la separación de la horquilla: elegir bien y medir.
-HORN = 1;                             // 1 = disco de plástico que trae el servo (el del plano)
+// La cara plana del disco (la del resalte chico) apoya contra la pieza impresa.
+// Los tornillos entran desde el lado del estriado, por los agujeros del horn,
+// y roscan en el plástico: se atornilla desde afuera, antes de calzar el servo.
+HORN = 1;                             // 1 = disco de plástico de 12 agujeros (medido)
                                       // 2 = disco metálico de 20 mm con 4 roscas M3
-horn_d        = (HORN == 1) ? 24  : 20;   // Diámetro del disco
-horn_e        = (HORN == 1) ? 2.2 : 2;    // Grosor del disco
-horn_h        = (HORN == 1) ? 4.9 : 7;    // Alto total (disco + cubo)
-horn_agujeros = (HORN == 1) ? 0   : 4;    // 0 = sin agujeros: se perfora usando el horn como plantilla
-horn_pcd      = 14;                       // Círculo de las roscas M3 del disco metálico
-horn_centro   = 9.5;                      // Paso para el cubo y el tornillo central
+horn_d        = (HORN == 1) ? 21   : 20;   // Diámetro del disco
+horn_e        = (HORN == 1) ? 2.5  : 2;    // Grosor del disco
+horn_h        = (HORN == 1) ? 6    : 7;    // Alto total (cubo + disco + resalte)
+horn_resalte_d = (HORN == 1) ? 8.5 : 0;    // Resalte de la cara plana (anillo con muescas)
+horn_resalte_h = (HORN == 1) ? 1   : 0;    // Cuánto sobresale de la cara plana
+horn_agujeros = 4;                         // Se usan 4 de los 12 agujeros (uno de cada tres)
+horn_pcd      = (HORN == 1) ? 14.5 : 14;   // Entre agujeros opuestos
+horn_piloto   = (HORN == 1) ? 2.0  : paso_m3;  // Plástico: rosca el tornillo del kit (M2-M2.5)
+horn_centro   = 7;                         // Paso del tornillo central y del destornillador
 
 // --- Transmisión GT2 de la torsión ---
 // Relación = dientes_servo / dientes_eje. Con 66/66 el eje gira lo mismo
@@ -194,7 +203,7 @@ porta_pared = 3;
 piso_e       = 4;
 tapa_placa   = 4;
 servo_holgura_lat = 2.5;  // Entre las pestañas del servo y las paredes
-hueco_horn   = 9;         // Entre el porta-servo y la pared +X (cabezas de los tornillos del horn)
+hueco_horn   = 9;         // Entre el porta-servo y la pared +X (puntas de los tornillos del horn)
 horn_rebaje  = 1.5;       // Asiento del disco del horn en la pared +X
 horn_refuerzo = 3;        // Engrosado interior de la pared bajo el horn
 
@@ -215,7 +224,9 @@ holgura_giro  = 3;
 placa_e       = 8;
 brazo_e       = 7;      // Brazo del servo
 brazo_ancho   = 40;
-cartela       = 12;     // Cuña entre brazo y placa
+cartela       = 12;     // Cuña entre brazo y placa (lado del pivote libre)
+nervio_e      = 5;      // Nervios del brazo del servo (bordes ±Y)
+nervio_l      = 14;
 brida_lado    = 80;     // Brida de E3: 80 x 80
 brida_pcd     = 57;     // E3 tiene 4 agujeros sobre un círculo de 57 mm
 brida_giro    = 0;      // Girar el patrón si cambia E3
@@ -247,8 +258,12 @@ servo_x = sqrt(dist_ejes * dist_ejes - servo_eje_off * servo_eje_off);
 // Alto del tope en cono (45 grados) del alojamiento de abajo
 rod_cono = (rod_od + rod_ajuste - rod_labio_d) / 2;
 
-// Base del servo -> cara exterior del disco del horn ya colocado
-servo_h_horn = servo_h_estria + horn_h;
+// Base del servo -> cara plana del disco del horn ya colocado (sin el resalte)
+servo_h_horn = servo_h_estria + horn_h - horn_resalte_h;
+// Asiento del horn en la pieza: disco ajustado + alivio más profundo para el resalte
+horn_asiento_d = horn_d + 0.4;
+horn_alivio_d  = horn_resalte_d + 1.2;
+horn_alivio_h  = horn_resalte_h + 0.4;
 
 // Alturas: todo sale de apoyar el servo de torsión casi en el piso
 polea_h    = 2 * (polea_brida_h + polea_brida_r) + polea_diente_h;
@@ -443,16 +458,18 @@ module caja() {
         translate([x_in0 + piv_refuerzo - piv_tuerca_h, 0, piv_z]) rotate([0, 90, 0])
             hueco_tuerca(piv_tuerca_af, piv_tuerca_h + 1);
 
-        // [K] Horn de muñeca: asiento del disco, paso central y tornillos.
-        //     Con el disco de plástico no hay agujeros: se marcan con el horn puesto.
+        // [K] Horn de muñeca: asiento ajustado del disco, alivio del resalte,
+        //     paso central y 4 pilotos pasantes. Los tornillos entran desde
+        //     afuera (lado del estriado), con la caja todavía suelta.
         translate([x1 - horn_rebaje, 0, piv_z]) rotate([0, 90, 0])
-            cylinder(d = horn_d + 0.6, h = horn_rebaje + 1);
+            cylinder(d = horn_asiento_d, h = horn_rebaje + 1);
+        translate([x1 - horn_rebaje - horn_alivio_h, 0, piv_z]) rotate([0, 90, 0])
+            cylinder(d = horn_alivio_d, h = horn_alivio_h + 0.01);
         translate([x_in1 - horn_refuerzo - 1, 0, piv_z]) rotate([0, 90, 0]) {
             cylinder(d = horn_centro, h = pared + horn_refuerzo + 2);
-            if (horn_agujeros > 0)
-                for (i = [0 : horn_agujeros - 1])
-                    rotate([0, 0, 45 + i * 360 / horn_agujeros]) translate([horn_pcd / 2, 0, 0])
-                        cylinder(d = paso_m3, h = pared + horn_refuerzo + 2);
+            for (i = [0 : horn_agujeros - 1])
+                rotate([0, 0, 45 + i * 360 / horn_agujeros]) translate([horn_pcd / 2, 0, 0])
+                    cylinder(d = horn_piloto, h = pared + horn_refuerzo + 2);
         }
 
         // [L] Salida del cable del servo de torsión
@@ -555,22 +572,19 @@ module anillo() {
 
 /* ==================== PIEZA 6: POLEA DEL SERVO ==================== */
 // Origen local: eje del servo, Z = 0 en la base de la polea.
-// Se apoya sobre el disco del horn y se atornilla a sus 4 agujeros M3.
+// El disco del horn entra en el asiento de abajo (cara plana hacia arriba) y se
+// atornilla desde abajo, por 4 agujeros del horn, antes de calzarlo en el servo.
+// El tornillo central se aprieta desde arriba por el paso central.
 
 module polea_servo() {
     difference() {
         polea_gt2(dientes_servo);
-        translate([0, 0, -0.01]) cylinder(d = horn_d + 0.6, h = horn_e + 0.01);
-        // Acceso al tornillo central del servo
-        translate([0, 0, -1]) cylinder(d = 7, h = polea_h + 2);
-        // Tornillos al disco metálico. Con el de plástico se atornilla desde
-        // abajo, por los agujeros del horn, antes de calzarlo en el servo.
-        if (horn_agujeros > 0)
-            for (i = [0 : horn_agujeros - 1])
-                rotate([0, 0, 45 + i * 360 / horn_agujeros]) translate([horn_pcd / 2, 0, 0]) {
-                    translate([0, 0, -1]) cylinder(d = paso_m3, h = polea_h + 2);
-                    translate([0, 0, polea_h - 3.2]) cylinder(d = 6.2, h = 4);
-                }
+        translate([0, 0, -0.01]) cylinder(d = horn_asiento_d, h = horn_e + 0.01);
+        translate([0, 0, horn_e - 0.01]) cylinder(d = horn_alivio_d, h = horn_alivio_h + 0.01);
+        translate([0, 0, -1]) cylinder(d = horn_centro, h = polea_h + 2);
+        for (i = [0 : horn_agujeros - 1])
+            rotate([0, 0, 45 + i * 360 / horn_agujeros]) translate([horn_pcd / 2, 0, -1])
+                cylinder(d = horn_piloto, h = polea_h + 2);
     }
 }
 
@@ -585,8 +599,10 @@ module horquilla() {
             translate([0, 0, z_placa]) linear_extrude(height = placa_e)
                 hull() {
                     square([brida_lado, brida_lado], center = true);
+                    // Del lado del servo la placa termina en el brazo: nada
+                    // tapa los tornillos de las pestañas desde afuera
                     translate([xl0 - cartela, -brazo_ancho / 2])
-                        square([xs1 - xl0 + 2 * cartela, brazo_ancho]);
+                        square([xs1 - xl0 + cartela, brazo_ancho]);
                 }
 
             // [B] Brazo libre (rodamiento 608)
@@ -605,11 +621,21 @@ module horquilla() {
                     cube([brazo_e, brazo_ancho, 1.1]);
             }
 
-            // [D] Cuñas por el lado de afuera de cada brazo
-            for (c = [[xl0, -1], [xs1, 1]])
-                translate([c[0], brazo_ancho / 2, z_placa]) rotate([90, 0, 0])
-                    linear_extrude(height = brazo_ancho)
-                        polygon([[0, 0.01], [c[1] * cartela, 0.01], [0, -cartela]]);
+            // [D] Cuña por el lado de afuera del brazo libre
+            translate([xl0, brazo_ancho / 2, z_placa]) rotate([90, 0, 0])
+                linear_extrude(height = brazo_ancho)
+                    polygon([[0, 0.01], [-cartela, 0.01], [0, -cartela]]);
+
+            // [D2] Brazo del servo: dos nervios por afuera, solo en los bordes ±Y.
+            //      El centro queda libre para el destornillador de las pestañas.
+            for (sy = [-1, 1])
+                translate([xs1 - 0.01, sy * (brazo_ancho / 2 - nervio_e / 2) + nervio_e / 2, z_placa])
+                    rotate([90, 0, 0]) linear_extrude(height = nervio_e)
+                        polygon([[0, 0.01], [nervio_l, 0.01], [0, -nervio_l]]);
+            // La placa se prolonga sobre los nervios
+            for (sy = [-1, 1])
+                translate([xs1 - 0.01, sy * (brazo_ancho / 2 - nervio_e / 2) - nervio_e / 2, z_placa])
+                    cube([nervio_l, nervio_e, placa_e]);
 
             // [J] Guía de la manguera: clip abierto, fuera del borde -Y de la placa
             if (guia_manguera == 1)
@@ -673,6 +699,7 @@ module servo_ref() {
     cylinder(d = 5.9, h = servo_h_horn - horn_e + 0.5);
     translate([0, 0, servo_h_estria]) cylinder(d = 9, h = horn_h);
     translate([0, 0, servo_h_horn - horn_e]) cylinder(d = horn_d, h = horn_e);
+    translate([0, 0, servo_h_horn - 0.01]) cylinder(d = horn_resalte_d, h = horn_resalte_h + 0.01);
 }
 
 module rodamiento_ref(od, id, h) {

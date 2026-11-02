@@ -26,8 +26,8 @@ SEPARACION = 50.0     # entre el borde de la base y la esfera
 Z_CENTRO = 350.0      # suelo -> centro de la esfera
 
 # ---- robot (medido en cad/solidworks, CB-000 v7), mm ----
-BORDE = 194.8         # eje J1 -> borde del tablero del lado del árbol (el más cercano, lado de la bandeja de electrónica)
-BORDE_OPUESTO = 355.2 # eje J1 -> borde opuesto (solo para la figura)
+BORDE = 185.0         # eje J1 -> borde del tablero del lado del árbol (tablero de 400 x 300, v7.7)
+BORDE_OPUESTO = 115.0 # eje J1 -> borde opuesto (solo para la figura)
 Z_TABLERO = 80.0      # suelo -> cara superior del tablero (patas + tablero, sin riel)
 Z_J2 = 355.5          # cara superior del tablero -> eje J2
 U_BRIDA = 105.0       # eje J2 -> cara exterior de la brida de E3 con J3 retraído

@@ -9,8 +9,8 @@
 | Préstamo laboratorio | 6 |
 | Compra grupal | 13 |
 | Propio | 4 |
-| Impresión 3D | 28 |
-| Por comprar | 53 |
+| Impresión 3D | 30 |
+| Por comprar | 54 |
 | Por definir | 7 |
 
 | Estado | Ítems |
@@ -18,8 +18,8 @@
 | En mano | 1 |
 | Prestado | 5 |
 | Pedido | 10 |
-| Falta | 88 |
-| Por confirmar | 7 |
+| Falta | 90 |
+| Por confirmar | 8 |
 
 **Gastado (compra grupal, sin envío): USD 135.69**
 
@@ -48,7 +48,7 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 | V01 | Cámara web USB Logitech C270 | 2 | Amazon | 16.89 | Pedido | Precio del pedido 'Cámaras': confirmar si es por unidad o por las dos. CAD: CB-515. Se cuelgan con su propia pinza de monitor en la pared del soporte |
 | N01 | Ventosa JXD SAB40 (fuelle) | 1 | AliExpress | 13.70 | Pedido | Pedido 'Ventosa 1'. Su parte de arriba (Ø19, planos a 17) entra en la punta de CB-606; el racor N03 la aprieta desde adentro. CAD: CB-618 (medida, Ø40 × 22) |
 | N02 | Ventosa JXD SAF-40 (plana) | 1 | AliExpress | 14.02 | Pedido | Pedido 'Ventosa 2'. Si su parte de arriba no es igual a la de la N01, no entra en el alojamiento de CB-606 |
-| N03 | Racor recto push-in | 1 | AliExpress | 7.25 | Pedido | Pedido 'Unión neumática'. CAD: CB-619; medir hexágono (≈ 14), anillo (≈ Ø16,5 × 1,8), cuello (≈ 3) y rosca (≈ 4,5) antes de imprimir CB-606 y CB-620 |
+| N03 | Racor recto push-in | 1 | AliExpress | 7.25 | Pedido | Pedido 'Unión neumática'. CAD: CB-619. Hexágono medido: 12 entre caras; falta medir anillo (≈ Ø14 × 1,8), cuello (≈ 3) y rosca (≈ 4,5) |
 | T03 | Correa GT2 cerrada | 1 |  |  | Por confirmar | Puede venir en el 'Kit correa y polea' (T04) |
 | T04 | Kit correa GT2 y poleas | 1 | AliExpress | 9.39 | Pedido | Anotar el contenido real del kit: puede cubrir la correa y las poleas de J3 (T07, T08, T09) |
 | T05 | Husillo T8 + tuerca de brida | 1 | AliExpress | 8.84 | Pedido | Ya pedido ('Rosca p/ Varilla'). Era el husillo de la v6 (CB-511 y CB-512, retirados del CAD) |
@@ -112,7 +112,8 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 | H29 | Tirafondo 4 × 12 | Cabeza fresada | 4 | u | Por comprar | No pasantes: debajo está la pata de la base |
 | H30 | Tornillo autorroscante Ø3,5 × 10 | Cabeza plana | 4 | u | Por comprar |  |
 | H31 | Tornillo M3 × 25 Allen + tuerca M3 | DIN 912 | 1 | u | Por comprar | Solo para las pruebas de visión sin el brazo |
-| X01 | Tablero contrachapado o MDF | 550 × 550 × 16 mm | 1 | u | Por comprar | Agujeros: Ø42 motor J1 y 4 × Ø4.5 bandeja (ver CB-111) |
+| H32 | Seguro (anillo elástico) para eje de 30 mm | DIN 471, 30 × 1,5 | 1 | u | Por comprar | Se pone con pinza de seguros (exterior). CAD: CB-623 |
+| X01 | Tablero contrachapado o MDF | 400 × 300 × 16 mm | 1 | u | Por comprar | Agujeros: eje J1 Ø35, motor J1 Ø42, placa 1M2A, módulo del motor J1 (ranuras), bandeja y 4 patas (ver CB-111) |
 | X02 | Filamento PETG | 1,75 mm | 4 | kg | Por comprar | Estimado 3–4 kg: calcular con el slicer |
 | X03 | Epoxi bicomponente |  | 1 | u | Por comprar |  |
 | X04 | Cianoacrilato |  | 1 | u | Por comprar |  |
@@ -132,6 +133,7 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 | S01 | Módulo AS5600 | Compra grupal | En el pedido figura 'Encoder' (Amazon, USD 7.99): confirmar que es el AS5600 |
 | S02 | Imán de neodimio diametral | Compra grupal | Suele venir con el módulo AS5600 |
 | T03 | Correa GT2 cerrada | Compra grupal | Puede venir en el 'Kit correa y polea' (T04) |
+| P20 | Anillo de retención del eje hueco | Impresión 3D | Solo en el .scad: no hace falta con el CAD, donde lo reemplazan el separador P29, la arandela P30 y el seguro H32 |
 
 ## BOM por subsistema
 
@@ -180,7 +182,7 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 |---|---|---|---|---|---|---|---|---|
 | N01 | Ventosa JXD SAB40 (fuelle) | Ø40, rosca hembra G1/4 | 1 | u | Agarre de la naranja | Compra grupal | Pedido | Pedido 'Ventosa 1'. Su parte de arriba (Ø19, planos a 17) entra en la punta de CB-606; el racor N03 la aprieta desde adentro. CAD: CB-618 (medida, Ø40 × 22) |
 | N02 | Ventosa JXD SAF-40 (plana) | Ø40, rosca hembra G1/4 | 1 | u | Alternativa para pruebas | Compra grupal | Pedido | Pedido 'Ventosa 2'. Si su parte de arriba no es igual a la de la N01, no entra en el alojamiento de CB-606 |
-| N03 | Racor recto push-in | Recto, manguera 6 mm × rosca macho 1/4" BSP con junta tórica (0,9" de alto) | 1 | u | Dentro del eje hueco de la torsión | Compra grupal | Pedido | Pedido 'Unión neumática'. CAD: CB-619; medir hexágono (≈ 14), anillo (≈ Ø16,5 × 1,8), cuello (≈ 3) y rosca (≈ 4,5) antes de imprimir CB-606 y CB-620 |
+| N03 | Racor recto push-in | Recto, manguera 6 mm × rosca macho 1/4" BSP con junta tórica (0,9" de alto) | 1 | u | Dentro del eje hueco de la torsión | Compra grupal | Pedido | Pedido 'Unión neumática'. CAD: CB-619. Hexágono medido: 12 entre caras; falta medir anillo (≈ Ø14 × 1,8), cuello (≈ 3) y rosca (≈ 4,5) |
 | N04 | Manguera PU | 6 × 4 mm | 2 | m | Ventosa a bomba | Por comprar | Falta | Largo según el recorrido final |
 | N05 | Bomba de vacío 12 V | Mini bomba de diafragma | 1 | u | Generar el vacío | Por definir | Falta | No figura en ninguna lista. Dimensionar con entregas/entrega_06/analisis_torque_ventosa.md |
 | N06 | Electroválvula 12 V | 2/2 o 3/2, normalmente cerrada | 1 | u | Romper el vacío para soltar la naranja | Por definir | Falta |  |
@@ -259,12 +261,13 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 | H29 | Tirafondo 4 × 12 | Cabeza fresada | 4 | u | Pie del mástil CB-151 → tablero | Por comprar | Falta | No pasantes: debajo está la pata de la base |
 | H30 | Tornillo autorroscante Ø3,5 × 10 | Cabeza plana | 4 | u | Tapas CB-157 → postes del soporte estéreo (agujeros de Ø3,25) | Por comprar | Falta |  |
 | H31 | Tornillo M3 × 25 Allen + tuerca M3 | DIN 912 | 1 | u | Alma del cuello de la bola de la pieza de pruebas CB-158 | Por comprar | Falta | Solo para las pruebas de visión sin el brazo |
+| H32 | Seguro (anillo elástico) para eje de 30 mm | DIN 471, 30 × 1,5 | 1 | u | Frena el eje hueco hacia arriba, debajo del rodamiento del piso | Por comprar | Falta | Se pone con pinza de seguros (exterior). CAD: CB-623 |
 
 ### Materia prima y consumibles
 
 | ID | Componente | Especificación | Cant. | Un. | Uso | Origen | Estado | Notas |
 |---|---|---|---|---|---|---|---|---|
-| X01 | Tablero contrachapado o MDF | 550 × 550 × 16 mm | 1 | u | Base del brazo | Por comprar | Falta | Agujeros: Ø42 motor J1 y 4 × Ø4.5 bandeja (ver CB-111) |
+| X01 | Tablero contrachapado o MDF | 400 × 300 × 16 mm | 1 | u | Base del brazo | Por comprar | Falta | Agujeros: eje J1 Ø35, motor J1 Ø42, placa 1M2A, módulo del motor J1 (ranuras), bandeja y 4 patas (ver CB-111) |
 | X02 | Filamento PETG | 1,75 mm | 4 | kg | Piezas impresas | Por comprar | Falta | Estimado 3–4 kg: calcular con el slicer |
 | X03 | Epoxi bicomponente |  | 1 | u | Buje D8 en E2 · brida y tapón del tubo de E3 | Por comprar | Falta |  |
 | X04 | Cianoacrilato |  | 1 | u | Imán en el soporte CB-232 | Por comprar | Falta |  |
@@ -291,12 +294,12 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 | P12 | CB-403 Tapón trasero con pinza de correa | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | Relleno 100 % |
 | P13 | CB-601 Horquilla U | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta |  |
 | P14 | CB-602 Porta-servo | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | Ranura para el cable del servo de torsión (v7.3); el cable sale por la muesca de la caja CB-603. STL: cad/imprimir/00_Herramienta/CB-602_Porta_Servo.stl |
-| P15 | CB-603 Caja de torsión | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta |  |
+| P15 | CB-603 Caja de torsión | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | Ventana para el cable del servo de torsión (v7.4). STL: cad/imprimir/00_Herramienta/CB-603_Caja_Torsion.stl |
 | P16 | CB-604 Tapa de la caja | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta |  |
 | P17 | CB-605 Polea del servo GT2 66 dientes | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | Relleno 100 % |
-| P18 | CB-606 Eje hueco con polea GT2 66 dientes | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | Relleno 100 %. Alojamiento doble D para la ventosa en la punta (el eje gira la ventosa) y fondo de 3 mm donde apoya el racor N03. Imprimir con la polea abajo, sin soportes. STL: cad/imprimir/00_Herramienta/CB-606_Eje_Hueco_Polea.stl |
+| P18 | CB-606 Eje hueco con polea GT2 66 dientes | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | Relleno 100 %. Alojamiento doble D para la ventosa en la punta, fondo de 3 mm para el racor N03 y ranura para el seguro H32 (v7.4: punta 2 mm más larga). Imprimir con la polea abajo, sin soportes. STL: cad/imprimir/00_Herramienta/CB-606_Eje_Hueco_Polea.stl |
 | P19 | CB-607 Separador del pivote | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta |  |
-| P20 | Anillo de retención del eje hueco | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | Solo en el .scad (pieza 5), no en el STEP de la herramienta |
+| P20 | Anillo de retención del eje hueco | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Por confirmar | Solo en el .scad: no hace falta con el CAD, donde lo reemplazan el separador P29, la arandela P30 y el seguro H32 |
 | P21 | CB-306 Placa soporte del NEMA 17 (J3) | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | Relleno 100 %. Va a E2 con 4 insertos M3 (H26) |
 | P22 | CB-151 Pie del mástil de las cámaras | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | Relleno 100 % |
 | P23 | CB-153 Cabezal del mástil | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | Relleno 100 %. Orejas del pivote de cabeceo M5 |
@@ -304,4 +307,6 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 | P25 | CB-156 Base del soporte estéreo (StereoVision_03) | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | Remodelada del STL del usuario con los 4 agujeros para el adaptador ya hechos. STL: cad/imprimir/01_Base_J0/CB-156_Soporte_Estereo_C270_Base.stl |
 | P26 | CB-157 Tapa del soporte estéreo | PETG, ≥ 4 perímetros | 2 | u |  | Impresión 3D | Falta | Traba la pinza de cada C270. STL: cad/imprimir/01_Base_J0/CB-157_Soporte_Estereo_C270_Tapa.stl |
 | P27 | CB-158 Adaptador con bola para la rótula del trípode (pruebas) | PETG, 4 perímetros, 50 % | 1 | u | Probar las cámaras en el trípode antes de montar el brazo | Impresión 3D | Falta | No va en el robot. Bola Ø11,8 y cuello Ø4,8 en lugar del perno M6 del trípode; se cambia por CB-154 sin tocar las cámaras. Imprimir con la cara de arriba en la cama y soportes bajo la bola. STL: cad/imprimir/12_Pruebas/CB-158_Adaptador_Rotula_Bola12.stl |
-| P28 | CB-620 Llave de montaje del racor (herramienta) | PETG, 4 perímetros, 50 % | 1 | u | Apretar el racor N03 contra la ventosa desde el lado de la polea | Impresión 3D | Falta | No va en el robot. STL: cad/imprimir/00_Herramienta/CB-620_Llave_Montaje_Racor.stl |
+| P28 | CB-620 Llave de montaje del racor (herramienta) | PETG, 4 perímetros, 50 % | 1 | u | Apretar el racor N03 contra la ventosa desde el lado de la polea | Impresión 3D | Falta | No va en el robot. Hexágono de 12,4 para el racor de 12. STL: cad/imprimir/00_Herramienta/CB-620_Llave_Montaje_Racor.stl |
+| P29 | CB-621 Separador del eje hueco | PETG, 100 % | 1 | u | Entre el cubo de la polea del eje y el rodamiento 6806 de la tapa | Impresión 3D | Falta | Ø30,4 / Ø33,4 × 4,5. STL: cad/imprimir/00_Herramienta/CB-621_Separador_Eje_Hueco.stl |
+| P30 | CB-622 Arandela del seguro del eje hueco | PETG, 100 % | 1 | u | Entre el rodamiento 6806 del piso y el seguro H32 | Impresión 3D | Falta | Ø30,3 / Ø33,4 × 1. STL: cad/imprimir/00_Herramienta/CB-622_Arandela_Seguro_Eje.stl |

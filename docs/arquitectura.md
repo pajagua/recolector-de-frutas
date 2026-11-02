@@ -46,14 +46,14 @@ J0 riel (P) – J1 cintura (R) – J2 hombro (R) – J3 brazo (P) – J4 muñeca
 
 Medida en el ensamblaje SolidWorks (`cad/solidworks/CB-000`), origen sobre el eje J1 en la cara superior del tablero, Z hacia arriba:
 
-- Suelo (pie de las patas, sin riel): z = −80 mm. Eje J1 a 194,8 / 275,0 / 275,0 / 355,2 mm de los bordes del tablero.
+- Tablero de 400 × 300 × 16 (v7.7): 400 a lo largo del riel y 300 hacia el árbol. Suelo (pie de las patas, sin riel): z = −80 mm. Eje J1 centrado a lo largo del riel (200 / 200 mm) y a 185 mm del borde del árbol y 115 mm del borde trasero.
 - Cara superior del plato 1M1B: z = 91,5 mm.
 - Eje J2 horizontal a z = 355,5 mm; corta al eje J1.
 - Plano medio de E2 (eje de J3) desplazado 83,0 mm del eje J1, a lo largo del eje J2.
 - El eje del prismático corta al eje J2.
 - Cara exterior de la brida de E3: 105 mm + q3 del eje J2, con q3 = 0 … 340 mm (q3 = 0 retraído).
-- Herramienta (`.scad` v4.2), con la cara de la brida como referencia: eje de cabeceo de la muñeca a 67,6 mm sobre el eje del prismático (65,4 mm en el STEP del CAD). Labio de la ventosa SAB40 a 55,2 mm del eje de cabeceo (63,5 mm en el CAD, con la ventosa medida y la caja del STEP, que es más larga). Con la ventosa alineada con el brazo, el labio queda a 105 + q3 + 122,8 mm del eje J2 (227,8 … 567,8 mm).
-- Rangos: J1 de −40° a +120° respecto del árbol por el mástil de las cámaras (límite por software −35° … +115°; los cajones de descarga tienen que quedar en ese rango); J2 de −45° a +45° con el brazo apuntando al árbol (ver [cad/solidworks/README.md](../cad/solidworks/README.md#rangos-de-movimiento-verificados-por-interferencias)); J3 340 mm.
+- Herramienta (`.scad` v4.2), con la cara de la brida como referencia: eje de cabeceo de la muñeca a 67,6 mm sobre el eje del prismático (igual en el STEP del CAD). Labio de la ventosa SAB40 a 55,2 mm del eje de cabeceo (41,2 mm en el CAD, con la ventosa medida de 22 mm). Parámetros DH del CAD: [sistemas_de_referencia.md](sistemas_de_referencia.md). Con la ventosa alineada con el brazo, el labio queda a 105 + q3 + 122,8 mm del eje J2 (227,8 … 567,8 mm).
+- Rangos: J1 de −70° a +100° respecto del árbol por el mástil de las cámaras (límite por software −65° … +95°; los cajones de descarga tienen que quedar en ese rango); J2 de −45° a +45° con el brazo apuntando al árbol (ver [cad/solidworks/README.md](../cad/solidworks/README.md#rangos-de-movimiento-verificados-por-interferencias)); J3 340 mm.
 
 ## 6. Fabricación
 
@@ -67,7 +67,7 @@ Medida en el ensamblaje SolidWorks (`cad/solidworks/CB-000`), origen sobre el ej
 - ¿El profesor cuenta el riel como GDL 1? La guía pide DC en lazo cerrado en los dos primeros GDL, y el riel usa un paso a paso.
 - Torque del 5840: un vendedor da ≈ 70 kg·cm (12 V, 12 rpm) sin aclarar si es nominal o de bloqueo. En la v7 el hombro pide 39 kg·cm de pico (§8). Si los 70 kg·cm fueran de bloqueo, el margen se achica: probar colgando 1 kg a 40 cm del eje y medir la corriente (bloqueo: 6,5 A).
 - Medir el 5840 comprado con calibre antes de imprimir CB-210. El CAD sigue el plano del vendedor: M4 prof. 6, eje a 20 mm del borde, buje de 5 mm.
-- Riel J0: el alto del carro sube todo el robot. El brazo cubre la esfera mientras el carro mida hasta 51 mm (ver [espacio_de_trabajo.md](espacio_de_trabajo.md)).
+- Riel J0: el alto del carro sube todo el robot. El brazo cubre la esfera mientras el carro mida hasta 77 mm (ver [espacio_de_trabajo.md](espacio_de_trabajo.md)).
 - J3: la correa no es autobloqueante. Con el motor sin corriente el tubo puede deslizar si el brazo está inclinado: mantener el driver habilitado.
 - J3: medir el juego del tubo en el canal impreso de E2 y anotar qué trae el kit GT2 (BOM T04): puede cubrir la correa y las poleas de J3. El husillo T8 ya pedido (T05) queda de repuesto.
 - Pesar las piezas impresas y la herramienta, y volver a correr `python control/torques.py` con esos valores.

@@ -19,7 +19,8 @@ public static class SW
             App = (SldWorks)Activator.CreateInstance(t);
         }
         App.Visible = true;
-        App.UserControl = false;
+        // UserControl = true: SolidWorks no se cierra cuando termina el script (con false se cerraba la sesión del usuario)
+        App.UserControl = true;
         return App;
     }
 
