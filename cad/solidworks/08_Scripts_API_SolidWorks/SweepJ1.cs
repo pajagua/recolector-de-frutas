@@ -7,7 +7,7 @@ using SolidWorks.Interop.swconst;
 
 // SweepJ1.exe <CB-000x> <q3_mm> <elev> <j1_min> <j1_max> <paso> : gira J1 (0 = apuntando al arbol) con J2 y J3 fijos; lista choques
 // Como Alcance.cs, pero parte de la pose guardada (cualquier J1, J2 y J3) y mueve tambien el tramo intermedio
-// CB-410B (a q3/2) si existe. Apunta J1 al borde del tablero mas cercano, barre la elevacion de J2 con J3 = q3
+// CB-410B (a q3/2) si existe. J1 = 0 apunta al arbol (hasta la v7.6: al borde del tablero mas cercano), barre la elevacion de J2 con J3 = q3
 // y lista los choques del brazo (CB-300/400/410) contra base y torre, y entre piezas del brazo. No guarda nada.
 class SweepJ1
 {
@@ -70,6 +70,8 @@ class SweepJ1
             double d = Math.Abs(p[0] * ey - p[1] * ex) / L, t = -(p[0] * ex + p[1] * ey) / (L * L);
             if (d < best) { best = d; nEdge = new[] { (p[0] + t * ex) / d, (p[1] + t * ey) / d }; }
         }
+        // v7.7: con el tablero de 400 x 300 el borde más cercano es el trasero (115 mm). J1 = 0 apunta siempre al árbol.
+        nEdge = new[] { Math.Cos(-112.5 * Math.PI / 180), Math.Sin(-112.5 * Math.PI / 180) };
 
         // pose actual (mundo)
         var e2w = Xf.FromComp(Find(c300, "CB-301"));

@@ -8,13 +8,13 @@ Dos maneras de acortar el prismático J3 de la v6. En las dos:
 - El NEMA 17 del prismático pasa de la punta de la cola a **arriba del cubo de E2**, casi sobre el eje J2 (22 mm por delante en A, 40 mm en B). Ahí no lo alcanza el soporte del imán, que pasa por debajo de E2, ni la torre.
 - J3 se mueve con **correa GT2** en lugar del husillo T8.
 
-> **Decisión (2026-10-27): la variante A es el diseño oficial.** Está en el ensamblaje principal `cad/solidworks/CB-000_CitriBot_Ensamblaje_General.SLDASM`, con los nombres de siempre: CB-300, CB-301 (E2), CB-400, CB-401 (tubo), CB-403 (tapón con pinza), CB-514 (correa) y CB-306 (placa del motor). La variante B queda como alternativa en `cad/solidworks/CB-000B_CitriBot_v7B_Telescopico.SLDASM` y `11_v7B_Prismatico_Telescopico/`. Scripts: `08_Scripts_API_SolidWorks/V7.cs` (genera las dos) y `Promote.cs` (pasó la A a los nombres oficiales).
+> **Decisión (2026-11-07, v7.12): la variante B (telescópica) es el diseño oficial.** Es el ensamblaje principal `cad/solidworks/CB-000_CitriBot_Ensamblaje_General.SLDASM`, con las piezas de `11_v7B_Prismatico_Telescopico/` (CB-300B, CB-301B, CB-410B, CB-400B …). La variante A (oficial del 2026-10-27 al 2026-11-07) queda como alternativa en `cad/solidworks/CB-000A_CitriBot_v7A_Correa.SLDASM`, con sus nombres de siempre: CB-300, CB-301 (E2), CB-400, CB-401 (tubo), CB-403 (tapón con pinza) y CB-514 (correa). La BOM principal ([bom/BOM.md](../bom/BOM.md)) y el firmware (40 pasos/mm) ya son los de B. Scripts: `08_Scripts_API_SolidWorks/V7.cs` (genera las dos), `Promote.cs` (pasó la A a los nombres oficiales en la v7) y `Telescopico.cs` (completa la B en la v7.12).
 
 | | v7A (correa) | v7B (telescópica) |
 |---|---|---|
-| J3 retraído | ![v7A](../cad/solidworks/06_Imagenes/CB-000_front.png) | ![v7B](../cad/solidworks/06_Imagenes/CB-000B_front.png) |
-| J3 extendido (340 mm) | ![v7A extendido](../cad/solidworks/06_Imagenes/CB-000_extendido_front.png) | ![v7B extendido](../cad/solidworks/06_Imagenes/CB-000B_extendido_front.png) |
-| Mecanismo (E2, base y torre ocultos) | ![v7A mecanismo](../cad/solidworks/06_Imagenes/CB-000_mecanismo_front.png) | ![v7B mecanismo](../cad/solidworks/06_Imagenes/CB-000B_mecanismo_front.png) |
+| J3 retraído | ![v7A](../cad/solidworks/06_Imagenes/CB-000A_front.png) | ![v7B](../cad/solidworks/06_Imagenes/CB-000_front.png) |
+| J3 extendido (340 mm) | ![v7A extendido](../cad/solidworks/06_Imagenes/CB-000A_extendido_front.png) | ![v7B extendido](../cad/solidworks/06_Imagenes/CB-000_extendido_front.png) |
+| Mecanismo (E2, base y torre ocultos) | ![v7A mecanismo](../cad/solidworks/06_Imagenes/CB-000A_mecanismo_front.png) | ![v7B mecanismo](../cad/solidworks/06_Imagenes/CB-000_mecanismo_front.png) |
 
 ## 1. Comparación
 
@@ -76,7 +76,7 @@ Tres piezas deslizan una dentro de otra:
    Cuando el intermedio avanza x, el interior avanza 2x respecto de E2. Es el mismo mecanismo de los mástiles de autoelevadora, con correa en los dos sentidos.
 3. **Guías:** con J3 extendido quedan 95 mm del intermedio dentro de E2 y 93 mm del interior dentro del intermedio. El interior se guía con el buje delantero CB-414B (en U, abierto arriba para la correa) y con los patines del buje trasero CB-422B.
 
-En el CAD, el intermedio (CB-410B) y el interior (CB-400B) tienen relaciones de límite separadas: 0–170 y 0–340 mm. La correa del multiplicador está dibujada en home y no acompaña el movimiento. Para mover el brazo a mano en SolidWorks, llevá el intermedio a la mitad de q3.
+En el CAD, el intermedio (CB-410B) y el interior (CB-400B) tienen relaciones de límite separadas: 0–170 y 0–340 mm. Para mover el brazo a mano en SolidWorks, llevá el intermedio a la mitad de q3. Desde la v7.8 la correa del multiplicador (CB-442B) va dentro de CB-410B y se mueve con el intermedio. Para ver solo el mecanismo, con un estudio de movimiento que lo hace salir y entrar, está `CB-450B_Prismatico_Telescopico_Solo` (ver [prismatico_opciones.md](prismatico_opciones.md#3--telescópica-21)).
 
 ## 4. Lista de materiales
 
@@ -140,7 +140,7 @@ Solo cambia el eslabón E2 con el prismático. El resto del robot (base, cintura
 | Macho M3 + broca de 2,5 mm | roscar los 4 agujeros de la cara superior del intermedio | 1 | – | herramienta |
 | Precinto | extremos de la correa de la etapa 1 | 2 | – | |
 | Cinta de PTFE adhesiva | canal de E2 y buje delantero | 0,5 m | – | |
-| Final de carrera | home de J3 | 1 | – | ya en S04 |
+| Final de carrera | home de J3: alojamiento en la pared trasera de CB-301B, 2 × M2 × 12 | 1 | CB-516 | ya en S04 |
 
 **Impreso (PETG)**
 
@@ -173,7 +173,7 @@ El hombro (5840, buje CB-305, AS5600, tapa CB-303 e imán CB-232) se arma igual 
 6. **Tubo.** Cortalo a 440 mm. Perforá Ø3 a 10 mm de cada punta, de arriba hacia abajo. Pegá la brida CB-402 y el tapón CB-403 con epoxi y clavá los pasadores Ø3 × 30 al ras.
 7. Meté el tubo por el frente de E2 hasta el fondo (home).
 8. **Correa.** Pasala por la ranura alrededor de las dos poleas. Metés un extremo en la ranura de la pinza, la tensás a mano y metés el otro extremo con los dientes enfrentados. Asegurá con 2 precintos. Tiene que quedar tensa como una cuerda de guitarra grave, sin dientes saltados.
-9. **Final de carrera** en la pared trasera de E2, tocado por el tapón con J3 retraído.
+9. **Final de carrera** en la pared trasera de E2, tocado por el tapón con J3 retraído: escuadra CB-307 sobre el piso del canal (la atraviesa el M5 de la polea loca), switch con 2 × M2 × 10 y cables por el paso Ø6 de la pared trasera (v7.11, ver [cad/solidworks/README.md §6.17](../cad/solidworks/README.md)).
 10. **Herramienta.** Horquilla CB-601 a la brida con 4 × M5 × 25 + tuerca.
 11. **Firmware:** 80 pasos/mm a 1/16 de micropaso. Probar primero a 50 mm/s.
 
@@ -204,7 +204,7 @@ El hombro (5840, buje CB-305, AS5600, tapa CB-303 e imán CB-232) se arma igual 
 11. **Cerrar la correa 2:1.** Los dos extremos van al **anclaje de E2**, a 72 mm delante de J2 (placa de apriete + M3 × 10 desde abajo). Tensala con el intermedio y el interior retraídos.
 12. **Correa de la etapa 1.** Rodeá la polea del motor y la polea loca y cerrala en la pinza CB-415B, igual que en A.
 13. **Prueba a mano.** Empujá el intermedio: el interior tiene que salir el doble y volver sin trabarse. Si hay juego vertical, agregá PTFE en el buje delantero.
-14. **Final de carrera y herramienta:** como en A.
+14. **Final de carrera:** meté el switch desde atrás en el alojamiento de la pared trasera de CB-301B, con la palanca hacia adentro, y atornillalo con 2 × M2 × 12 de arriba hacia abajo. Con el telescopio retraído a mano tiene que hacer clic contra el tapón CB-412B antes del tope. **Herramienta:** horquilla CB-601 a la brida CB-432B con 4 × M5 × 25 + tuerca.
 15. **Firmware:** **40 pasos/mm de q3** a 1/16 de micropaso. Con el 17HS4401, limitar el motor a ≈ 150 rpm (≈ 200 mm/s en la brida).
 
 ## 6. Hombro: ¿direct drive?
@@ -242,6 +242,8 @@ Hoy el hombro ya es direct drive en un sentido: el eje del 5840 entra directo en
 
 (\*) Con B extendido, SolidWorks marca la correa del multiplicador contra el intermedio. Es porque la correa está dibujada fija en home. No es un choque real.
 
+**v7.12, con B como oficial** (`Verificar.cs` e `IntfCuerpos.cs`): 0 errores en CB-000 (10 relaciones), CB-000A y CB-450B; sin choques en la pose de referencia ni en el barrido de J1 −70°, −67°, 0° y +100° con J2 a −45°, 0° y +45° y J3 en 0 y 340 mm. La correa del multiplicador ya no marca contra el intermedio (va dentro de CB-410B desde la v7.8).
+
 Durante la verificación se corrigieron tres cosas:
 
 - **Placa soporte CB-306 del NEMA.** Los tornillos del motor no tenían acceso desde dentro del cubo.
@@ -250,8 +252,8 @@ Durante la verificación se corrigieron tres cosas:
 
 ## 8. Pendientes
 
-- Medir el torque real del 5840 (§6) antes de elegir entre A y B.
+- Medir el torque real del 5840 (§6): con B pide 44 kg·cm de pico.
 - B: imprimir primero el telescopio (intermedio + interior + buje) y probar el juego antes de imprimir E2.
-- Modelar las placas de apriete de las correas y el final de carrera.
-- Actualizar `bom/BOM_CitriBot.csv` cuando elijan una variante (§4 dice qué sale y qué entra).
-- `control/torques.py` y `docs/espacio_de_trabajo.md` siguen con los números de la v6.
+- Modelar las placas de apriete de las correas (el final de carrera de J3 ya está: CB-307, v7.11).
+- `control/torques.py` sigue modelando la variante A (39 kg·cm); para B vale el 44 de §1. `docs/espacio_de_trabajo.md` ya dibuja el telescópico.
+- `CB-001` (brazo solo, exportado a Simscape) sigue armado con la variante A.
