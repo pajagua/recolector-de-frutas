@@ -10,8 +10,8 @@ En el CAD hay un sistema de coordenadas por articulación, con la convención de
 |---|---|---|---|
 | `SR0_base_eje_J1` | CB-121 placa fija de J1 (base, fija) | eje J1, hacia arriba | sobre el eje J1, en la cara de arriba del tablero (origen de CB-000) |
 | `SR1_cintura_eje_J2` | CB-210 torre (gira con J1) | eje J2 | cruce de J1 y J2 (z = 355,5) |
-| `SR2_E2_eje_J3` | CB-301 E2 (gira con J2) | eje del prismático, hacia la herramienta | cruce de J2 y el prismático (83 mm al costado de J1) |
-| `SR3_E3_eje_J4` | CB-401 tubo de E3 (desliza con J3) | eje de cabeceo de la muñeca | cruce del prismático y el eje de cabeceo |
+| `SR2_E2_eje_J3` | CB-301B E2 (gira con J2; en la variante A, CB-301) | eje del prismático, hacia la herramienta | cruce de J2 y el prismático (83 mm al costado de J1) |
+| `SR3_E3_eje_J4` | CB-421B tubo interior = E3 (desliza con J3; en la variante A, el tubo CB-401) | eje de cabeceo de la muñeca | cruce del prismático y el eje de cabeceo |
 | `SR4_caja_eje_J5` | CB-603 caja de torsión (cabecea con J4) | eje de torsión, hacia la ventosa | cruce del eje de cabeceo y el de torsión |
 | `SR5_ventosa_TCP` | CB-606 eje hueco (gira con J5) | igual que z<sub>4</sub> | labio de la ventosa (punto de trabajo) |
 

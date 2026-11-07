@@ -47,25 +47,26 @@ class VerFinales
         else if (doc.Visible) { Console.WriteLine("CB-000 está abierto con ventana (del usuario): no se mueve"); return; }
         var m = doc; var asm = (AssemblyDoc)m; asm.ResolveAllLightWeightComponents(false);
         var comps = ((object[])asm.GetComponents(true)).Cast<Component2>().ToDictionary(c => c.Name2.Substring(0, 6));
-        var c200 = comps["CB-200"]; var c300 = comps["CB-300"]; var c400 = comps["CB-400"];
-        var X200 = Xf.FromComp(c200); var X300 = Xf.FromComp(c300); var X400 = Xf.FromComp(c400);
+        var c200 = comps["CB-200"]; var c300 = comps["CB-300"]; var c400 = comps["CB-400"]; Component2 c410 = comps.ContainsKey("CB-410") ? comps["CB-410"] : null;   // variante B: tramo intermedio (q3/2)
+        var X200 = Xf.FromComp(c200); var X300 = Xf.FromComp(c300); var X400 = Xf.FromComp(c400); var X410 = c410 != null ? Xf.FromComp(c410) : null;
         var tree = new[] { Math.Cos(-112.5 * Math.PI / 180), Math.Sin(-112.5 * Math.PI / 180) };
         var e2w = Xf.FromComp(Find(c300, "CB-301"));
         double[] ax = Dir(e2w, new double[] { 1, 0, 0 });
         double axh = Math.Sqrt(ax[0] * ax[0] + ax[1] * ax[1]);
         double j1now = Math.Atan2(tree[0] * ax[1] / axh - tree[1] * ax[0] / axh, tree[0] * ax[0] / axh + tree[1] * ax[1] / axh) * 180 / Math.PI;
-        var brida = Find(c400, "CB-402");
+        var brida = Find(c400, "CB-402") ?? Find(c400, "CB-432");   // A: CB-402, B: CB-432B (origen en x = q3 en las dos)
         double q30 = e2w.Inv().Apply(Xf.FromComp(brida).T)[0];   // q3 = x del origen de la brida en E2 (la cara de J3_limite_carrera está 15 mm delante del origen)
         for (Feature f = (Feature)m.FirstFeature(); f != null; f = (Feature)f.GetNextFeature())
             if (f.GetTypeName2() == "MateGroup")
                 for (Feature sf = (Feature)f.GetFirstSubFeature(); sf != null; sf = (Feature)sf.GetNextSubFeature())
-                    if (sf.Name == "J3_limite_carrera")
+                    if (sf.Name == "J3_limite_carrera" || sf.Name == "J3B_intermedio_limite")
                         sf.SetSuppression2((int)swFeatureSuppressionAction_e.swSuppressFeature, (int)swInConfigurationOpts_e.swThisConfiguration, null);
         double j1 = a[1] == "actual" ? j1now : double.Parse(a[1]), q3 = double.Parse(a[2]);
         var r1 = Rot(new double[] { 0, 0, 0 }, new double[] { 0, 0, 1 }, j1 - j1now);
         c200.Transform2 = X200.Then(r1).ToMath();
         c300.Transform2 = X300.Then(r1).ToMath();
         c400.Transform2 = X400.Then(Xf.Tr((q3 - q30) * ax[0], (q3 - q30) * ax[1], (q3 - q30) * ax[2])).Then(r1).ToMath();
+        if (c410 != null) { double qm0 = e2w.Inv().Apply(Xf.FromComp(Find(c410, "CB-411")).T)[0]; double dm = q3 / 2 - qm0; c410.Transform2 = X410.Then(Xf.Tr(dm * ax[0], dm * ax[1], dm * ax[2])).Then(r1).ToMath(); }
         m.EditRebuild3();
         var e2 = Xf.FromComp(Find(c300, "CB-301")); var d = Dir(e2, new double[] { 1, 0, 0 }); double dh = Math.Sqrt(d[0] * d[0] + d[1] * d[1]);
         double j1real = Math.Atan2(tree[0] * d[1] / dh - tree[1] * d[0] / dh, tree[0] * d[0] / dh + tree[1] * d[1] / dh) * 180 / Math.PI;

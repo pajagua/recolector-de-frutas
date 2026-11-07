@@ -84,6 +84,10 @@ Detalle de piezas y montaje: [cad/solidworks/README.md](../cad/solidworks/README
 
 La v6 dejaba 451,5 mm de brazo detrás del hombro: la cola de E2 más el NEMA 17 en la punta. En la v7 el tubo de E3 (440 mm) se mueve con una **correa GT2** y el NEMA 17 sube al cubo de E2, así que la cola termina a **377 mm** detrás del eje J2. La carrera queda en **340 mm** y la ventosa va de 227,8 a 567,8 mm. Comparación con la variante telescópica (204 mm detrás de J2): [v7_prismatico.md](v7_prismatico.md).
 
+### v7 → v7.12: prismático telescópico
+
+Desde la v7.12 el prismático oficial es el **telescópico 2:1** (variante B de [v7_prismatico.md](v7_prismatico.md)). Con J3 retraído la brida queda en el mismo lugar y la carrera sigue en 340 mm (170 + 170), así que el alcance de la ventosa no cambia (227,8 a 567,8 mm). Cambia lo que queda detrás del hombro: **212 mm** (la manga de E2 con el alojamiento del final de carrera de J3) en lugar de 377. La figura de arriba ya dibuja el telescópico: tramo intermedio (se mueve q3/2) y tramo interior (q3).
+
 ### v7.6 → v7.7: tablero de 400 × 300
 
 El tablero de 550 × 550 del BCN3D pasa a 400 × 300. El eje J1 queda a **185 mm** del borde del árbol (antes 194,8), así que la esfera se acerca 9,8 mm al hombro. Los márgenes quedan más parejos: 17 mm del lado cercano y 24 mm del lejano (antes 26 y 14), y el carro del riel puede medir hasta 77 mm (antes 51). La bandeja de electrónica pasa al costado de J1, y el mástil de las cámaras a la esquina trasera. Detalle en el README del CAD (v7.7).

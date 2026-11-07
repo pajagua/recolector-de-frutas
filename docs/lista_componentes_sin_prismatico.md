@@ -2,7 +2,7 @@
 
 Lo que hace falta para la **herramienta**, la **base y la cintura (J1)**, el **hombro (J2)**, la **electrónica** y la **visión**. Sale de la BOM ([bom/BOM.md](../bom/BOM.md), columna **ID**) y del CAD v7.7.
 
-- **No incluye** el prismático J3 ni el eslabón E2, porque dependen de qué versión se use: correa simple (v7A, BOM oficial) o telescópica ([telescopica_lista_componentes.md](telescopica_lista_componentes.md)).
+- **No incluye** el prismático J3 ni el eslabón E2, porque dependen de qué versión se use: telescópica (oficial desde la v7.12, [telescopica_lista_componentes.md](telescopica_lista_componentes.md) y BOM principal) o correa simple (v7A).
 - **No incluye** el riel J0, que todavía no está diseñado.
 - **Estado** es el de la BOM: *Prestado* (laboratorio), *Pedido* (compra grupal), *Por confirmar*, *En mano* o *Falta*.
 

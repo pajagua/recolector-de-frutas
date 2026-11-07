@@ -4,7 +4,7 @@ Todo lo que hace falta para armar el mecanismo telescópico 2:1 del ensamblaje `
 
 El hombro (motor 5840, buje, AS5600 e imán), la cintura, la base y la herramienta no cambian.
 
-> La BOM oficial ([bom/BOM.md](../bom/BOM.md)) sigue con la versión de correa simple (v7A). La columna **BOM** dice qué ítem de esa lista se usa, se cambia o falta. Si se adopta la telescópica, hay que pasar estos cambios a la BOM.
+> **Desde la v7.12 esta es la versión oficial** y la BOM principal ([bom/BOM.md](../bom/BOM.md)) ya la incluye, junto con el final de carrera de J3 en la pared trasera de CB-301B. La columna **BOM** dice qué ítem de la lista principal corresponde a cada componente.
 
 ---
 
@@ -75,7 +75,7 @@ El hombro (motor 5840, buje, AS5600 e imán), la cintura, la base y la herramien
 | Pieza | STL | Medida (mm) | Relleno | Notas |
 |:--|:--|:--:|:--|:--|
 | CB-301B Eslabón E2 (manga corta) | [11_v7B…/CB-301B](../cad/imprimir/11_v7B_Prismatico_Telescopico/CB-301B_Eslabon_E2_v7B_Telescopico.stl) | 297 × 95 × 87 | cubo ≥ 6 perímetros y 50 %; manga 4 perímetros y 25 % | **No entra en la Ender 3 V2** (220 × 220): partir en 2 tramos, o imprimir en diagonal si entra |
-| CB-306 Placa del NEMA 17 | [03_Hombro…/CB-306](../cad/imprimir/03_Hombro_E2_J2/CB-306_Placa_Soporte_NEMA17_Prismatico.stl) | 62 × 62 × 5 | 100 % | la misma que en la versión oficial |
+| CB-306 Placa del NEMA 17 | [03_Hombro…/CB-306](../cad/imprimir/03_Hombro_E2_J2/CB-306_Placa_Soporte_NEMA17_Prismatico.stl) | 62 × 62 × 5 | 100 % | la misma que en la v7A |
 | CB-412B Tapón trasero del intermedio | [CB-412B](../cad/imprimir/11_v7B_Prismatico_Telescopico/CB-412B_Tapon_Trasero_Intermedio_Polea.stl) | 26 × 37 × 30 | 100 % | lleva la polea 16T trasera |
 | CB-413B Soporte de la polea delantera | [CB-413B](../cad/imprimir/11_v7B_Prismatico_Telescopico/CB-413B_Soporte_Polea_Delantera.stl) | 26 × 9 × 16 | 100 % | |
 | CB-414B Buje delantero del intermedio | [CB-414B](../cad/imprimir/11_v7B_Prismatico_Telescopico/CB-414B_Buje_Delantero_Intermedio.stl) | 13 × 26 × 26 | 100 % | guía el tubo interior; mejor en PTFE o UHMW si se puede mecanizar |
@@ -90,7 +90,7 @@ El hombro (motor 5840, buje, AS5600 e imán), la cintura, la base y la herramien
 
 ---
 
-## 3. Qué deja de hacer falta (respecto de la versión oficial)
+## 3. Qué deja de hacer falta (respecto de la versión de correa simple, v7A)
 
 | Sale | BOM |
 |:--|:--|
@@ -105,6 +105,6 @@ El hombro (motor 5840, buje, AS5600 e imán), la cintura, la base y la herramien
 
 ## 4. Ajustes de firmware
 
-- **40 pasos/mm de q3** a 1/16 de micropaso (la versión oficial usa 80).
+- **40 pasos/mm de q3** a 1/16 de micropaso (la v7A usaba 80).
 - Con el 17HS4401, limitar el motor a ≈ 150 rpm (≈ 200 mm/s en la brida). Con el 17HS19 de 48 mm hay más margen.
 - La correa no es autobloqueante: dejar el driver del NEMA habilitado para que el brazo inclinado no deslice.

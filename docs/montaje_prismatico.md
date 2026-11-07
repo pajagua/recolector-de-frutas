@@ -1,5 +1,7 @@
 # Guía completa de preparación, montaje y puesta en marcha del prismático $J_3$ (`v7A`)
 
+> **Desde la v7.12 el diseño oficial es el telescópico (variante B).** Esta guía es de la variante A (alternativa, `CB-000A_CitriBot_v7A_Correa`). El montaje del telescópico está en [v7_prismatico.md](v7_prismatico.md) §5.2.
+
 Manual de taller paso a paso para fabricar, ensamblar, ajustar y poner en marcha la articulación prismática $J_3$ de **CitriBot** en su configuración oficial **`v7A`** (transmisión de una etapa por *timing belt* `GT2` con motor `NEMA 17` sobre el cubo del hombro `E2`).
 
 Complementa la descripción general de [v7_prismatico.md](v7_prismatico.md), la lista de materiales de [../bom/BOM.md](../bom/BOM.md) y el armado del efector final en [montaje_herramienta.md](montaje_herramienta.md).
@@ -10,7 +12,7 @@ Complementa la descripción general de [v7_prismatico.md](v7_prismatico.md), la 
 
 | Vista interna de la transmisión (`E2` oculto, lateral) | Vista interna de la transmisión (`E2` oculto, trimétrica) |
 |---|---|
-| ![Mecanismo lateral](../cad/solidworks/06_Imagenes/CB-000_mecanismo_front.png) | ![Mecanismo trimétrico](../cad/solidworks/06_Imagenes/CB-000_mecanismo_trimetric.png) |
+| ![Mecanismo lateral](../cad/solidworks/06_Imagenes/CB-000A_mecanismo_front.png) | ![Mecanismo trimétrico](../cad/solidworks/06_Imagenes/CB-000A_mecanismo_trimetric.png) |
 
 ---
 

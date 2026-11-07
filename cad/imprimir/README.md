@@ -54,26 +54,28 @@ El anillo de retención de la `.scad` (BOM P20) no hace falta: en el CAD el eje 
 
 | Archivo | Cant. | Notas |
 |---|---|---|
-| `CB-301_Eslabon_E2_mod5840.stl` | 1 | **no entra en la Ender 3 V2** (470 × 93 × 87 mm): hay que partirlo o imprimirlo en una impresora más grande. Cola con 3 perímetros y 15 %. v7.11: paso de cables Ø6 en la pared trasera |
+| `CB-301_Eslabon_E2_mod5840.stl` | 1 | **solo variante A** (alternativa): no imprimir para el telescópico. **no entra en la Ender 3 V2** (470 × 93 × 87 mm): hay que partirlo o imprimirlo en una impresora más grande. Cola con 3 perímetros y 15 %. v7.11: paso de cables Ø6 en la pared trasera |
 | `CB-303_Tapa_E2_Soporte_AS5600.stl` | 1 | |
 | `CB-305_Buje_D8_Hombro.stl` | 1 | |
 | `CB-306_Placa_Soporte_NEMA17_Prismatico.stl` | 1 | |
-| `CB-307_Soporte_Final_Carrera_J3.stl` | 1 | soporte del final de carrera de J3 en el fondo del canal de E2 (v7.11); apoyado sobre la cara del brazo del switch |
+| `CB-307_Soporte_Final_Carrera_J3.stl` | 1 | **solo variante A** (alternativa): no imprimir para el telescópico. soporte del final de carrera de J3 en el fondo del canal de E2 (v7.11); apoyado sobre la cara del brazo del switch |
 
-## 04_Prismatico_E3_J3 (CB-400)
+## 04_Prismatico_E3_J3 (CB-400, variante A: alternativa)
+
+Solo para la variante A (correa y un tubo). Para el telescópico, que es el oficial desde la v7.12, no se imprimen.
 
 | Archivo | Cant. | Notas |
 |---|---|---|
 | `CB-402_Brida_E3_Herramienta.stl` | 1 | |
 | `CB-403_Tapon_Trasero_Pinza_Correa.stl` | 1 | |
 
-## 11_v7B_Prismatico_Telescopico (alternativa, no es el diseño oficial)
+## 11_v7B_Prismatico_Telescopico (prismático oficial desde la v7.12)
 
 Piezas del prismático telescópico 2:1. Lista completa (también lo que hay que comprar): [docs/telescopica_lista_componentes.md](../../docs/telescopica_lista_componentes.md).
 
 | Archivo | Cant. | Notas |
 |---|---|---|
-| `CB-301B_Eslabon_E2_v7B_Telescopico.stl` | 1 | 297 mm: no entra en la Ender 3 V2, partir en 2 tramos. Cubo ≥ 6 perímetros y 50 %, manga 4 perímetros y 25 % |
+| `CB-301B_Eslabon_E2_v7B_Telescopico.stl` | 1 | 305 mm (con el alojamiento del final de carrera de J3 en la pared trasera, v7.12): no entra en la Ender 3 V2, partir en 2 tramos. Cubo ≥ 6 perímetros y 50 %, manga 4 perímetros y 25 % |
 | `CB-412B_Tapon_Trasero_Intermedio_Polea.stl` | 1 | 100 % |
 | `CB-413B_Soporte_Polea_Delantera.stl` | 1 | 100 % |
 | `CB-414B_Buje_Delantero_Intermedio.stl` | 1 | 100 % |
@@ -89,6 +91,6 @@ La placa del motor CB-306 es la de `03_Hombro_E2_J2`.
 |---|---|---|
 | `CB-158_Adaptador_Rotula_Bola12.stl` | 1 | soporte estéreo sobre la rótula del trípode, con bola Ø11,8 integrada (cuello macizo), 4 × M3x12 a la base. Cara de arriba en la cama, soportes bajo la bola |
 
-No hay STL de las piezas compradas (`05_Comerciales`), del tablero de madera (CB-111), de los tubos de aluminio (CB-152, CB-401) ni de la variante telescópica (`11_v7B_Prismatico_Telescopico`), que no se va a construir.
+No hay STL de las piezas compradas (`05_Comerciales`), del tablero de madera (CB-111), ni de los tubos de aluminio (CB-152, CB-401, CB-411B, CB-421B).
 
 Para volver a exportar: `cad/solidworks/08_Scripts_API_SolidWorks/ExportStl.cs` (manda las piezas de `09_Herramienta` a `00_Herramienta`).

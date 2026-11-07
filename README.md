@@ -34,7 +34,7 @@ Actualizado: 2026-10-22.
 | J0 riel | P | NEMA 17 (17HS2408) | TB6600 | final de carrera |
 | J1 cintura | R | motorreductor 37D 90:1, correa T5 ≈ 10:1 | Sabertooth canal 1 | encoder 64 CPR del motor |
 | J2 hombro | R | motorreductor sinfín 5840-36ZY, directo | Sabertooth canal 2 | AS5600 en el eje |
-| J3 brazo | P | NEMA 17 + correa GT2 (carrera 340 mm) | A4988 en la RAMPS | final de carrera |
+| J3 brazo | P | NEMA 17 + correa GT2, telescópico 2:1 (carrera 340 mm) | A4988 en la RAMPS | final de carrera |
 | J4 muñeca | R | servo MG996R | PWM del MEGA | – |
 | J5 torsión | R | servo MG996R + correa GT2 66:66 | PWM del MEGA | – |
 | Vacío | – | bomba 12 V + electroválvula | MOSFET | sensor de presión MPS20N0040D |

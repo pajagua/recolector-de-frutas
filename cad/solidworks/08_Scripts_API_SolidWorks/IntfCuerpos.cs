@@ -51,14 +51,14 @@ class IntfCuerpos
         else if (doc.Visible) { Console.WriteLine("CB-000 está abierto con ventana: no se mueve"); return; }
         var m = doc; var asm = (AssemblyDoc)m; asm.ResolveAllLightWeightComponents(false);
         var top = ((object[])asm.GetComponents(true)).Cast<Component2>().ToDictionary(c => c.Name2.Substring(0, 6));
-        var c200 = top["CB-200"]; var c300 = top["CB-300"]; var c400 = top["CB-400"];
-        var X200 = Xf.FromComp(c200); var X300 = Xf.FromComp(c300); var X400 = Xf.FromComp(c400);
+        var c200 = top["CB-200"]; var c300 = top["CB-300"]; var c400 = top["CB-400"]; Component2 c410 = top.ContainsKey("CB-410") ? top["CB-410"] : null;   // variante B: tramo intermedio (q3/2)
+        var X200 = Xf.FromComp(c200); var X300 = Xf.FromComp(c300); var X400 = Xf.FromComp(c400); var X410 = c410 != null ? Xf.FromComp(c410) : null;
         var tree = new[] { Math.Cos(-112.5 * Math.PI / 180), Math.Sin(-112.5 * Math.PI / 180) };
         var e2w = Xf.FromComp(Find(c300, "CB-301"));
         double[] ax = Dir(e2w, new double[] { 1, 0, 0 }); double axh = Math.Sqrt(ax[0] * ax[0] + ax[1] * ax[1]);
         double j1now = Math.Atan2(tree[0] * ax[1] / axh - tree[1] * ax[0] / axh, tree[0] * ax[0] / axh + tree[1] * ax[1] / axh) * 180 / Math.PI;
         double el0 = Elev(ax);
-        var brida = Find(c400, "CB-402");
+        var brida = Find(c400, "CB-402") ?? Find(c400, "CB-432");   // A: CB-402, B: CB-432B (origen en x = q3 en las dos)
         double q30 = e2w.Inv().Apply(Xf.FromComp(brida).T)[0];   // q3 = x del origen de la brida en E2 (la cara de J3_limite_carrera está 15 mm delante del origen: distancia = q3 + 2)
         var tw = Xf.FromComp(Find(c200, "CB-210"));
         double[] p2 = tw.Apply(new double[] { 190.171, 0, -86.723 }), p2b = tw.Apply(new double[] { 190.171, 1, -86.723 });
@@ -67,7 +67,7 @@ class IntfCuerpos
         for (Feature f = (Feature)m.FirstFeature(); f != null; f = (Feature)f.GetNextFeature())
             if (f.GetTypeName2() == "MateGroup")
                 for (Feature sf = (Feature)f.GetFirstSubFeature(); sf != null; sf = (Feature)sf.GetNextSubFeature())
-                    if (sf.Name == "J3_limite_carrera")
+                    if (sf.Name == "J3_limite_carrera" || sf.Name == "J3B_intermedio_limite")
                         sf.SetSuppression2((int)swFeatureSuppressionAction_e.swSuppressFeature, (int)swInConfigurationOpts_e.swThisConfiguration, null);
         double j1 = a[1] == "actual" ? j1now : double.Parse(a[1]), el = a[2] == "actual" ? el0 : double.Parse(a[2]);
         double q3 = a[3] == "actual" ? q30 : double.Parse(a[3]);
@@ -76,6 +76,7 @@ class IntfCuerpos
         c200.Transform2 = X200.Then(r1).ToMath();
         c300.Transform2 = X300.Then(r2).Then(r1).ToMath();
         c400.Transform2 = X400.Then(Xf.Tr((q3 - q30) * ax[0], (q3 - q30) * ax[1], (q3 - q30) * ax[2])).Then(r2).Then(r1).ToMath();
+        if (c410 != null) { double qm0 = e2w.Inv().Apply(Xf.FromComp(Find(c410, "CB-411")).T)[0]; double dm = q3 / 2 - qm0; c410.Transform2 = X410.Then(Xf.Tr(dm * ax[0], dm * ax[1], dm * ax[2])).Then(r2).Then(r1).ToMath(); }
         m.EditRebuild3();
         var e2 = Xf.FromComp(Find(c300, "CB-301")); var d = Dir(e2, new double[] { 1, 0, 0 }); double dh = Math.Sqrt(d[0] * d[0] + d[1] * d[1]);
         Console.WriteLine(string.Format("pose: J1 {0:0.0}°  elev {1:0.0}°  q3 {2:0.0}",

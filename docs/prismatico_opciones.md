@@ -14,9 +14,9 @@ En las tres, J3 es un tubo de aluminio que desliza en el canal de E2, lo mueve u
 
 ## De un vistazo
 
-| | **1 · Husillo** (v6) | **2 · Correa** (v7A) ⭐ | **3 · Telescópica** (v7B) |
+| | **1 · Husillo** (v6) | **2 · Correa** (v7A) | **3 · Telescópica** (v7B) ⭐ |
 |:--|:--:|:--:|:--:|
-| | ![v6](imagenes/prismatico/v6_husillo_front.png) | ![v7A](../cad/solidworks/06_Imagenes/CB-000_front.png) | ![v7B](../cad/solidworks/06_Imagenes/CB-000B_front.png) |
+| | ![v6](imagenes/prismatico/v6_husillo_front.png) | ![v7A](../cad/solidworks/06_Imagenes/CB-000A_front.png) | ![v7B](../cad/solidworks/06_Imagenes/CB-000_front.png) |
 | **Brazo detrás de J2** | 452 mm | 377 mm | **204 mm** |
 | **Largo total retraído** | 679 mm | 605 mm | **432 mm** |
 | **Carrera** | **350 mm** | 340 mm | 340 mm |
@@ -54,7 +54,7 @@ Lo mejor de cada fila va en **negrita**. Ninguna de las tres es autobloqueante: 
 
 ---
 
-## 2 · Correa GT2 de una etapa ⭐ diseño oficial
+## 2 · Correa GT2 de una etapa (oficial hasta la v7.11, ahora alternativa)
 
 *Un lazo de correa arrastra el tubo. El motor va arriba del cubo del hombro.*
 
@@ -62,7 +62,7 @@ Lo mejor de cada fila va en **negrita**. Ninguna de las tres es autobloqueante: 
 
 | En el CAD (E2, base y torre ocultos) |
 |:--:|
-| ![Mecanismo v7A](../cad/solidworks/06_Imagenes/CB-000_mecanismo_front.png) |
+| ![Mecanismo v7A](../cad/solidworks/06_Imagenes/CB-000A_mecanismo_front.png) |
 
 **Cómo funciona**
 
@@ -81,7 +81,7 @@ Lo mejor de cada fila va en **negrita**. Ninguna de las tres es autobloqueante: 
 
 ---
 
-## 3 · Telescópica 2:1
+## 3 · Telescópica 2:1 ⭐ diseño oficial desde la v7.12
 
 *Tres tramos, uno dentro de otro, como el mástil de un autoelevador.*
 
@@ -126,8 +126,8 @@ Lo mejor de cada fila va en **negrita**. Ninguna de las tres es autobloqueante: 
 
 **Dónde está cada una en el CAD**
 
-- **Correa**: `cad/solidworks/CB-000_CitriBot_Ensamblaje_General.SLDASM` (ensamblaje oficial).
-- **Telescópica**: `cad/solidworks/CB-000B_CitriBot_v7B_Telescopico.SLDASM` y la carpeta `11_v7B_Prismatico_Telescopico/`.
+- **Telescópica** ⭐ (diseño oficial desde la v7.12): `cad/solidworks/CB-000_CitriBot_Ensamblaje_General.SLDASM` y la carpeta `11_v7B_Prismatico_Telescopico/`.
+- **Correa**: `cad/solidworks/CB-000A_CitriBot_v7A_Correa.SLDASM` (alternativa).
 - **Husillo**: commit `a29666f` (CAD v6).
 
 Más detalle, lista de materiales y montaje de las dos con correa: [v7_prismatico.md](v7_prismatico.md).
