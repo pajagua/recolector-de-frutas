@@ -10,6 +10,7 @@ class Corte
     static void Main(string[] a)
     {
         SW.Connect();
+        bool ya = SW.App.GetOpenDocumentByName(a[0]) != null;
         var m = SW.Open(a[0]); if (m == null) return;
         if (m.GetType() == (int)swDocumentTypes_e.swDocASSEMBLY) ((AssemblyDoc)m).ResolveAllLightWeightComponents(false);
         int er = 0; SW.App.ActivateDoc3(m.GetTitle(), false, 0, ref er);
@@ -51,6 +52,6 @@ class Corte
             int e = 0, w = 0; string outp = a[1] + "_" + v + ".png";
             Console.WriteLine((m.Extension.SaveAs3(outp, 0, 1, null, null, ref e, ref w) ? "saved " : "FAIL ") + outp);
         }
-        SW.App.CloseDoc(m.GetTitle());
+        if (!ya) SW.App.CloseDoc(m.GetTitle()); else { m.ClearSelection2(true); pl.Select2(false, 0); m.EditDelete(); }
     }
 }

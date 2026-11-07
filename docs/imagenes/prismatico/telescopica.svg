@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 290" width="900" height="290" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="flecha" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#c76b00"/>
+    </marker>
+    <marker id="flechaV" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#30a46c"/>
+    </marker>
+  </defs>
+  <rect width="900" height="290" rx="12" fill="#ffffff"/>
+  <text x="24" y="32" font-size="17" font-weight="600" fill="#1f2933">3 · Telescópica 2:1 (dos correas)</text>
+
+  <!-- manga fija: E2 corto -->
+  <rect x="300" y="72" width="300" height="90" rx="8" fill="#f2f4f7" stroke="#9aa3ad" stroke-width="1.5"/>
+  <circle cx="540" cy="140" r="30" fill="#f8f9fa" stroke="#9aa3ad" stroke-width="1.5"/>
+  <circle cx="540" cy="140" r="5" fill="#1f2933"/>
+
+  <!-- tramo intermedio 30x30 -->
+  <rect x="330" y="108" width="370" height="40" rx="3" fill="#cfd6de" stroke="#7b8794" stroke-width="1.5"/>
+  <!-- tramo interior 20x20 (E3) -->
+  <rect x="430" y="117" width="410" height="22" rx="2" fill="#e4e9ee" stroke="#5b6570" stroke-width="1.5"/>
+  <rect x="840" y="100" width="16" height="56" rx="2" fill="#e8871e"/>
+
+  <!-- correa 1: motor -> intermedio (como en la opción 2) -->
+  <path d="M 344 100 L 495 100 A 10 10 0 0 0 495 80 L 316 80 A 10 10 0 0 0 316 100 L 326 100"
+        fill="none" stroke="#1f2933" stroke-width="3" stroke-linejoin="round"/>
+  <circle cx="495" cy="90" r="8" fill="#b0b6bd" stroke="#5b6570"/>
+  <circle cx="316" cy="90" r="8" fill="#b0b6bd" stroke="#5b6570"/>
+  <rect x="326" y="96" width="18" height="14" rx="2" fill="#e8871e"/>
+  <rect x="470" y="42" width="50" height="30" rx="4" fill="#6e757d"/>
+  <text x="495" y="62" font-size="11" fill="#ffffff" text-anchor="middle" font-weight="600">NEMA</text>
+  <line x1="495" y1="72" x2="495" y2="82" stroke="#5b6570" stroke-width="3"/>
+
+  <!-- correa 2: anclaje fijo en E2 -> polea delantera -> pinza del interior -> polea trasera -> anclaje -->
+  <path d="M 600 184 L 700 184 A 8 8 0 0 0 700 168 L 452 168 M 436 168 L 338 168 A 8 8 0 0 0 338 184 L 600 184"
+        fill="none" stroke="#30a46c" stroke-width="3" stroke-linejoin="round"/>
+  <circle cx="700" cy="176" r="7" fill="#b0b6bd" stroke="#5b6570"/>
+  <circle cx="338" cy="176" r="7" fill="#b0b6bd" stroke="#5b6570"/>
+  <line x1="700" y1="148" x2="700" y2="169" stroke="#7b8794" stroke-width="2"/>
+  <line x1="338" y1="148" x2="338" y2="169" stroke="#7b8794" stroke-width="2"/>
+  <!-- pinza del tubo interior -->
+  <rect x="436" y="139" width="16" height="36" rx="2" fill="#e8871e"/>
+  <!-- anclaje fijo en E2 -->
+  <rect x="592" y="162" width="16" height="28" rx="2" fill="#9aa3ad"/>
+
+  <!-- movimientos -->
+  <line x1="720" y1="98" x2="790" y2="98" stroke="#c76b00" stroke-width="2.5" marker-end="url(#flecha)"/>
+  <text x="755" y="84" font-size="12" fill="#c76b00" text-anchor="middle" font-weight="600">intermedio: x</text>
+  <line x1="740" y1="226" x2="860" y2="226" stroke="#30a46c" stroke-width="2.5" marker-end="url(#flechaV)"/>
+  <text x="800" y="246" font-size="12" fill="#30a46c" text-anchor="middle" font-weight="600">interior: 2x</text>
+
+  <!-- rótulos -->
+  <g font-size="12" fill="#3e4c59">
+    <text x="300" y="64">E2 (manga fija, 297 mm)</text>
+    <text x="380" y="132" text-anchor="middle" font-size="11">intermedio 30×30</text>
+    <text x="780" y="132" text-anchor="middle" font-size="11">interior 20×20</text>
+    <line x1="600" y1="190" x2="600" y2="214" stroke="#9aa3ad"/><text x="600" y="228" text-anchor="middle">anclaje fijo en E2</text>
+    <line x1="444" y1="175" x2="444" y2="214" stroke="#9aa3ad"/><text x="444" y="228" text-anchor="middle">pinza del interior</text>
+    <text x="250" y="180" text-anchor="end">poleas en las</text>
+    <text x="250" y="195" text-anchor="end">puntas del intermedio</text>
+  </g>
+
+  <!-- cota -->
+  <line x1="306" y1="266" x2="540" y2="266" stroke="#30a46c" stroke-width="1.5"/>
+  <line x1="306" y1="258" x2="306" y2="274" stroke="#30a46c" stroke-width="1.5"/>
+  <line x1="540" y1="258" x2="540" y2="274" stroke="#30a46c" stroke-width="1.5"/>
+  <rect x="348" y="256" width="150" height="20" fill="#ffffff"/>
+  <text x="423" y="271" font-size="12" fill="#30a46c" text-anchor="middle" font-weight="600">204 mm detrás de J2</text>
+</svg>

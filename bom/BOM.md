@@ -8,17 +8,17 @@
 |---|---|
 | Préstamo laboratorio | 6 |
 | Compra grupal | 13 |
-| Propio | 4 |
-| Impresión 3D | 30 |
-| Por comprar | 54 |
+| Propio | 6 |
+| Impresión 3D | 34 |
+| Por comprar | 56 |
 | Por definir | 7 |
 
 | Estado | Ítems |
 |---|---|
-| En mano | 1 |
+| En mano | 3 |
 | Prestado | 5 |
 | Pedido | 10 |
-| Falta | 90 |
+| Falta | 96 |
 | Por confirmar | 8 |
 
 **Gastado (compra grupal, sin envío): USD 135.69**
@@ -41,7 +41,7 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 | ID | Componente | Cant. | Proveedor | USD | Estado | Notas |
 |---|---|---|---|---|---|---|
 | M02 | Motorreductor sinfín 5840-36ZY | 1 | AliExpress | 36.50 | Pedido | Un vendedor da ≈ 70 kg·cm sin decir si es nominal o de bloqueo (bloqueo 6,5 A). Con la v7 el hombro pide ≈ 39 kg·cm de pico (control/torques.py): probar colgando 1 kg a 40 cm del eje. Medir con calibre antes de imprimir CB-210 |
-| M05 | Servo MG996R | 2 | AliExpress | 11.53 | Pedido | Precio del pedido 'Servos' |
+| M05 | Servo MG996R | 2 | AliExpress | 11.53 | Pedido | Precio del pedido 'Servos'. Se usan los horns redondos de plástico que vienen con el servo (Ø21, 12 agujeros) y sus tornillos: 4 por horn (CB-603 y CB-605) |
 | S01 | Módulo AS5600 | 1 | Amazon | 7.99 | Por confirmar | En el pedido figura 'Encoder' (Amazon, USD 7.99): confirmar que es el AS5600 |
 | S02 | Imán de neodimio diametral | 1 |  |  | Por confirmar | Suele venir con el módulo AS5600 |
 | S03 | Sensor de presión MPS20N0040D | 1 | AliExpress | 4.15 | Pedido |  |
@@ -62,7 +62,6 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 |---|---|---|---|---|---|---|
 | E07 | Módulo MOSFET 12 V | Canal lógico 5 V, ≥ 3 A | 2 | u | Por comprar | Alternativa: salidas D8/D9/D10 de la RAMPS |
 | M03 | Motor paso a paso NEMA 17 | 40 mm, ≈ 4,5 kg·cm, 1,7 A, eje Ø5 (tipo 17HS4401) | 1 | u | Por definir | El 17HS2408 del riel (M04) es más corto y tiene menos torque: no sirve para J3. CAD: CB-505 sobre la placa CB-306 |
-| S04 | Final de carrera | Microswitch con palanca | 3 | u | Por comprar |  |
 | N04 | Manguera PU | 6 × 4 mm | 2 | m | Por comprar | Largo según el recorrido final |
 | N05 | Bomba de vacío 12 V | Mini bomba de diafragma | 1 | u | Por definir | No figura en ninguna lista. Dimensionar con entregas/entrega_06/analisis_torque_ventosa.md |
 | N06 | Electroválvula 12 V | 2/2 o 3/2, normalmente cerrada | 1 | u | Por definir |  |
@@ -79,13 +78,13 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 | L02 | Carro del riel | Patines o rodamientos lineales | 1 | u | Por definir |  |
 | L03 | Correa GT2 abierta + poleas | ≈ 2,6 m, polea 20 dientes + polea tensora | 1 | u | Por definir | Revisar si el kit T04 la cubre |
 | A01 | Fuente 12 V DC | Corriente a dimensionar (≥ 10 A estimado) | 1 | u | Por definir | Sumar corriente de bloqueo de 37D + 5840 + paso a paso + bomba |
-| A02 | Regulador UBEC 6 V | ≥ 5 A | 1 | u | Por comprar | No alimentar los servos desde el 5 V del MEGA |
+| A02 | Regulador UBEC 6 V | ≥ 5 A | 1 | u | Por comprar | No alimentar los servos desde el 5 V del MEGA. Va a la bornera V+ del PCA9685 (E08) |
 | A03 | Parada de emergencia + fusible | Pulsador hongo NC, portafusible | 1 | u | Por comprar |  |
 | A04 | Cables, borneras y conectores | Dupont, JST, termocontraíble | 1 | lote | Por comprar |  |
 | H01 | Tornillo M3 × 6 Allen | DIN 912 | 8 | u | Por comprar |  |
-| H02 | Tornillo M3 × 8 |  | 21 | u | Por comprar |  |
-| H03 | Tornillo M3 × 10 |  | 21 | u | Por comprar |  |
-| H04 | Tornillo M3 × 12 |  | 8 | u | Por comprar |  |
+| H02 | Tornillo M3 × 8 |  | 11 | u | Por comprar |  |
+| H03 | Tornillo M3 × 10 |  | 17 | u | Por comprar |  |
+| H04 | Tornillo M3 × 12 |  | 12 | u | Por comprar |  |
 | H05 | Tornillo M4 × 30 |  | 10 | u | Por comprar |  |
 | H06 | Tornillo M4 × 40 |  | 4 | u | Por comprar |  |
 | H07 | Tornillo M4 × 45 |  | 6 | u | Por comprar |  |
@@ -103,17 +102,20 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 | H19 | Arandela M4 |  | 12 | u | Por comprar |  |
 | H20 | Arandela M5 |  | 6 | u | Por comprar |  |
 | H22 | Separador M5 × 10 |  | 8 | u | Por comprar |  |
-| H23 | Separador M8 × 20 |  | 2 | u | Por comprar |  |
+| H23 | Separador M8 × 20 | Tubo de aluminio 10 × 8 (pared 1), cortado a 20 mm | 2 | u | Por comprar | El agujero central del plato 1M1B es Ø11: un separador de Ø12 no entra (v7.11). Uno va dentro del plato y el otro entre los dos 608ZZ; apoyan en el anillo interior |
 | H24 | Pasador de acero Ø3 | Ø3 × 30 mm | 2 | u | Por comprar | Al ras: el tubo desliza en el canal con 0,5 mm de juego (una cabeza de tornillo roza). Además pegar con epoxi |
 | H25 | Tornillo M5 × 70 |  | 1 | u | Por comprar |  |
 | H26 | Inserto térmico M3 | Para PETG, Ø ext. ≈ 4,6 mm, largo 5–6 mm | 4 | u | Por comprar | Colocar con soldador a ≈ 220 °C |
-| H27 | Tuerca M3 |  | 4 | u | Por comprar |  |
+| H27 | Tuerca M3 |  | 8 | u | Por comprar |  |
 | H28 | Prisionero M4 × 6 | Allen, punta plana | 2 | u | Por comprar | Roscar el plástico o usar inserto M4 |
 | H29 | Tirafondo 4 × 12 | Cabeza fresada | 4 | u | Por comprar | No pasantes: debajo está la pata de la base |
 | H30 | Tornillo autorroscante Ø3,5 × 10 | Cabeza plana | 4 | u | Por comprar |  |
-| H31 | Tornillo M3 × 25 Allen + tuerca M3 | DIN 912 | 1 | u | Por comprar | Solo para las pruebas de visión sin el brazo |
 | H32 | Seguro (anillo elástico) para eje de 30 mm | DIN 471, 30 × 1,5 | 1 | u | Por comprar | Se pone con pinza de seguros (exterior). CAD: CB-623 |
-| X01 | Tablero contrachapado o MDF | 400 × 300 × 16 mm | 1 | u | Por comprar | Agujeros: eje J1 Ø35, motor J1 Ø42, placa 1M2A, módulo del motor J1 (ranuras), bandeja y 4 patas (ver CB-111) |
+| H33 | Tornillo M2 × 10 autorroscante | Cabeza redonda | 4 | u | Por comprar | Pilotos de Ø1,6 en las piezas impresas |
+| H34 | Tornillo M2 × 12 + tuerca M2 | Cabeza redonda | 2 | u | Por comprar |  |
+| H35 | Tornillo M2,5 × 8 autorroscante | Cabeza redonda | 4 | u | Por comprar |  |
+| H36 | Tirafondo Ø3,5 × 16 | Cabeza redonda | 6 | u | Por comprar | Pilotos de Ø2,5 en el tablero (CB-111) |
+| X01 | Tablero contrachapado o MDF | 400 × 300 × 16 mm | 1 | u | Por comprar | Agujeros: eje J1 Ø35, motor J1 Ø42, placa 1M2A, módulo del motor J1 (ranuras), bandeja y 4 patas (ver CB-111). Pilotos Ø2,5 de 6 tirafondos de los soportes de los finales de carrera y del PCA9685 |
 | X02 | Filamento PETG | 1,75 mm | 4 | kg | Por comprar | Estimado 3–4 kg: calcular con el slicer |
 | X03 | Epoxi bicomponente |  | 1 | u | Por comprar |  |
 | X04 | Cianoacrilato |  | 1 | u | Por comprar |  |
@@ -148,6 +150,7 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 | E05 | Driver TB6600 | Paso a paso 4 A (5 A pico), 9–40 V | 1 | u | J0 riel (NEMA 17) | Préstamo laboratorio | Prestado | Devolver al terminar el TPF |
 | E06 | ProtoScrew Shield | Borneras para Arduino | 1 | u | Cableado | Préstamo laboratorio | Por confirmar | Figuraba en la BOM anterior para pedir; confirmar si se usa con la RAMPS |
 | E07 | Módulo MOSFET 12 V | Canal lógico 5 V, ≥ 3 A | 2 | u | Bomba de vacío y electroválvula | Por comprar | Falta | Alternativa: salidas D8/D9/D10 de la RAMPS |
+| E08 | Módulo PCA9685 | 16 canales PWM, I2C (0x40), 62,7 × 25,3, agujeros a 56,7 × 19,3 | 1 | u | Servos MG996R de J4 y J5; SDA y SCL a D20 y D21 del MEGA, V+ desde el UBEC A02 | Propio | En mano | CAD: CB-517 sobre el soporte CB-142, al lado de la bandeja. Agujeros para M2,5 |
 
 ### Motores y actuadores
 
@@ -157,7 +160,7 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 | M02 | Motorreductor sinfín 5840-36ZY | 12 V, 12 rpm (9 con carga), eje D8 con plano a 7, fijación 4 × M4 prof. 6 | 1 | u | J2 hombro (direct drive) | Compra grupal | Pedido | Un vendedor da ≈ 70 kg·cm sin decir si es nominal o de bloqueo (bloqueo 6,5 A). Con la v7 el hombro pide ≈ 39 kg·cm de pico (control/torques.py): probar colgando 1 kg a 40 cm del eje. Medir con calibre antes de imprimir CB-210 |
 | M03 | Motor paso a paso NEMA 17 | 40 mm, ≈ 4,5 kg·cm, 1,7 A, eje Ø5 (tipo 17HS4401) | 1 | u | J3 prismático (sobre el cubo de E2, mueve la correa GT2) | Por definir | Por confirmar | El 17HS2408 del riel (M04) es más corto y tiene menos torque: no sirve para J3. CAD: CB-505 sobre la placa CB-306 |
 | M04 | Motor paso a paso NEMA 17 | 17HS2408 | 1 | u | J0 riel | Propio | Por confirmar |  |
-| M05 | Servo MG996R | 180°, engranajes metálicos, 4.8–7.2 V | 2 | u | J4 muñeca (cabeceo) y J5 torsión | Compra grupal | Pedido | Precio del pedido 'Servos' |
+| M05 | Servo MG996R | 180°, engranajes metálicos, 4.8–7.2 V | 2 | u | J4 muñeca (cabeceo) y J5 torsión | Compra grupal | Pedido | Precio del pedido 'Servos'. Se usan los horns redondos de plástico que vienen con el servo (Ø21, 12 agujeros) y sus tornillos: 4 por horn (CB-603 y CB-605) |
 
 ### Sensores
 
@@ -166,7 +169,7 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 | S01 | Módulo AS5600 | Encoder magnético 12 bit, I2C | 1 | u | J2 hombro (ángulo real de E2) | Compra grupal | Por confirmar | En el pedido figura 'Encoder' (Amazon, USD 7.99): confirmar que es el AS5600 |
 | S02 | Imán de neodimio diametral | Ø6 × 2.5 mm | 1 | u | AS5600 del hombro | Compra grupal | Por confirmar | Suele venir con el módulo AS5600 |
 | S03 | Sensor de presión MPS20N0040D | 0–40 kPa, con conversor HX710B | 1 | u | Detectar agarre por vacío | Compra grupal | Pedido |  |
-| S04 | Final de carrera | Microswitch con palanca | 3 | u | Homing de J0, J1 y J3 | Por comprar | Falta |  |
+| S04 | Final de carrera | Microswitch con palanca metálica plana (sin rueda), cuerpo 19,8 × 6,4 × 9,5, agujeros Ø2,35 a 9,5 mm, opera a 10,2 sobre los agujeros | 3 | u | Homing de J0 (riel), J1 (cintura) y J3 (prismático) | Propio | En mano | CAD: CB-516. Soportes CB-161 (J1), CB-162 (J0) y CB-307 (J3) |
 
 ### Visión
 
@@ -223,7 +226,7 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 | ID | Componente | Especificación | Cant. | Un. | Uso | Origen | Estado | Notas |
 |---|---|---|---|---|---|---|---|---|
 | A01 | Fuente 12 V DC | Corriente a dimensionar (≥ 10 A estimado) | 1 | u | Motores DC, paso a paso y bomba | Por definir | Falta | Sumar corriente de bloqueo de 37D + 5840 + paso a paso + bomba |
-| A02 | Regulador UBEC 6 V | ≥ 5 A | 1 | u | Servos MG996R | Por comprar | Falta | No alimentar los servos desde el 5 V del MEGA |
+| A02 | Regulador UBEC 6 V | ≥ 5 A | 1 | u | Servos MG996R | Por comprar | Falta | No alimentar los servos desde el 5 V del MEGA. Va a la bornera V+ del PCA9685 (E08) |
 | A03 | Parada de emergencia + fusible | Pulsador hongo NC, portafusible | 1 | u | Seguridad: corta la potencia de motores | Por comprar | Falta |  |
 | A04 | Cables, borneras y conectores | Dupont, JST, termocontraíble | 1 | lote | Cableado general | Por comprar | Falta |  |
 
@@ -232,9 +235,9 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 | ID | Componente | Especificación | Cant. | Un. | Uso | Origen | Estado | Notas |
 |---|---|---|---|---|---|---|---|---|
 | H01 | Tornillo M3 × 6 Allen | DIN 912 | 8 | u | 4 NEMA 17 → placa CB-306 · 4 AS5600 → tapa de E2 | Por comprar | Falta |  |
-| H02 | Tornillo M3 × 8 |  | 21 | u | 6 motor 37D → soporte · 5 Arduino MEGA → bandeja · 2 anillo del eje hueco · 8 horns metálicos | Por comprar | Falta |  |
-| H03 | Tornillo M3 × 10 |  | 21 | u | 3 tapa de E2 → E2 · 4 Sabertooth → bandeja · 8 pestañas de los servos · 2 porta-servo · 4 placa CB-306 → insertos de E2 | Por comprar | Falta |  |
-| H04 | Tornillo M3 × 12 |  | 8 | u | 4 tapa de la caja de torsión · 4 base del soporte estéreo CB-156 → adaptador CB-154 | Por comprar | Falta |  |
+| H02 | Tornillo M3 × 8 |  | 11 | u | 6 motor 37D → soporte · 5 Arduino MEGA → bandeja | Por comprar | Falta |  |
+| H03 | Tornillo M3 × 10 |  | 17 | u | 3 tapa de E2 → E2 · 4 Sabertooth → bandeja · 4 pestañas del servo de torsión → porta-servo · 2 porta-servo → piso de la caja · 4 placa CB-306 → insertos de E2 | Por comprar | Falta |  |
+| H04 | Tornillo M3 × 12 |  | 12 | u | 4 tapa de la caja de torsión · 4 pestañas del servo de muñeca → horquilla (Allen, con tuerca H27) · 4 base del soporte estéreo CB-156 → adaptador CB-154 | Por comprar | Falta |  |
 | H05 | Tornillo M4 × 30 |  | 10 | u | 4 soporte motor J1 → tablero · 2 soporte del imán → torre · 4 bandeja → tablero | Por comprar | Falta |  |
 | H06 | Tornillo M4 × 40 |  | 4 | u | Placa fija 1M2A → tablero | Por comprar | Falta |  |
 | H07 | Tornillo M4 × 45 |  | 6 | u | Torre 2M1D → plato 1M1B | Por comprar | Falta |  |
@@ -252,22 +255,25 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 | H19 | Arandela M4 |  | 12 | u | Bajo el tablero | Por comprar | Falta |  |
 | H20 | Arandela M5 |  | 6 | u | 4 patas · 2 polea loca de J3 | Por comprar | Falta |  |
 | H22 | Separador M5 × 10 |  | 8 | u | Rodillos de la lazy susan | Por comprar | Falta |  |
-| H23 | Separador M8 × 20 |  | 2 | u | Eje central de J1 | Por comprar | Falta |  |
+| H23 | Separador M8 × 20 | Tubo de aluminio 10 × 8 (pared 1), cortado a 20 mm | 2 | u | Eje central de J1 | Por comprar | Falta | El agujero central del plato 1M1B es Ø11: un separador de Ø12 no entra (v7.11). Uno va dentro del plato y el otro entre los dos 608ZZ; apoyan en el anillo interior |
 | H24 | Pasador de acero Ø3 | Ø3 × 30 mm | 2 | u | Tubo de E3 → brida CB-402 y tapón CB-403 | Por comprar | Falta | Al ras: el tubo desliza en el canal con 0,5 mm de juego (una cabeza de tornillo roza). Además pegar con epoxi |
 | H25 | Tornillo M5 × 70 |  | 1 | u | Eje vertical de la polea loca de J3 (atraviesa E2) | Por comprar | Falta |  |
 | H26 | Inserto térmico M3 | Para PETG, Ø ext. ≈ 4,6 mm, largo 5–6 mm | 4 | u | Placa CB-306 del NEMA 17 → E2 | Por comprar | Falta | Colocar con soldador a ≈ 220 °C |
-| H27 | Tuerca M3 |  | 4 | u | Base del soporte estéreo → adaptador CB-154 (en los alojamientos hexagonales) | Por comprar | Falta |  |
+| H27 | Tuerca M3 |  | 8 | u | 4 base del soporte estéreo → adaptador CB-154 · 4 pestañas del servo de muñeca (atrapadas en la horquilla CB-601) | Por comprar | Falta |  |
 | H28 | Prisionero M4 × 6 | Allen, punta plana | 2 | u | Pie y cabezal del mástil → tubo 20 × 20 | Por comprar | Falta | Roscar el plástico o usar inserto M4 |
 | H29 | Tirafondo 4 × 12 | Cabeza fresada | 4 | u | Pie del mástil CB-151 → tablero | Por comprar | Falta | No pasantes: debajo está la pata de la base |
 | H30 | Tornillo autorroscante Ø3,5 × 10 | Cabeza plana | 4 | u | Tapas CB-157 → postes del soporte estéreo (agujeros de Ø3,25) | Por comprar | Falta |  |
-| H31 | Tornillo M3 × 25 Allen + tuerca M3 | DIN 912 | 1 | u | Alma del cuello de la bola de la pieza de pruebas CB-158 | Por comprar | Falta | Solo para las pruebas de visión sin el brazo |
 | H32 | Seguro (anillo elástico) para eje de 30 mm | DIN 471, 30 × 1,5 | 1 | u | Frena el eje hueco hacia arriba, debajo del rodamiento del piso | Por comprar | Falta | Se pone con pinza de seguros (exterior). CAD: CB-623 |
+| H33 | Tornillo M2 × 10 autorroscante | Cabeza redonda | 4 | u | 2 final de carrera de J0 → CB-162 · 2 final de carrera de J3 → CB-307 | Por comprar | Falta | Pilotos de Ø1,6 en las piezas impresas |
+| H34 | Tornillo M2 × 12 + tuerca M2 | Cabeza redonda | 2 | u | Final de carrera de J1 → poste CB-161 (colisas de ±2 mm para ajustar la altura) | Por comprar | Falta |  |
+| H35 | Tornillo M2,5 × 8 autorroscante | Cabeza redonda | 4 | u | PCA9685 → soporte CB-142 | Por comprar | Falta |  |
+| H36 | Tirafondo Ø3,5 × 16 | Cabeza redonda | 6 | u | Soportes CB-142 (PCA9685), CB-161 (final de J1) y CB-162 (final de J0) → tablero | Por comprar | Falta | Pilotos de Ø2,5 en el tablero (CB-111) |
 
 ### Materia prima y consumibles
 
 | ID | Componente | Especificación | Cant. | Un. | Uso | Origen | Estado | Notas |
 |---|---|---|---|---|---|---|---|---|
-| X01 | Tablero contrachapado o MDF | 400 × 300 × 16 mm | 1 | u | Base del brazo | Por comprar | Falta | Agujeros: eje J1 Ø35, motor J1 Ø42, placa 1M2A, módulo del motor J1 (ranuras), bandeja y 4 patas (ver CB-111) |
+| X01 | Tablero contrachapado o MDF | 400 × 300 × 16 mm | 1 | u | Base del brazo | Por comprar | Falta | Agujeros: eje J1 Ø35, motor J1 Ø42, placa 1M2A, módulo del motor J1 (ranuras), bandeja y 4 patas (ver CB-111). Pilotos Ø2,5 de 6 tirafondos de los soportes de los finales de carrera y del PCA9685 |
 | X02 | Filamento PETG | 1,75 mm | 4 | kg | Piezas impresas | Por comprar | Falta | Estimado 3–4 kg: calcular con el slicer |
 | X03 | Epoxi bicomponente |  | 1 | u | Buje D8 en E2 · brida y tapón del tubo de E3 | Por comprar | Falta |  |
 | X04 | Cianoacrilato |  | 1 | u | Imán en el soporte CB-232 | Por comprar | Falta |  |
@@ -285,9 +291,9 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 | P03 | CB-131 Soporte motor J1 (37D) | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta |  |
 | P04 | CB-141 Bandeja de electrónica | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | 210 × 100 mm |
 | P05 | CB-201 Plato giratorio con dientes T5 (1M1B) | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta |  |
-| P06 | CB-210 Torre de cintura (2M1D mod) | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | 318 mm de alto: hay que partirla para la Ender 3 V2 |
+| P06 | CB-210 Torre de cintura (2M1D mod) | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | 318 mm de alto: hay que partirla para la Ender 3 V2 · v7.11: leva del final de carrera de J1 en la base (aprieta el switch con J1 entre −125° y −67°) |
 | P07 | CB-232 Soporte del imán | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta |  |
-| P08 | CB-301 Eslabón E2 | PETG: cubo ≥ 6 perímetros 50 %, cola 3 perímetros 15 % | 1 | u |  | Impresión 3D | Falta | 470 mm de largo: partir en 2 tramos (cubo del hombro hasta x ≈ −100 + cola). La cola liviana baja el torque de J2 |
+| P08 | CB-301 Eslabón E2 | PETG: cubo ≥ 6 perímetros 50 %, cola 3 perímetros 15 % | 1 | u |  | Impresión 3D | Falta | 470 mm de largo: partir en 2 tramos (cubo del hombro hasta x ≈ −100 + cola). La cola liviana baja el torque de J2 · v7.11: paso de cables Ø6 en la pared trasera para el final de carrera de J3 |
 | P09 | CB-402 Brida de E3 (herramienta) | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | Tapón al 100 % de relleno |
 | P10 | CB-303 Tapa de E2 / soporte AS5600 | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta |  |
 | P11 | CB-305 Buje D8 del hombro | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | Mejor en aluminio: transmite el torque del hombro (≈ 39 kg·cm de pico) |
@@ -310,3 +316,7 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 | P28 | CB-620 Llave de montaje del racor (herramienta) | PETG, 4 perímetros, 50 % | 1 | u | Apretar el racor N03 contra la ventosa desde el lado de la polea | Impresión 3D | Falta | No va en el robot. Hexágono de 12,4 para el racor de 12. STL: cad/imprimir/00_Herramienta/CB-620_Llave_Montaje_Racor.stl |
 | P29 | CB-621 Separador del eje hueco | PETG, 100 % | 1 | u | Entre el cubo de la polea del eje y el rodamiento 6806 de la tapa | Impresión 3D | Falta | Ø30,4 / Ø33,4 × 4,5. STL: cad/imprimir/00_Herramienta/CB-621_Separador_Eje_Hueco.stl |
 | P30 | CB-622 Arandela del seguro del eje hueco | PETG, 100 % | 1 | u | Entre el rodamiento 6806 del piso y el seguro H32 | Impresión 3D | Falta | Ø30,3 / Ø33,4 × 1. STL: cad/imprimir/00_Herramienta/CB-622_Arandela_Seguro_Eje.stl |
+| P31 | CB-142 Soporte del PCA9685 | PETG, ≥ 4 perímetros | 1 | u | PCA9685 al tablero, al lado de la bandeja | Impresión 3D | Falta | Placa sobre la cama. STL: cad/imprimir/01_Base_J0/CB-142_Soporte_PCA9685.stl |
+| P32 | CB-161 Poste del final de carrera de J1 | PETG, ≥ 4 perímetros | 1 | u | Final de carrera de J1 bajo el borde de la torre | Impresión 3D | Falta | Parado sobre la base. STL: cad/imprimir/01_Base_J0/CB-161_Soporte_Final_Carrera_J1.stl |
+| P33 | CB-162 Placa del final de carrera de J0 | PETG, ≥ 4 perímetros | 1 | u | Final de carrera de J0 bajo el tablero (provisoria: falta definir el riel) | Impresión 3D | Falta | Plana sobre la cama. STL: cad/imprimir/01_Base_J0/CB-162_Soporte_Final_Carrera_J0.stl |
+| P34 | CB-307 Soporte del final de carrera de J3 | PETG, ≥ 4 perímetros | 1 | u | Final de carrera de J3 en el fondo del canal de E2 (lo atraviesa el M5 de la polea loca) | Impresión 3D | Falta | Apoyado sobre la cara del brazo del switch. STL: cad/imprimir/03_Hombro_E2_J2/CB-307_Soporte_Final_Carrera_J3.stl |

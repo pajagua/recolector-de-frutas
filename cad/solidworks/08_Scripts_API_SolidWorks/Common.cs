@@ -15,6 +15,9 @@ public static class SW
         try { App = (SldWorks)Marshal.GetActiveObject("SldWorks.Application"); }
         catch
         {
+            // Sin SolidWorks abierto no se arranca otra sesión (con SW_START=1 sí): una sesión COM sin ventana puede quedar
+            // trabada en el aviso de licencia (pasó el 2026-11-06 cuando se cerró la sesión del usuario).
+            if (System.Environment.GetEnvironmentVariable("SW_START") == null) throw new Exception("SolidWorks no está abierto: abrilo y volvé a correr el script");
             var t = Type.GetTypeFromProgID("SldWorks.Application");
             App = (SldWorks)Activator.CreateInstance(t);
         }

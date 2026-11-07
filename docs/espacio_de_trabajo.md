@@ -12,14 +12,14 @@ El TPF pide una **esfera de 30 cm de diámetro elevada del suelo**. El boceto de
 - a **5 cm del borde de la base**, del lado del árbol;
 - con el **centro a 35 cm del suelo**.
 
-En el CAD la base es un tablero de 400 × 300 (v7.7): 400 mm a lo largo del riel y 300 mm hacia el árbol. El eje J1 queda centrado a lo largo del riel y a 185 mm del borde del árbol (115 mm del borde trasero). Hasta la v7.6 era el tablero de 550 × 550 del BCN3D, con el árbol a 194,8 mm. El árbol va del lado más cercano, **194,8 mm**, que es el lado de la bandeja de electrónica. Así la esfera queda lo más cerca posible.
+En el CAD la base es un tablero de 400 × 300: 400 mm a lo largo del riel y 300 mm hacia el árbol. Desde la v7.9 el eje J1 está en el centro del tablero: a 150 mm de cada borde del lado de 300 y a 200 mm de cada borde del lado de 400. La esfera se deja a 385 mm de J1, como en la v7.7, así que queda a **85 mm** del borde y no a los 50 mm del boceto. Con 50 mm, el lado cercano de la esfera queda 17 mm fuera de alcance (ver §4).
 
 | Dato | Valor | De dónde sale |
 |---|---|---|
-| Eje J1 → borde del tablero (lado del árbol) | 185 mm | CAD (CB-111, `Base3040.cs`) |
-| Separación borde → esfera | 50 mm | boceto |
+| Eje J1 → borde del tablero (lado del árbol) | 150 mm | CAD (CB-111, `Base3040.cs`, v7.9) |
+| Separación borde → esfera | 85 mm | el boceto dice 50; se agranda para no perder alcance (v7.9) |
 | Radio de la esfera | 150 mm | TPF |
-| **Eje J1 → centro de la esfera (horizontal)** | 185 + 50 + 150 = **385 mm** | |
+| **Eje J1 → centro de la esfera (horizontal)** | 150 + 85 + 150 = **385 mm** | |
 | **Suelo → centro de la esfera** | **350 mm** | boceto |
 | Suelo → cara del tablero | 80 mm (patas + tablero, sin riel) | CAD |
 | Cara del tablero → eje J2 | 355,5 mm | CAD |
@@ -87,6 +87,12 @@ La v6 dejaba 451,5 mm de brazo detrás del hombro: la cola de E2 más el NEMA 17
 ### v7.6 → v7.7: tablero de 400 × 300
 
 El tablero de 550 × 550 del BCN3D pasa a 400 × 300. El eje J1 queda a **185 mm** del borde del árbol (antes 194,8), así que la esfera se acerca 9,8 mm al hombro. Los márgenes quedan más parejos: 17 mm del lado cercano y 24 mm del lejano (antes 26 y 14), y el carro del riel puede medir hasta 77 mm (antes 51). La bandeja de electrónica pasa al costado de J1, y el mástil de las cámaras a la esquina trasera. Detalle en el README del CAD (v7.7).
+
+### v7.7 → v7.9: J1 en el centro del tablero
+
+El tablero se corre 35 mm hacia atrás para que J1 quede en el centro: 150 mm a cada borde del lado de 300. La esfera se deja donde estaba respecto de J1 (385 mm), así que el alcance, los márgenes y la puntería de las cámaras no cambian. Lo que cambia es la separación entre el borde y la esfera, que pasa de 50 a 85 mm.
+
+Si se respetan los 50 mm del boceto, la esfera se acerca 35 mm al brazo. El lado cercano pide entonces ρ = 210 mm, menos que los 227,8 mm de J3 retraído, y queda afuera el 1,8 % de la esfera.
 
 ## 5. Cuidados
 

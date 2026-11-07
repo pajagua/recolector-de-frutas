@@ -46,7 +46,7 @@ J0 riel (P) – J1 cintura (R) – J2 hombro (R) – J3 brazo (P) – J4 muñeca
 
 Medida en el ensamblaje SolidWorks (`cad/solidworks/CB-000`), origen sobre el eje J1 en la cara superior del tablero, Z hacia arriba:
 
-- Tablero de 400 × 300 × 16 (v7.7): 400 a lo largo del riel y 300 hacia el árbol. Suelo (pie de las patas, sin riel): z = −80 mm. Eje J1 centrado a lo largo del riel (200 / 200 mm) y a 185 mm del borde del árbol y 115 mm del borde trasero.
+- Tablero de 400 × 300 × 16 (v7.7): 400 a lo largo del riel y 300 hacia el árbol. Suelo (pie de las patas, sin riel): z = −80 mm. Eje J1 en el centro del tablero (v7.9): 200 / 200 mm a lo largo del riel y 150 / 150 mm hacia el árbol. La esfera queda a 385 mm de J1, a 85 mm del borde (el boceto decía 50: ver [espacio_de_trabajo.md](espacio_de_trabajo.md)).
 - Cara superior del plato 1M1B: z = 91,5 mm.
 - Eje J2 horizontal a z = 355,5 mm; corta al eje J1.
 - Plano medio de E2 (eje de J3) desplazado 83,0 mm del eje J1, a lo largo del eje J2.

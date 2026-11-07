@@ -76,7 +76,7 @@ Tres piezas deslizan una dentro de otra:
    Cuando el intermedio avanza x, el interior avanza 2x respecto de E2. Es el mismo mecanismo de los mástiles de autoelevadora, con correa en los dos sentidos.
 3. **Guías:** con J3 extendido quedan 95 mm del intermedio dentro de E2 y 93 mm del interior dentro del intermedio. El interior se guía con el buje delantero CB-414B (en U, abierto arriba para la correa) y con los patines del buje trasero CB-422B.
 
-En el CAD, el intermedio (CB-410B) y el interior (CB-400B) tienen relaciones de límite separadas: 0–170 y 0–340 mm. La correa del multiplicador está dibujada en home y no acompaña el movimiento. Para mover el brazo a mano en SolidWorks, llevá el intermedio a la mitad de q3.
+En el CAD, el intermedio (CB-410B) y el interior (CB-400B) tienen relaciones de límite separadas: 0–170 y 0–340 mm. Para mover el brazo a mano en SolidWorks, llevá el intermedio a la mitad de q3. Desde la v7.8 la correa del multiplicador (CB-442B) va dentro de CB-410B y se mueve con el intermedio. Para ver solo el mecanismo, con un estudio de movimiento que lo hace salir y entrar, está `CB-450B_Prismatico_Telescopico_Solo` (ver [prismatico_opciones.md](prismatico_opciones.md#3--telescópica-21)).
 
 ## 4. Lista de materiales
 
@@ -173,7 +173,7 @@ El hombro (5840, buje CB-305, AS5600, tapa CB-303 e imán CB-232) se arma igual 
 6. **Tubo.** Cortalo a 440 mm. Perforá Ø3 a 10 mm de cada punta, de arriba hacia abajo. Pegá la brida CB-402 y el tapón CB-403 con epoxi y clavá los pasadores Ø3 × 30 al ras.
 7. Meté el tubo por el frente de E2 hasta el fondo (home).
 8. **Correa.** Pasala por la ranura alrededor de las dos poleas. Metés un extremo en la ranura de la pinza, la tensás a mano y metés el otro extremo con los dientes enfrentados. Asegurá con 2 precintos. Tiene que quedar tensa como una cuerda de guitarra grave, sin dientes saltados.
-9. **Final de carrera** en la pared trasera de E2, tocado por el tapón con J3 retraído.
+9. **Final de carrera** en la pared trasera de E2, tocado por el tapón con J3 retraído: escuadra CB-307 sobre el piso del canal (la atraviesa el M5 de la polea loca), switch con 2 × M2 × 10 y cables por el paso Ø6 de la pared trasera (v7.11, ver [cad/solidworks/README.md §6.17](../cad/solidworks/README.md)).
 10. **Herramienta.** Horquilla CB-601 a la brida con 4 × M5 × 25 + tuerca.
 11. **Firmware:** 80 pasos/mm a 1/16 de micropaso. Probar primero a 50 mm/s.
 
@@ -252,6 +252,6 @@ Durante la verificación se corrigieron tres cosas:
 
 - Medir el torque real del 5840 (§6) antes de elegir entre A y B.
 - B: imprimir primero el telescopio (intermedio + interior + buje) y probar el juego antes de imprimir E2.
-- Modelar las placas de apriete de las correas y el final de carrera.
+- Modelar las placas de apriete de las correas (el final de carrera de J3 ya está: CB-307, v7.11).
 - Actualizar `bom/BOM_CitriBot.csv` cuando elijan una variante (§4 dice qué sale y qué entra).
 - `control/torques.py` y `docs/espacio_de_trabajo.md` siguen con los números de la v6.

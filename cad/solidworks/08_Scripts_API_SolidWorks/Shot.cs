@@ -10,8 +10,10 @@ class Shot
     {
         SW.Connect();
         if (System.Environment.GetEnvironmentVariable("SW_KEEP") == null) SW.CloseMine();
+        bool ya = SW.App.GetOpenDocumentByName(args[0]) != null;
         var m = SW.Open(args[0]);
         if (m == null) return;
+        int er0 = 0; SW.App.ActivateDoc3(m.GetTitle(), false, 0, ref er0);
         if (m.GetType() == (int)swDocumentTypes_e.swDocASSEMBLY) ((AssemblyDoc)m).ResolveAllLightWeightComponents(false);
         string[] views = args.Length > 2 ? new string[args.Length - 2] : new[] { "iso" }; if (args.Length > 2) Array.Copy(args, 2, views, 0, args.Length - 2);
         foreach (var v in views)
@@ -26,6 +28,6 @@ class Shot
             bool ok = m.Extension.SaveAs3(outp, 0, 1, null, null, ref e, ref w);
             Console.WriteLine((ok ? "saved " : "FAIL ") + outp);
         }
-            SW.App.CloseDoc(m.GetTitle());
+            if (!ya) SW.App.CloseDoc(m.GetTitle());
     }
 }

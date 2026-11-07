@@ -5,13 +5,14 @@ using System.Collections.Generic;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
 
-// Base3040.exe <root solidworks> [tablero|patas|bandeja|camaras ...]   (v7.7, 2026-11-02)
+// Base3040.exe <root solidworks> [tablero|patas|bandeja|camaras|ajuste|centrar ...]   (v7.7, 2026-11-02; v7.9, 2026-11-04)
 // Tablero de 400 x 300 en lugar del 550 x 550 del BCN3D.
+// v7.9 (modo centrar): J1 centrado también en el lado de 300 (antes el tablero iba de x -115 a +185).
 // Marco "árbol" (el de CB-150): origen en el eje J1 sobre la cara del tablero, x hacia el árbol, y a lo largo del riel, z arriba.
 // En el mundo de CB-100 / CB-000: x_arbol = (cos -112.5°, sin -112.5°, 0), y_arbol = (cos -22.5°, sin -22.5°, 0).
-//   - Tablero: x de -115 a +185 (borde del árbol a 185 mm del eje J1), y de -200 a +200 (400 a lo largo del riel).
+//   - Tablero: x de -150 a +150 (J1 en el centro; en la v7.7 iba de -115 a +185), y de -200 a +200 (400 a lo largo del riel).
 //   - J1, lazy susan y módulo del motor de J1 no se mueven (sus agujeros quedan en el mismo lugar respecto de J1).
-//   - Bandeja de electrónica: del lado -y, girada 90° (largo a lo largo de x): x -58 … 152, y -195 … -95.
+//   - Bandeja de electrónica: del lado -y, girada 90° (largo a lo largo de x): x -91 … 119, y -195 … -95 (v7.7: -58 … 152).
 //   - Mástil de las cámaras: esquina trasera +y, pie en (-80, 130), apuntado al centro de la esfera (385, 0, 270).
 //   - Patas: en las 4 esquinas nuevas, con la misma separación al borde (pernos a 25 mm de cada borde).
 class Base3040
@@ -28,14 +29,19 @@ class Base3040
     static double Rad(double d) { return d * Math.PI / 180; }
     static double[] W(double xt, double ys, double z = 0) { return Arbol().Apply(V(xt, ys, z)); }
 
-    const double X0 = -115, X1 = 185, Y0 = -200, Y1 = 200, ESP = 16, INSET = 25;
+    const double X0 = -150, X1 = 150, Y0 = -200, Y1 = 200, ESP = 16, INSET = 25;
+    const double XA0 = -115, XA1 = 185, BXA = 47;   // tablero y bandeja de la v7.7, antes de centrar
     // esquinas viejas y nuevas (marco árbol)
     static readonly double[][] VIEJAS = { V(-355.24, 275), V(194.76, 275), V(194.76, -275), V(-355.24, -275) };
     static readonly double[][] NUEVAS = { V(X0, Y1), V(X1, Y1), V(X1, Y0), V(X0, Y0) };
 
     // bandeja: centro y giro (marco árbol). Vieja: centro (139.27, -5.8), x local hacia -y. Nueva: x local hacia +x.
     static Xf BandejaVieja() { return Xf.Rows(V(0, -1, 0), V(1, 0, 0), V(0, 0, 1), V(139.27, -5.8, 0)); }
-    const double BX = 47;   // centro de la bandeja en x (27 chocaba la tornilleria con la pata trasera)
+    // centro de la bandeja en x (v7.9). Abajo del tablero, sus tuercas M4 (x = BX - 98 en y -175, x = BX + 60 en y -185, radio 4)
+    // tienen que quedar fuera de las patas (75 x 75, de |x| 90 a 165): 12 <= BX <= 26. Arriba, la bandeja (210 de largo) no puede
+    // tocar las arandelas M5 de las patas (x = ±125, radio 4.5): |BX| <= 15.5. Con 14 quedan ≈ 2 mm de cada lado.
+    // En la v7.7 era 47 (27 chocaba con la pata trasera).
+    const double BX = 14;
     static Xf BandejaNueva() { return Xf.Rows(V(1, 0, 0), V(0, 1, 0), V(0, 0, 1), V(BX, -145, 0)); }
 
     // cámaras (ver Vision2.cs)
@@ -56,12 +62,23 @@ class Base3040
         if (want("bandeja")) Bandeja();
         if (want("camaras")) Camaras();
         if (want("ajuste")) Ajuste();
+        if (w.Contains("centrar")) Centrar();
     }
 
     // ---------- tablero nuevo, modelado en el marco árbol ----------
     static void Tablero()
     {
         PB.NewPart();
+        Cuerpo();
+        PB.Report("CB-111 nuevo");
+        PB.Save(P("CB-111_Tablero_Madera_400x300x16.SLDPRT")); SW.Created.Add(PB.M.GetTitle());
+        string nuevoTitulo = PB.M.GetTitle();
+        Reemplazar(nuevoTitulo);
+    }
+
+    // cuerpo del tablero y sus agujeros, en el documento activo de PB (marco árbol, origen en el eje J1)
+    static void Cuerpo()
+    {
         PB.Sketch('F'); PB.Rect(X0, Y0, X1, Y1); PB.Extrude(-ESP, ESP, false, "Tablero_400x300x16");
         PB.Sketch('F'); PB.Circle(0, 0, 35); PB.Extrude(-ESP - 1, ESP + 2, true, "Paso_eje_J1_D35");
         PB.Sketch('F'); PB.Circle(0, 147.41, 42); PB.Extrude(-ESP - 1, ESP + 2, true, "Paso_motor_37D_D42");
@@ -74,17 +91,18 @@ class Base3040
         foreach (var h in new[] { V(169.26, 92.2), V(109.26, 92.2), V(179.26, -65.8), V(99.26, -65.8) })
         { var n = BandejaVieja().Inv().Then(BandejaNueva()).Apply(V(h[0], h[1], 0)); PB.Circle(n[0], n[1], 4.5); Console.WriteLine("  bandeja agujero " + n[0].ToString("0.0") + ", " + n[1].ToString("0.0")); }
         PB.Extrude(-ESP - 1, ESP + 2, true, "Bandeja_electronica_4xD4.5");
-        PB.Sketch('F'); foreach (var c in NUEVAS) PB.Circle(c[0] - Math.Sign(c[0] - 35) * INSET, c[1] - Math.Sign(c[1]) * INSET, 5.5);
+        PB.Sketch('F'); foreach (var c in NUEVAS) PB.Circle(c[0] - Math.Sign(c[0] - (X0 + X1) / 2) * INSET, c[1] - Math.Sign(c[1]) * INSET, 5.5);
         PB.Extrude(-ESP - 1, ESP + 2, true, "Patas_4xD5.5");
         PB.PartColor(0.76, 0.6, 0.42);
         PB.Prop("Descripcion", "Tablero de madera 400 x 300 x 16 (base del robot)");
         PB.Prop("Material", "Madera (MDF o fenolico) 16 mm");
-        PB.Prop("Notas", "v7.7: reemplaza al tablero 550 x 550 del BCN3D. Origen en el eje J1 sobre la cara de arriba, x hacia el arbol " +
-            "(borde a 185 mm), y a lo largo del riel (400 mm). Agujeros: eje J1 D35, motor 37D D42, placa 1M2A, modulo del motor J1, bandeja, 4 patas (M5).");
-        PB.Report("CB-111 nuevo");
-        PB.Save(P("CB-111_Tablero_Madera_400x300x16.SLDPRT")); SW.Created.Add(PB.M.GetTitle());
-        string nuevoTitulo = PB.M.GetTitle();
+        PB.Prop("Notas", "v7.7: reemplaza al tablero 550 x 550 del BCN3D. v7.9: eje J1 en el centro del tablero (150 mm a cada borde del lado de 300, " +
+            "200 mm a cada borde del lado de 400). Origen en el eje J1 sobre la cara de arriba, x hacia el arbol, y a lo largo del riel. " +
+            "Agujeros: eje J1 D35, motor 37D D42, placa 1M2A, modulo del motor J1, bandeja, 4 patas (M5).");
+    }
 
+    static void Reemplazar(string nuevoTitulo)
+    {
         var m = SW.Open(P("CB-110_Base_Tablero_Patas.SLDASM")); var asm = (AssemblyDoc)m;
         int er = 0; SW.App.ActivateDoc3(m.GetTitle(), false, 0, ref er);
         asm.ResolveAllLightWeightComponents(false);
@@ -168,6 +186,57 @@ class Base3040
             var d = Arbol().Apply(V(BX - t[0], 0, 0));
             Poner(m, c, Xf.FromComp(c).Then(Xf.Tr(d[0], d[1], 0)));
             Guardar(m);
+        }
+    }
+
+    // ---------- v7.9: J1 en el centro del lado de 300 ----------
+    // CB-111 se rehace en el mismo archivo (mismo ID interno: CB-110 lo sigue encontrando); las patas, su tornillería y la bandeja
+    // se corren en x. Lo que va atornillado respecto de J1 (lazy susan, módulo del motor, placa 1M2A) y el mástil no se mueven.
+    static void Centrar()
+    {
+        double dx = X0 - XA0;   // -35: el tablero se corre hacia atrás, J1 queda en el centro
+        var p = SW.Open(P("CB-111_Tablero_Madera_400x300x16.SLDPRT")); PB.Use(p);
+        int er = 0; SW.App.ActivateDoc3(p.GetTitle(), false, 0, ref er);
+        bool ya = Math.Abs(PB.BodyBox()[0] * 1000 - X0) < 0.5;   // ya centrado: no volver a correr las patas
+        Console.WriteLine(ya ? "el tablero ya estaba centrado: se rehace solo el tablero y se ubica la bandeja" : "centrando");
+        foreach (var n in new[] { "Patas_4xD5.5", "Bandeja_electronica_4xD4.5", "Ranuras_modulo_motor_J1", "Modulo_motor_J1_8xD4.3",
+                                  "Placa_J1_1M2A_4xD4.5", "Paso_motor_37D_D42", "Paso_eje_J1_D35", "Tablero_400x300x16" })
+        {
+            p.ClearSelection2(true);
+            bool s = p.Extension.SelectByID2(n, "BODYFEATURE", 0, 0, 0, false, 0, null, 0);
+            if (s) p.Extension.DeleteSelection2((int)swDeleteSelectionOptions_e.swDelete_Absorbed);
+            Console.WriteLine("  borrado " + n + " " + s);
+        }
+        Cuerpo();
+        PB.Report("CB-111 centrado");
+        int e = 0, w = 0; p.ForceRebuild3(false);
+        Console.WriteLine("tablero guardado " + p.Save3((int)swSaveAsOptions_e.swSaveAsOptions_Silent, ref e, ref w) + " e=" + e + " w=" + w);
+        SW.App.CloseDoc(p.GetTitle());
+
+        var m = SW.Open(P("CB-110_Base_Tablero_Patas.SLDASM")); var asm = (AssemblyDoc)m;
+        SW.App.ActivateDoc3(m.GetTitle(), false, 0, ref er); asm.ResolveAllLightWeightComponents(false);
+        if (!ya) Correr(m, asm, c => c.Name2.StartsWith("CB-112"), dx);
+        Guardar(m); SW.App.CloseDoc(m.GetTitle());
+
+        m = SW.Open(P("CB-100_Base_J0.SLDASM")); asm = (AssemblyDoc)m;
+        SW.App.ActivateDoc3(m.GetTitle(), false, 0, ref er); asm.ResolveAllLightWeightComponents(false);
+        var w2a = Arbol().Inv();
+        // tornillería de las patas: M5 en las 4 esquinas (|y| = 175). Las tuercas M5 de la lazy susan están cerca de J1.
+        if (!ya) Correr(m, asm, c => (c.Name2.StartsWith("HW_M5x30") || c.Name2.StartsWith("HW_Tuerca_M5") || c.Name2.StartsWith("HW_Arandela_M5"))
+                                     && Math.Abs(Math.Abs(w2a.Apply(Xf.FromComp(c).T)[1]) - 175) < 3, dx);
+        var bandeja = ((object[])asm.GetComponents(true)).Cast<Component2>().First(c => c.Name2.StartsWith("CB-140"));
+        Correr(m, asm, c => c == bandeja, BX - w2a.Apply(Xf.FromComp(bandeja).T)[0]);
+        Guardar(m);
+    }
+
+    static void Correr(ModelDoc2 m, AssemblyDoc asm, Func<Component2, bool> cual, double dx)
+    {
+        var d = Arbol().Apply(V(dx, 0, 0));
+        foreach (var c in ((object[])asm.GetComponents(true)).Cast<Component2>().Where(cual).ToList())
+        {
+            Poner(m, c, Xf.FromComp(c).Then(Xf.Tr(d[0], d[1], 0)));
+            var t = Arbol().Inv().Apply(Xf.FromComp(c).T);
+            Console.WriteLine("  " + c.Name2 + " -> x " + t[0].ToString("0.0") + ", y " + t[1].ToString("0.0"));
         }
     }
 
