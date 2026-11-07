@@ -256,4 +256,4 @@ Durante la verificación se corrigieron tres cosas:
 - B: imprimir primero el telescopio (intermedio + interior + buje) y probar el juego antes de imprimir E2.
 - Modelar las placas de apriete de las correas (el final de carrera de J3 ya está: CB-307, v7.11).
 - `control/torques.py` sigue modelando la variante A (39 kg·cm); para B vale el 44 de §1. `docs/espacio_de_trabajo.md` ya dibuja el telescópico.
-- `CB-001` (brazo solo, exportado a Simscape) sigue armado con la variante A.
+- `CB-001` (brazo solo) ya tiene el telescópico (v7.12); la exportación a Simscape de `simulink/` es de antes y hay que repetirla.

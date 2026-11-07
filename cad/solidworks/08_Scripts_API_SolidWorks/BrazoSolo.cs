@@ -35,7 +35,38 @@ class BrazoSolo
             if (k == "limpiar") Limpiar();
             if (k == "relaciones") Relaciones();
             if (k == "sr0") Sr0();
+            if (k == "telescopico") { Telescopico(); Relaciones(); }
         }
+    }
+
+    // v7.12: CB-000 tiene el prismático telescópico. CB-001 se vuelve a copiar de CB-000 y usa copias nuevas de CB-300B (sin el
+    // NEMA 17) y CB-400B (con CB-600S). CB-100S, CB-200S y CB-600S no cambian y se reusan; CB-410B (intermedio) va el original.
+    // Las copias de la variante A (CB-300S, CB-400S) dejan de usarse.
+    static readonly string[,] COPIAS_B = {
+        { "CB-000_CitriBot_Ensamblaje_General.SLDASM", D + "\\CB-001_Brazo_Solo.SLDASM" },
+        { "11_v7B_Prismatico_Telescopico\\CB-300B_Hombro_E2_v7B.SLDASM", D + "\\CB-300BS_Hombro_E2_v7B_Sin_Motor.SLDASM" },
+        { "11_v7B_Prismatico_Telescopico\\CB-400B_Prismatico_E3_v7B.SLDASM", D + "\\CB-400BS_Prismatico_E3_v7B.SLDASM" } };
+    static void Telescopico()
+    {
+        for (int i = 0; i < COPIAS_B.GetLength(0); i++)
+        {
+            if (SW.App.GetOpenDocumentByName(P(COPIAS_B[i, 1])) != null) throw new Exception("abierto: " + COPIAS_B[i, 1]);
+            File.Copy(P(COPIAS_B[i, 0]), P(COPIAS_B[i, 1]), true); File.SetAttributes(P(COPIAS_B[i, 1]), FileAttributes.Normal);
+            Console.WriteLine("copiado " + COPIAS_B[i, 1]);
+        }
+        Ref(COPIAS_B[0, 1], COPIAS[1, 0], COPIAS[1, 1]);   // base -> CB-100S
+        Ref(COPIAS_B[0, 1], COPIAS[2, 0], COPIAS[2, 1]);   // cintura -> CB-200S
+        Ref(COPIAS_B[0, 1], COPIAS_B[1, 0], COPIAS_B[1, 1]);
+        Ref(COPIAS_B[0, 1], COPIAS_B[2, 0], COPIAS_B[2, 1]);
+        Ref(COPIAS_B[2, 1], COPIAS[5, 0], COPIAS[5, 1]);   // herramienta -> CB-600S
+        // hombro: sin el NEMA 17 (abierto sin ventana)
+        SW.App.DocumentVisible(false, (int)swDocumentTypes_e.swDocASSEMBLY);
+        ModelDoc2 m; try { m = SW.Open(P(COPIAS_B[1, 1])); } finally { SW.App.DocumentVisible(true, (int)swDocumentTypes_e.swDocASSEMBLY); }
+        var asm = (AssemblyDoc)m; asm.ResolveAllLightWeightComponents(false);
+        var cs = ((object[])asm.GetComponents(true)).Cast<Component2>().ToList();
+        var nema = cs.First(c => c.Name2.StartsWith("CB-505")); var gn = Caja(nema);
+        Borrar(m, cs.Where(c => c == nema || (c.Name2.StartsWith("HW_M3x6") && Cerca(Caja(c), gn, 4))));
+        Guardar(m);
     }
 
     static void Copiar()
