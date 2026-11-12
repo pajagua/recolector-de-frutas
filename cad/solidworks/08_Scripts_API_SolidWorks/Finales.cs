@@ -21,6 +21,12 @@ using SolidWorks.Interop.swconst;
 //   torre  : leva de J1 en la base de la torre CB-210: sector de anillo r 76 … 98, z 91.5 … 96.5, de 250° a 308° respecto del
 //            brazo; aprieta el final de carrera de J1 (en el marco árbol a 183°) con J1 entre -125° y -67°.
 //   tablero: pilotos Ø2.5 x 12 de los tirafondos en CB-111.
+//   leva2  : (v7.13, no entra en la lista por defecto) la leva de J1 llegaba a la palanca por la PUNTA libre (J1 nunca pasa de -70°: siempre
+//            entra por el mismo lado) y la empujaba a lo largo, hacia la bisagra, con 0.3 mm entre la punta y la cara recta de la leva.
+//            Ahora el switch va girado 180° (SwJ1, mismos agujeros) y la leva llega por el lado de la bisagra: la palanca sube hacia la leva y
+//            hace de rampa. Leva nueva más corta: de 243.6° a 272.9° respecto del brazo (antes 250 … 308), mismas r y z, rampas de 4 x 4
+//            (la cara recta queda 1.3 mm sobre la punta de la palanca). Verificar con VerLevaJ1.cs.
+//   girarj1: (v7.13, no entra en la lista por defecto) gira el switch de J1 180° en CB-160 (los M2, las tuercas y el poste no cambian).
 class Finales
 {
     static string R;
@@ -40,7 +46,9 @@ class Finales
     static readonly double[][] PCA_TIRA = { V(-113.65, -90), V(-113.65, -55) };
     // J1: switch con el espesor en x (-95.2 … -88.8), el largo en y (-9.9 … 9.9), la palanca arriba; base del switch a z 79.2
     // (opera a z 92.3; la leva de la torre baja hasta 91.5)
-    static Xf SwJ1() { return Rows(V(0, 1, 0), V(0, 0, 1), V(1, 0, 0), V(-92, -9.9, 79.2)); }
+    // v7.13: girado 180° alrededor de la vertical por (-92, 0): bisagra de la palanca en y -8.7 y punta en y +7.4 (en la v7.11 era al revés,
+    // Rows(V(0, 1, 0), V(0, 0, 1), V(1, 0, 0), V(-92, -9.9, 79.2))). Los agujeros quedan en el mismo lugar (y ±4.75, z 82.1).
+    static Xf SwJ1() { return Rows(V(0, -1, 0), V(0, 0, 1), V(-1, 0, 0), V(-92, 9.9, 79.2)); }
     static readonly double[][] J1_TIRA = { V(-118, 9.5), V(-118, -9.5) };
     // J0: bajo el tablero, palanca hacia -y (sale 4 mm del borde), espesor en z (-26.4 … -20)
     static Xf SwJ0() { return Rows(V(1, 0, 0), V(0, -1, 0), V(0, 0, -1), V(-9.9, -189.5, -23.2)); }
@@ -65,6 +73,8 @@ class Finales
         if (w.Contains("j3mover")) J3Mover();
         if (want("torre")) Torre();
         if (want("tablero")) Tablero();
+        if (w.Contains("leva2")) Leva2();
+        if (w.Contains("girarj1")) GirarJ1();
     }
 
     // ---------------------------------------------------------------- piezas
@@ -384,6 +394,83 @@ class Finales
             if (ch != null) ch.Name = "CB_v711_Rampa_leva_" + (ang == a1 ? "1" : "2");
         }
         PB.Report("CB-210 despues");
+        Guardar(m, ya);
+    }
+
+    // Leva de J1, versión v7.13 (ver la cabecera): borra la de la v7.11 y la hace de nuevo al final del árbol de operaciones.
+    const double LEVA_A1 = 243.6, LEVA_A2 = 272.9, LEVA_RAMPA = 4.0;   // grados respecto del brazo (CCW) y rampa (mm x mm, 45°)
+    static void Leva2()
+    {
+        double fwd = 159.09, a1 = fwd + LEVA_A1, a2 = fwd + LEVA_A2, ri = 76, ro = 98, z0 = 91.5, z1 = 96.5;
+        bool yaA; var asm = Abrir(CIN + "CB-200_Cintura_J1.SLDASM", out yaA);
+        var tc = ((object[])((AssemblyDoc)asm).GetComponents(true)).Cast<Component2>().First(k => k.Name2.StartsWith("CB-210"));
+        var inv = Xf.FromComp(tc).Inv();
+        if (!yaA) SW.App.CloseDoc(asm.GetTitle());
+        bool ya; var m = Abrir(CIN + "CB-210_Torre_Cintura_2M1D_mod.SLDPRT", out ya); PB.Use(m);
+        PB.Report("CB-210 antes");
+        foreach (var f in new[] { "CB_v711_Rampa_leva_1", "CB_v711_Rampa_leva_2", "CB_v711_Leva_final_carrera_J1", "CB_v713_Rampa_leva_1", "CB_v713_Rampa_leva_2", "CB_v713_Leva_final_carrera_J1" })
+        {
+            m.ClearSelection2(true);
+            bool s = m.Extension.SelectByID2(f, "BODYFEATURE", 0, 0, 0, false, 0, null, 0);
+            if (s) { m.Extension.DeleteSelection2((int)swDeleteSelectionOptions_e.swDelete_Absorbed); Console.WriteLine("  borrado " + f); }
+        }
+        PB.Use(m);
+        PB.Report("CB-210 sin leva");
+        Func<double, double, double, double[]> L = (r, ang, z) => inv.Apply(V(r * Math.Cos(Rad(ang)), r * Math.Sin(Rad(ang)), z));
+        var c = L(0, 0, z0);
+        PB.Sketch('R');
+        var o1 = L(ro, a1, z0); var o2 = L(ro, a2, z0); var i1 = L(ri, a1, z0); var i2 = L(ri, a2, z0);
+        PB.Line(i1[2], i1[1], o1[2], o1[1]); PB.Line(i2[2], i2[1], o2[2], o2[1]);
+        PB.Arc(c[2], c[1], o2[2], o2[1], o1[2], o1[1]);
+        PB.Arc(c[2], c[1], i2[2], i2[1], i1[2], i1[1]);
+        PB.Extrude(c[0], z1 - z0, false, "CB_v713_Leva_final_carrera_J1");
+        PB.Report("CB-210 con leva");
+        // Rampas en la arista de ABAJO de cada punta (la que va de la base de la torre, r 80, a r 98, en z 91.5). No con SelectByID2 en un
+        // punto: elige la arista según la vista y en la primera corrida puso la rampa de la punta a2 en la arista de arriba. Se busca la arista
+        // por sus vértices.
+        Func<double[], double[], double> dist = (u, w) => Math.Sqrt((u[0] - w[0]) * (u[0] - w[0]) + (u[1] - w[1]) * (u[1] - w[1]) + (u[2] - w[2]) * (u[2] - w[2]));
+        foreach (var ang in new[] { a1, a2 })
+        {
+            var pOut = L(ro, ang, z0); var pIn = L(80, ang, z0);
+            var cuerpo = (Body2)((object[])((PartDoc)m).GetBodies2((int)swBodyType_e.swSolidBody, true))[0];
+            Edge arista = null; double mejor = 1e9;
+            foreach (Edge e in (object[])cuerpo.GetEdges())
+            {
+                var v1 = e.GetStartVertex() as Vertex; var v2 = e.GetEndVertex() as Vertex; if (v1 == null || v2 == null) continue;
+                var q1 = ((double[])v1.GetPoint()).Select(v => v * 1000).ToArray(); var q2 = ((double[])v2.GetPoint()).Select(v => v * 1000).ToArray();
+                double d = Math.Min(dist(q1, pOut) + dist(q2, pIn), dist(q2, pOut) + dist(q1, pIn));
+                if (d < mejor) { mejor = d; arista = e; }
+            }
+            Feature ch = null;
+            if (arista != null && mejor < 1.0)
+            {
+                m.ClearSelection2(true);
+                ((Entity)arista).Select4(false, null);
+                ch = (Feature)m.FeatureManager.InsertFeatureChamfer(4, (int)swChamferType_e.swChamferDistanceDistance, LEVA_RAMPA / 1000, 0, LEVA_RAMPA / 1000, 0, 0, 0);
+            }
+            Console.WriteLine("rampa a " + ang.ToString("0.0") + "°: " + (ch == null ? "NO (arista a " + mejor.ToString("0.00") + " mm)" : ch.Name + " (arista a " + mejor.ToString("0.00") + " mm)"));
+            if (ch != null) ch.Name = "CB_v713_Rampa_leva_" + (ang == a1 ? "1" : "2");
+        }
+        PB.Report("CB-210 despues");
+        Guardar(m, ya);
+    }
+
+    static void GirarJ1()
+    {
+        bool ya; var m = Abrir(BASE + "CB-160_Finales_Carrera_Base.SLDASM", out ya); var a = (AssemblyDoc)m;
+        var sw = ((object[])a.GetComponents(true)).Cast<Component2>().Where(k => k.Name2.StartsWith("CB-516"))
+            .FirstOrDefault(k => { var t = Xf.FromComp(k).T; return Math.Abs(t[0] + 92) < 5 && t[2] > 50; });
+        if (sw == null) { Console.WriteLine("NO se encontro el switch de J1 en CB-160"); if (!ya) SW.App.CloseDoc(m.GetTitle()); return; }
+        Func<string> pal = () =>
+        {
+            var x = Xf.FromComp(sw); var b = x.Apply(V(18.6, 10.3, 0)); var p = x.Apply(V(2.5, 14.7, 0));
+            return string.Format("bisagra ({0:0.0}, {1:0.0}, {2:0.0})  punta ({3:0.0}, {4:0.0}, {5:0.0})", b[0], b[1], b[2], p[0], p[1], p[2]);
+        };
+        Console.WriteLine("  " + sw.Name2 + " antes:   " + pal());
+        m.ClearSelection2(true); sw.Select4(false, null, false); a.UnfixComponent();
+        sw.Transform2 = SwJ1().ToMath();
+        m.ClearSelection2(true); sw.Select4(false, null, false); a.FixComponent(); m.ClearSelection2(true);
+        Console.WriteLine("  " + sw.Name2 + " despues: " + pal());
         Guardar(m, ya);
     }
 

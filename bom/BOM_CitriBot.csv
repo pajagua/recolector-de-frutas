@@ -8,7 +8,7 @@ E06,Control y potencia,ProtoScrew Shield,Borneras para Arduino,1,u,Cableado,Pré
 E07,Control y potencia,Módulo MOSFET 12 V,"Canal lógico 5 V, ≥ 3 A",2,u,Bomba de vacío y electroválvula,Por comprar,Falta,,,,Alternativa: salidas D8/D9/D10 de la RAMPS
 E08,Control y potencia,Módulo PCA9685,"16 canales PWM, I2C (0x40), 62,7 × 25,3, agujeros a 56,7 × 19,3",1,u,"Servos MG996R de J4 y J5; SDA y SCL a D20 y D21 del MEGA, V+ desde el UBEC A02",Propio,En mano,,,,"CAD: CB-517 sobre el soporte CB-142, al lado de la bandeja. Agujeros para M2,5"
 M01,Motores y actuadores,Motorreductor 37D con encoder,"37Dx70.1L, 12 V, 90:1, encoder cuadratura 64 CPR",1,u,J1 cintura (lazo cerrado),Propio,Por confirmar,,,,Confirmar reducción real del motor que tienen
-M02,Motores y actuadores,Motorreductor sinfín 5840-36ZY,"12 V, 12 rpm (9 con carga), eje D8 con plano a 7, fijación 4 × M4 prof. 6",1,u,J2 hombro (direct drive),Compra grupal,Pedido,36.5,AliExpress,,"Un vendedor da ≈ 70 kg·cm sin decir si es nominal o de bloqueo (bloqueo 6,5 A). Con el prismático telescópico (v7B) el hombro pide ≈ 44 kg·cm de pico (docs/v7_prismatico.md §1): probar colgando 1 kg a 40 cm del eje. Medir con calibre antes de imprimir CB-210"
+M02,Motores y actuadores,Motorreductor sinfín 5840-36ZY,"12 V, 12 rpm (9 con carga), eje D8 con plano a 7, fijación 4 × M4 prof. 6",1,u,J2 hombro (direct drive),Compra grupal,Pedido,36.5,AliExpress,,"Un vendedor da ≈ 70 kg·cm sin decir si es nominal o de bloqueo (bloqueo 6,5 A). Con el prismático telescópico (v7B) el hombro pide ≈ 44 kg·cm de pico (docs/v7_prismatico.md §1): probar colgando 1 kg a 40 cm del eje. Agujeros medidos en el motor comprado (v7.13): M4 a 28,5 mm del eje, separados 27; probar con la pieza CB-211 antes de imprimir CB-210"
 M03,Motores y actuadores,Motor paso a paso NEMA 17,"40 mm, ≈ 4,5 kg·cm, 1,7 A, eje Ø5 (tipo 17HS4401); mejor 48 mm, 0,55 N·m (17HS19), mismo montaje",1,u,"J3 prismático telescópico (sobre el cubo de E2, mueve la correa GT2 de la etapa 1)",Por definir,Por confirmar,,,,"El 17HS2408 del riel (M04) es más corto y tiene menos torque: no sirve para J3. Con el 17HS4401, limitar a ≈ 150 rpm (≈ 200 mm/s en la brida). CAD: CB-505 sobre la placa CB-306"
 M04,Motores y actuadores,Motor paso a paso NEMA 17,17HS2408,1,u,J0 riel,Propio,Por confirmar,,Electrónica.com.py,https://www.electronica.com.py/producto/motor-nema-17-17hs2408-s/,
 M05,Motores y actuadores,Servo MG996R,"180°, engranajes metálicos, 4.8–7.2 V",2,u,J4 muñeca (cabeceo) y J5 torsión,Compra grupal,Pedido,11.53,AliExpress,,"Precio del pedido 'Servos'. Se usan los horns redondos de plástico que vienen con el servo (Ø21, 12 agujeros) y sus tornillos: 4 por horn (CB-603 y CB-605)"
@@ -56,7 +56,7 @@ H07,Tornillería,Tornillo M4 × 45,,6,u,Torre 2M1D → plato 1M1B,Por comprar,Fa
 H08,Tornillería,Tornillo M5 × 20,,8,u,Ejes de los rodillos,Por comprar,Falta,,,,
 H09,Tornillería,Tornillo M5 × 30,,5,u,4 patas → tablero · 1 pivote de la barra estéreo (CB-153/154),Por comprar,Falta,,,,
 H10,Tornillería,Tornillo M5 × 25,,4,u,Horquilla → brida de E3,Por comprar,Falta,,,,No modelado: brida de 10 mm + placa de la horquilla de 8 mm + tuerca
-H11,Tornillería,Tornillo M4 × 10 Allen,DIN 912,2,u,Motor 5840 → torre (rosca M4 prof. 6 del motor),Por comprar,Falta,,,,
+H11,Tornillería,Tornillo M4 × 10 Allen,DIN 912,2,u,"Motor 5840 → torre (rosca M4 prof. 6 del motor), con arandela H19",Por comprar,Falta,,,,
 H12,Tornillería,Tornillo M8 × 25,,1,u,Pivote libre de la muñeca,Por comprar,Falta,,,,No modelado
 H13,Tornillería,Tornillo M8 × 65 hexagonal,,1,u,Eje central de J1,Por comprar,Falta,,,,
 H14,Tornillería,Tuerca M4 autoblocante,,18,u,6 torre/plato · 4 placa 1M2A · 4 soporte J1 · 4 bandeja,Por comprar,Falta,,,,
@@ -64,7 +64,7 @@ H15,Tornillería,Tuerca M4,,2,u,Soporte del imán (dentro de la torre),Por compr
 H16,Tornillería,Tuerca M5 autoblocante,,17,u,8 rodillos · 4 patas · 4 horquilla → brida de E3 · 1 pivote de la barra estéreo,Por comprar,Falta,,,,
 H17,Tornillería,Tuerca M8 autoblocante,,1,u,Eje central de J1,Por comprar,Falta,,,,
 H18,Tornillería,Tuerca M8,,1,u,Pivote libre de la muñeca,Por comprar,Falta,,,,
-H19,Tornillería,Arandela M4,,12,u,Bajo el tablero,Por comprar,Falta,,,,
+H19,Tornillería,Arandela M4,DIN 125 (Ø9),14,u,"12 bajo el tablero · 2 bajo la cabeza de los M4 × 10 del 5840 (entran en el avellanado Ø11,5)",Por comprar,Falta,,,,
 H20,Tornillería,Arandela M5,,5,u,4 patas · 1 polea loca de J3 (sobre el pasador Ø5),Por comprar,Falta,,,,
 H22,Tornillería,Separador M5 × 10,,8,u,Rodillos de la lazy susan,Por comprar,Falta,,,,
 H23,Tornillería,Separador M8 × 20,"Tubo de aluminio 10 × 8 (pared 1), cortado a 20 mm",2,u,Eje central de J1,Por comprar,Falta,,,,El agujero central del plato 1M1B es Ø11: un separador de Ø12 no entra (v7.11). Uno va dentro del plato y el otro entre los dos 608ZZ; apoyan en el anillo interior
@@ -101,7 +101,7 @@ P02,Piezas impresas,CB-121 Placa fija J1 (1M2A),"PETG, ≥ 4 perímetros",1,u,,I
 P03,Piezas impresas,CB-131 Soporte motor J1 (37D),"PETG, ≥ 4 perímetros",1,u,,Impresión 3D,Falta,,Impresora del grupo (Ender 3 V2),,
 P04,Piezas impresas,CB-141 Bandeja de electrónica,"PETG, ≥ 4 perímetros",1,u,,Impresión 3D,Falta,,Impresora del grupo (Ender 3 V2),,210 × 100 mm
 P05,Piezas impresas,CB-201 Plato giratorio con dientes T5 (1M1B),"PETG, ≥ 4 perímetros",1,u,,Impresión 3D,Falta,,Impresora del grupo (Ender 3 V2),,
-P06,Piezas impresas,CB-210 Torre de cintura (2M1D mod),"PETG, ≥ 4 perímetros",1,u,,Impresión 3D,Falta,,Impresora del grupo (Ender 3 V2),,318 mm de alto: hay que partirla para la Ender 3 V2 · v7.11: leva del final de carrera de J1 en la base (aprieta el switch con J1 entre −125° y −67°)
+P06,Piezas impresas,CB-210 Torre de cintura (2M1D mod),"PETG, ≥ 4 perímetros",1,u,,Impresión 3D,Falta,,Impresora del grupo (Ender 3 V2),,318 mm de alto: hay que partirla para la Ender 3 V2 · leva del final de carrera de J1 en la base (v7.13: aprieta el switch con J1 entre −95° y −68°) · v7.13: asiento Ø18,3 del buje del 5840
 P07,Piezas impresas,CB-232 Soporte del imán,"PETG, ≥ 4 perímetros",1,u,,Impresión 3D,Falta,,Impresora del grupo (Ender 3 V2),,
 P08,Piezas impresas,CB-301B Eslabón E2 telescópico,"PETG: cubo ≥ 6 perímetros 50 %, manga 4 perímetros 25 %",1,u,,Impresión 3D,Falta,,Impresora del grupo (Ender 3 V2),,305 mm de largo: partir en 2 tramos. Alojamiento del final de carrera de J3 en la pared trasera (v7.12). STL: cad/imprimir/11_v7B_Prismatico_Telescopico/CB-301B_Eslabon_E2_v7B_Telescopico.stl
 P09,Piezas impresas,CB-432B Brida de E3 para tubo 20 × 20,"PETG, ≥ 4 perímetros",1,u,,Impresión 3D,Falta,,Impresora del grupo (Ender 3 V2),,Tapón al 100 % de relleno. STL: cad/imprimir/11_v7B_Prismatico_Telescopico/CB-432B_Brida_E3_Herramienta_20x20.stl

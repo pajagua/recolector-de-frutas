@@ -18,7 +18,8 @@ class Hombro5840
     static double[] V(params double[] v) { return v; }
     const double XA = 190.171, ZC = -86.723;   // eje J2 en coordenadas de la torre CB-210
     const double YPARED = 193.2;               // cara interior de la pared de la torre (apoyo del motor)
-    const double HX = 13.75, HY = 29.0;        // agujeros M4 del lado motor: +-13.75 a 29 mm del eje
+    const double HX = 13.75, HY = 29.0;        // agujeros M4 del lado motor: +-13.75 a 29 mm del eje (plano del vendedor; desde la v7.13
+                                               // la torre, el motor y los M4x10 usan las medidas del motor comprado: ver Montaje5840.cs)
 
     static void Main(string[] args)
     {
