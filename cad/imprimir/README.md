@@ -47,7 +47,7 @@ El anillo de retención de la `.scad` (BOM P20) no hace falta: en el CAD el eje 
 | Archivo | Cant. | Notas |
 |---|---|---|
 | `CB-201_Plato_Giratorio_Polea_J1_1M1B.stl` | 1 | |
-| `CB-210_Torre_Cintura_2M1D_mod.stl` | 1 | **no entra en la Ender 3 V2** (318 × 178 × 162 mm, con la leva del final de carrera de J1 en la base desde la v7.11): hay que partirla o imprimirla en una impresora más grande. La leva queda sobre la cama |
+| `CB-210_Torre_Cintura_2M1D_mod.stl` | 1 | **no entra en la Ender 3 V2** (318 × 178 × 162 mm, con la leva del final de carrera de J1 en la base desde la v7.11): hay que partirla o imprimirla en una impresora más grande. La leva queda sobre la cama. v7.13: asiento Ø18,3 del buje del 5840 y leva de J1 más corta (de 243,6° a 272,9° respecto del brazo, rampas de 4 × 4); el switch de J1 se monta girado 180° respecto de la v7.11 |
 | `CB-232_Soporte_Iman_J2.stl` | 1 | |
 
 ## 03_Hombro_E2_J2 (CB-300)
@@ -89,6 +89,7 @@ La placa del motor CB-306 es la de `03_Hombro_E2_J2`.
 
 | Archivo | Cant. | Notas |
 |---|---|---|
+| `CB-211_Prueba_Montaje_5840.stl` | 1 | **prueba del motor del hombro antes de imprimir la torre** (v7.13): el trozo de CB-210 donde va el motor, idéntico a la torre: pared de 12 mm con el agujero Ø32 del buje y el asiento Ø18,3 × 2 del lado del motor, los 2 agujeros de los M4 con sus avellanados Ø11,5 y el anillo Ø44/Ø56 de la cara de afuera. 62 × 20 × 73,5 mm. **Imprimir parada, como viene en el STL** (igual que la torre: agujeros horizontales), con el mismo perfil y una orla (brim). Probar: buje calzado en el asiento (sin juego y sin forzar), resaltes apoyados en la pared, 2 × M4x10 que entran derechos con el buje calzado y cuya cabeza pasa por el anillo |
 | `CB-158_Adaptador_Rotula_Bola12.stl` | 1 | soporte estéreo sobre la rótula del trípode, con bola Ø11,8 integrada (cuello macizo), 4 × M3x12 a la base. Cara de arriba en la cama, soportes bajo la bola |
 
 No hay STL de las piezas compradas (`05_Comerciales`), del tablero de madera (CB-111), ni de los tubos de aluminio (CB-152, CB-401, CB-411B, CB-421B).

@@ -1,7 +1,11 @@
-function robot = citribot_robot()
+function robot = citribot_robot(q45)
 %CITRIBOT_ROBOT Brazo CitriBot como rigidBodyTree (Robotics System Toolbox).
 %   robot = citribot_robot() arma el brazo con los parámetros de Denavit-Hartenberg
 %   del CAD (docs/sistemas_de_referencia.md). Unidades: metros y radianes.
+%
+%   robot = citribot_robot([q4 q5]) deja J4 y J5 fijas en esos ángulos (rad), y el
+%   robot queda con 3 articulaciones (q1 q2 q3). Es para el modelo de Simscape, donde
+%   la herramienta es rígida: ahí va citribot_robot([deg2rad(1.944) 0]), la pose del CAD.
 %
 %   Variables de articulación (en este orden):
 %     q1  J1 cintura   (rad)  giro desde el eje X de la base
@@ -33,18 +37,25 @@ function robot = citribot_robot()
     sufijo = eye(4);                 % parte fija que queda después de la articulación anterior
     for i = 1:size(dh, 1)
         [tipo, toff, d, a, alfa, lim] = dh{i, :};
-        if tipo == 'R'
-            prefijo = rotz_(toff);                     % Rz(offset) y después gira la articulación
-            post    = trz_(d) * trx_(a) * rotx_(alfa);
-            j = rigidBodyJoint(juntas{i}, 'revolute');
+        if nargin >= 1 && i >= 4
+            % J4 / J5 fijas: el giro q va dentro de la transformación fija
+            post = trz_(d) * trx_(a) * rotx_(alfa);
+            j = rigidBodyJoint(juntas{i}, 'fixed');
+            setFixedTransform(j, sufijo * rotz_(toff + q45(i - 3)));
         else
-            prefijo = rotz_(toff) * trz_(d);           % Tz(d fijo) y después desliza la articulación
-            post    = trx_(a) * rotx_(alfa);
-            j = rigidBodyJoint(juntas{i}, 'prismatic');
+            if tipo == 'R'
+                prefijo = rotz_(toff);                     % Rz(offset) y después gira la articulación
+                post    = trz_(d) * trx_(a) * rotx_(alfa);
+                j = rigidBodyJoint(juntas{i}, 'revolute');
+            else
+                prefijo = rotz_(toff) * trz_(d);           % Tz(d fijo) y después desliza la articulación
+                post    = trx_(a) * rotx_(alfa);
+                j = rigidBodyJoint(juntas{i}, 'prismatic');
+            end
+            j.PositionLimits = lim;
+            j.HomePosition = 0;
+            setFixedTransform(j, sufijo * prefijo);
         end
-        j.PositionLimits = lim;
-        j.HomePosition = 0;
-        setFixedTransform(j, sufijo * prefijo);
         b = rigidBody(nombres{i});
         b.Joint = j;
         addBody(robot, b, padre);

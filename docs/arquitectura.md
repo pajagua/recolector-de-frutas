@@ -66,7 +66,7 @@ Medida en el ensamblaje SolidWorks (`cad/solidworks/CB-000`), origen sobre el ej
 
 - ¿El profesor cuenta el riel como GDL 1? La guía pide DC en lazo cerrado en los dos primeros GDL, y el riel usa un paso a paso.
 - Torque del 5840: un vendedor da ≈ 70 kg·cm (12 V, 12 rpm) sin aclarar si es nominal o de bloqueo. Con el telescópico el hombro pide 44 kg·cm de pico (§8; 39 con la variante A). Si los 70 kg·cm fueran de bloqueo, el margen se achica: probar colgando 1 kg a 40 cm del eje y medir la corriente (bloqueo: 6,5 A).
-- Medir el 5840 comprado con calibre antes de imprimir CB-210. El CAD sigue el plano del vendedor: M4 prof. 6, eje a 20 mm del borde, buje de 5 mm.
+- Montaje del 5840 en la torre CB-210 con las medidas del motor comprado (v7.13): M4 a 28,5 mm del eje y separados 27,0 (el plano del vendedor decía 29 y 27,5). Probarlo antes con la pieza CB-211.
 - Riel J0: el alto del carro sube todo el robot. El brazo cubre la esfera mientras el carro mida hasta 77 mm (ver [espacio_de_trabajo.md](espacio_de_trabajo.md)).
 - J3: la correa no es autobloqueante. Con el motor sin corriente el telescopio puede deslizar si el brazo está inclinado: mantener el driver habilitado.
 - J3: imprimir primero el telescopio y medir el juego del intermedio en el canal de E2 y del interior en el buje delantero, y anotar qué trae el kit GT2 (BOM T04): puede cubrir la correa y las poleas de J3. El husillo T8 ya pedido (T05) queda de repuesto.

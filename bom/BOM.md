@@ -40,7 +40,7 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 
 | ID | Componente | Cant. | Proveedor | USD | Estado | Notas |
 |---|---|---|---|---|---|---|
-| M02 | Motorreductor sinfín 5840-36ZY | 1 | AliExpress | 36.50 | Pedido | Un vendedor da ≈ 70 kg·cm sin decir si es nominal o de bloqueo (bloqueo 6,5 A). Con el prismático telescópico (v7B) el hombro pide ≈ 44 kg·cm de pico (docs/v7_prismatico.md §1): probar colgando 1 kg a 40 cm del eje. Medir con calibre antes de imprimir CB-210 |
+| M02 | Motorreductor sinfín 5840-36ZY | 1 | AliExpress | 36.50 | Pedido | Un vendedor da ≈ 70 kg·cm sin decir si es nominal o de bloqueo (bloqueo 6,5 A). Con el prismático telescópico (v7B) el hombro pide ≈ 44 kg·cm de pico (docs/v7_prismatico.md §1): probar colgando 1 kg a 40 cm del eje. Agujeros medidos en el motor comprado (v7.13): M4 a 28,5 mm del eje, separados 27; probar con la pieza CB-211 antes de imprimir CB-210 |
 | M05 | Servo MG996R | 2 | AliExpress | 11.53 | Pedido | Precio del pedido 'Servos'. Se usan los horns redondos de plástico que vienen con el servo (Ø21, 12 agujeros) y sus tornillos: 4 por horn (CB-603 y CB-605) |
 | S01 | Módulo AS5600 | 1 | Amazon | 7.99 | Por confirmar | En el pedido figura 'Encoder' (Amazon, USD 7.99): confirmar que es el AS5600 |
 | S02 | Imán de neodimio diametral | 1 |  |  | Por confirmar | Suele venir con el módulo AS5600 |
@@ -100,7 +100,7 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 | H16 | Tuerca M5 autoblocante |  | 17 | u | Por comprar |  |
 | H17 | Tuerca M8 autoblocante |  | 1 | u | Por comprar |  |
 | H18 | Tuerca M8 |  | 1 | u | Por comprar |  |
-| H19 | Arandela M4 |  | 12 | u | Por comprar |  |
+| H19 | Arandela M4 | DIN 125 (Ø9) | 14 | u | Por comprar |  |
 | H20 | Arandela M5 |  | 5 | u | Por comprar |  |
 | H22 | Separador M5 × 10 |  | 8 | u | Por comprar |  |
 | H23 | Separador M8 × 20 | Tubo de aluminio 10 × 8 (pared 1), cortado a 20 mm | 2 | u | Por comprar | El agujero central del plato 1M1B es Ø11: un separador de Ø12 no entra (v7.11). Uno va dentro del plato y el otro entre los dos 608ZZ; apoyan en el anillo interior |
@@ -166,7 +166,7 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 | ID | Componente | Especificación | Cant. | Un. | Uso | Origen | Estado | Notas |
 |---|---|---|---|---|---|---|---|---|
 | M01 | Motorreductor 37D con encoder | 37Dx70.1L, 12 V, 90:1, encoder cuadratura 64 CPR | 1 | u | J1 cintura (lazo cerrado) | Propio | Por confirmar | Confirmar reducción real del motor que tienen |
-| M02 | Motorreductor sinfín 5840-36ZY | 12 V, 12 rpm (9 con carga), eje D8 con plano a 7, fijación 4 × M4 prof. 6 | 1 | u | J2 hombro (direct drive) | Compra grupal | Pedido | Un vendedor da ≈ 70 kg·cm sin decir si es nominal o de bloqueo (bloqueo 6,5 A). Con el prismático telescópico (v7B) el hombro pide ≈ 44 kg·cm de pico (docs/v7_prismatico.md §1): probar colgando 1 kg a 40 cm del eje. Medir con calibre antes de imprimir CB-210 |
+| M02 | Motorreductor sinfín 5840-36ZY | 12 V, 12 rpm (9 con carga), eje D8 con plano a 7, fijación 4 × M4 prof. 6 | 1 | u | J2 hombro (direct drive) | Compra grupal | Pedido | Un vendedor da ≈ 70 kg·cm sin decir si es nominal o de bloqueo (bloqueo 6,5 A). Con el prismático telescópico (v7B) el hombro pide ≈ 44 kg·cm de pico (docs/v7_prismatico.md §1): probar colgando 1 kg a 40 cm del eje. Agujeros medidos en el motor comprado (v7.13): M4 a 28,5 mm del eje, separados 27; probar con la pieza CB-211 antes de imprimir CB-210 |
 | M03 | Motor paso a paso NEMA 17 | 40 mm, ≈ 4,5 kg·cm, 1,7 A, eje Ø5 (tipo 17HS4401); mejor 48 mm, 0,55 N·m (17HS19), mismo montaje | 1 | u | J3 prismático telescópico (sobre el cubo de E2, mueve la correa GT2 de la etapa 1) | Por definir | Por confirmar | El 17HS2408 del riel (M04) es más corto y tiene menos torque: no sirve para J3. Con el 17HS4401, limitar a ≈ 150 rpm (≈ 200 mm/s en la brida). CAD: CB-505 sobre la placa CB-306 |
 | M04 | Motor paso a paso NEMA 17 | 17HS2408 | 1 | u | J0 riel | Propio | Por confirmar |  |
 | M05 | Servo MG996R | 180°, engranajes metálicos, 4.8–7.2 V | 2 | u | J4 muñeca (cabeceo) y J5 torsión | Compra grupal | Pedido | Precio del pedido 'Servos'. Se usan los horns redondos de plástico que vienen con el servo (Ø21, 12 agujeros) y sus tornillos: 4 por horn (CB-603 y CB-605) |
@@ -254,7 +254,7 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 | H08 | Tornillo M5 × 20 |  | 8 | u | Ejes de los rodillos | Por comprar | Falta |  |
 | H09 | Tornillo M5 × 30 |  | 5 | u | 4 patas → tablero · 1 pivote de la barra estéreo (CB-153/154) | Por comprar | Falta |  |
 | H10 | Tornillo M5 × 25 |  | 4 | u | Horquilla → brida de E3 | Por comprar | Falta | No modelado: brida de 10 mm + placa de la horquilla de 8 mm + tuerca |
-| H11 | Tornillo M4 × 10 Allen | DIN 912 | 2 | u | Motor 5840 → torre (rosca M4 prof. 6 del motor) | Por comprar | Falta |  |
+| H11 | Tornillo M4 × 10 Allen | DIN 912 | 2 | u | Motor 5840 → torre (rosca M4 prof. 6 del motor), con arandela H19 | Por comprar | Falta |  |
 | H12 | Tornillo M8 × 25 |  | 1 | u | Pivote libre de la muñeca | Por comprar | Falta | No modelado |
 | H13 | Tornillo M8 × 65 hexagonal |  | 1 | u | Eje central de J1 | Por comprar | Falta |  |
 | H14 | Tuerca M4 autoblocante |  | 18 | u | 6 torre/plato · 4 placa 1M2A · 4 soporte J1 · 4 bandeja | Por comprar | Falta |  |
@@ -262,7 +262,7 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 | H16 | Tuerca M5 autoblocante |  | 17 | u | 8 rodillos · 4 patas · 4 horquilla → brida de E3 · 1 pivote de la barra estéreo | Por comprar | Falta |  |
 | H17 | Tuerca M8 autoblocante |  | 1 | u | Eje central de J1 | Por comprar | Falta |  |
 | H18 | Tuerca M8 |  | 1 | u | Pivote libre de la muñeca | Por comprar | Falta |  |
-| H19 | Arandela M4 |  | 12 | u | Bajo el tablero | Por comprar | Falta |  |
+| H19 | Arandela M4 | DIN 125 (Ø9) | 14 | u | 12 bajo el tablero · 2 bajo la cabeza de los M4 × 10 del 5840 (entran en el avellanado Ø11,5) | Por comprar | Falta |  |
 | H20 | Arandela M5 |  | 5 | u | 4 patas · 1 polea loca de J3 (sobre el pasador Ø5) | Por comprar | Falta |  |
 | H22 | Separador M5 × 10 |  | 8 | u | Rodillos de la lazy susan | Por comprar | Falta |  |
 | H23 | Separador M8 × 20 | Tubo de aluminio 10 × 8 (pared 1), cortado a 20 mm | 2 | u | Eje central de J1 | Por comprar | Falta | El agujero central del plato 1M1B es Ø11: un separador de Ø12 no entra (v7.11). Uno va dentro del plato y el otro entre los dos 608ZZ; apoyan en el anillo interior |
@@ -309,7 +309,7 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 | P03 | CB-131 Soporte motor J1 (37D) | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta |  |
 | P04 | CB-141 Bandeja de electrónica | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | 210 × 100 mm |
 | P05 | CB-201 Plato giratorio con dientes T5 (1M1B) | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta |  |
-| P06 | CB-210 Torre de cintura (2M1D mod) | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | 318 mm de alto: hay que partirla para la Ender 3 V2 · v7.11: leva del final de carrera de J1 en la base (aprieta el switch con J1 entre −125° y −67°) |
+| P06 | CB-210 Torre de cintura (2M1D mod) | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | 318 mm de alto: hay que partirla para la Ender 3 V2 · leva del final de carrera de J1 en la base (v7.13: aprieta el switch con J1 entre −95° y −68°) · v7.13: asiento Ø18 |
 | P07 | CB-232 Soporte del imán | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta |  |
 | P08 | CB-301B Eslabón E2 telescópico | PETG: cubo ≥ 6 perímetros 50 %, manga 4 perímetros 25 % | 1 | u |  | Impresión 3D | Falta | 305 mm de largo: partir en 2 tramos. Alojamiento del final de carrera de J3 en la pared trasera (v7.12). STL: cad/imprimir/11_v7B_Prismatico_Telescopico/CB-301B_Eslabon_E2_v7B_Telescopico.stl |
 | P09 | CB-432B Brida de E3 para tubo 20 × 20 | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | Tapón al 100 % de relleno. STL: cad/imprimir/11_v7B_Prismatico_Telescopico/CB-432B_Brida_E3_Herramienta_20x20.stl |
