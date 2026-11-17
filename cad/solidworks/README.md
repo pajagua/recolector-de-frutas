@@ -11,6 +11,7 @@ Combina cuatro fuentes:
 | Eslabón de cintura (torre) | **Diseño del usuario** `Desktop\2M1D.STEP` | Torre `2M1D` (derivada de `E1` del Rx-rcp-003), adaptada al motor 5840 |
 | Hombro (J2) | **Rx-rcp-003** (`Proyecto\3D\Rx-rcp-003`) | cubo de `E2` |
 | Prismático (J3), v7B (oficial desde la v7.12) | **Diseño nuevo** (`08_Scripts_API_SolidWorks\V7.cs`, `Tele.cs`) | E2 con manga corta, telescopio 2:1 de dos tubos de aluminio (30 × 30 y 20 × 20), brida, tapones, bujes y pinzas impresos, NEMA 17 + correas GT2 |
+| Prismático (J3), cremallera (alternativa, v7.14) | **Diseño nuevo** (`Alternativas.cs`) | E2-C de 470 mm, un tubo 30 × 30 de 440 mm con 2 tramos de cremallera m1, piñón de 18 dientes en el NEMA 17; mástil de las cámaras detrás del tablero |
 | Herramienta | **Diseño del usuario** (`09_Herramienta\Ensamblaje.step`) | horquilla U, porta-servo, caja de torsión, 2 × MG996R, polea, eje hueco, rodamientos, ventosa |
 | Electrónica | **Modelos del usuario** (`Cambios\`) | Arduino Mega 2560, RAMPS 1.4, A4988, Sabertooth 2x60, AS5600 |
 
@@ -21,7 +22,7 @@ Motores:
 
 Todo está hecho en **SolidWorks 2026** (plantillas Z-arriba). Archivo principal:
 **`CB-000_CitriBot_Ensamblaje_General.SLDASM`**.
-Desde la v7.12 tiene el **prismático telescópico (variante B)**. La variante A (correa y un solo tubo) queda como alternativa en `CB-000A_CitriBot_v7A_Correa.SLDASM`.
+Desde la v7.12 tiene el **prismático telescópico (variante B)**. El otro diseño final es **`CB-000C_CitriBot_v7C_Cremallera.SLDASM`**: un solo tubo movido por **cremallera y piñón**, con el mástil de las cámaras fuera del barrido de la cola (§6.19). La variante A (correa) se borró en la v7.15; está en el historial de git.
 
 ![Conjunto (prismático telescópico)](06_Imagenes/CB-000_trimetric.png)
 
@@ -36,6 +37,8 @@ Desde la v7.12 tiene el **prismático telescópico (variante B)**. La variante A
 | **v3 (2026-10-17)** | **Sin errores ni advertencias** en el ensamblaje: venían de los modelos de electrónica. Arduino Mega reconvertido a sólido sin historial; Sabertooth importado desde su STEP. **RAMPS reemplazada por el STEP** `Shield Ramps 1.4.stp` (en lugar del STL) y A4988 en su zócalo real. El soporte CB-232 y el AS5600 quedan como en v2. |
 | **v4 (2026-10-17)** | **Herramienta agregada** (CB-600, desde `09_Herramienta\Ensamblaje.step`) en el extremo de E3, como un bloque rígido dentro de CB-400. |
 | **v5 (2026-10-17)** | **Colores realistas en los componentes comprados** (las piezas impresas no se tocaron): tornillos Allen pavonados, tuercas y arandelas cincadas, rodamientos de acero, polea de aluminio, imán niquelado, Sabertooth con PCB verde, disipador de aluminio y condensadores negros, AS5600 azul, ventosa de goma negra con racor metálico, MG996R negros, horns de aluminio. La RAMPS, el Mega, el A4988, el NEMA 14 y los motores 37D/5840 ya tenían colores realistas. |
+| **v7.15 (2026-11-17)** | **Limpieza: quedan solo los dos diseños finales**, el telescópico (`CB-000`) y el de cremallera (`CB-000C`). Se borraron la variante A (`CB-000A`, CB-300, CB-301, CB-400, correa CB-514, sus imágenes y su STL de E2), el prismático de cable (CB-450D y sus piezas), `12_Pruebas` (CB-158, CB-159, CB-211, Body1/2), `cad/herramienta` (la `.scad` vieja), `simulink/brazo` y `matlab/CB_001_Brazo_Solo.slx` (exportación de A), `docs/prismatico_opciones.md`, `docs/montaje_prismatico.md` y los scripts `J3Largo.cs`, `Alcance.cs`, `Hombro5840.cs`, `Promote.cs` y `Bola.cs`. Siguen en el historial de git. **CB-000C** (robot completo con la cremallera): copia de la A con `CB-300C` (E2-C, piñón, sin poleas ni correa), `CB-400C` (tubo con 2 tramos de cremallera), `CB-100C` y `CB-150C` (cámaras atrás, §6.19). **Final de carrera de J2** en los dos diseños, sin tocar la cintura: switch CB-516 en una oreja nueva de la tapa CB-303, apretado por el brazo del imán CB-232 con J2 = +45° (§6.17). El final de J3 de la cremallera es el de la A (CB-307 dentro del canal de E2). Verificado: CB-000C con 7 relaciones sin errores; barrido de J1 cada 15° con J2 −45°, 0° y +45° y q3 0 y 340: sin choques con q3 = 0 en toda la vuelta, y con q3 = 340 solo de +150° a −165° (apuntando hacia atrás, contra el mástil). Script `Alternativas.cs` (modos `copiarC`, `armarC`, `camC`, `finJ2`). |
+| **v7.14 (2026-11-17)** | **Dos prismáticos más, solos, para comparar** (`14_Prismatico_Alternativas`), los dos sobre la variante A (un tubo de 440 mm, NEMA 17 vertical en el cubo de E2) y sin tocar los archivos de A ni de B. **C · cremallera y piñón** (`CB-450C_Prismatico_Cremallera_Solo`): piñón m1 de 18 dientes (Ø18 primitivo, 56.5 mm por vuelta) en el eje del NEMA, en el lugar de la polea GT2; 2 tramos de cremallera m1 de 58 dientes (182.2 mm, entran en la Ender) atornillados arriba del tubo; E2-C (`CB-301C`) = copia de CB-301 con una ranura para que la cremallera salga por el frente. **D · cable con tambor** (`CB-450D_Prismatico_Cable_Solo`): tambor Ø13 × 13 en el eje del NEMA, polea acanalada Ø13 en la cola (en el lugar de la polea loca, pestañas Ø18) y cable Ø1 con los dos extremos en la pinza del tapón CB-403; E2 sin cambios. Cada uno con su relación cremallera-piñón (el piñón o el tambor gira con el tubo) y su estudio de movimiento (`Movimiento_cremallera`, `Movimiento_cable`: 0 → 340 mm en 5 s, ida y vuelta). Verificado en 0, 170 y 340 mm: D sin choques; C solo con 0.01–0.05 mm³ entre los dientes (el perfil de evolvente es una poligonal). Script `Alternativas.cs`. Comparación y referencias: [docs/prismatico_alternativas.md](../../docs/prismatico_alternativas.md). |
 | **v7.13 (2026-11-12)** | **Montaje del motor del hombro con las medidas del 5840 comprado.** El usuario midió la cara de la caja reductora y la dibujó en Fusion (`Desktop\CaraCajaReductora_5840.step`): agujeros M4 del par de abajo a **28.5 mm** del eje y separados **27.0** (el plano del vendedor daba 29.0 / 27.5; también se contradecía: 29.0 con la cota de 9 al borde y 29.4 con 11.05 + 40.45), par de arriba a 10.5, resaltes Ø7 × 2, buje Ø18 × 4. Con el plano, cada tornillo quedaba corrido 0.56 mm y el agujero Ø4.5 de la torre admite 0.25. **CB-210**: los 2 agujeros Ø4.5 pasan a (−28.5, ±13.5) del eje J2 (`CB_v713_Agujeros_M4_motor5840_medido`). Los avellanados pasan a **Ø11.5 centrados** en esos agujeros y **atraviesan el anillo Ø44/Ø56** de la cara de afuera (`CB_v713_Avellanado_M4_D11.5`, de y 173 a 187.7): con los agujeros medidos, a 31.54 del eje, la cabeza Ø7 del M4 pasaba a 0.04 mm del anillo al meter el tornillo (con 0.2 mm de tolerancia de impresión, chocaba). El anillo queda con un rebaje de 2.1 mm en su cara externa y el alojamiento Ø44 de E2 conserva 3.8 mm de pared. Ø11.5 y no Ø11 para tapar el Ø10 × 4 de la versión M6 (centro viejo, 0.61 mm corrido). **CB-502**: resaltes Ø7 y agujeros M4 en las posiciones medidas, con la colisa del inferior izquierdo a 45°; el buje pasa a Ø18 (medido; el largo queda en 5) cambiando el radio del croquis, así la relación de J2 sigue sana. **CB-200**: los 2 × M4x10 sobre los agujeros nuevos (concéntricos con la rosca del motor: 18.1 mm³ de rosca modelada, sin roce con la torre). **CB-211** (`12_Pruebas`): pieza de prueba de 62 × 20 × 73.5, el trozo de la torre alrededor del motor: pared de 12 mm con el agujero Ø32 del buje, 2 × Ø4.5, los avellanados Ø11.5 y el anillo Ø44/Ø56 (por donde pasa la cabeza del tornillo); cara de apoyo de los resaltes. Es idéntica a la torre en ese trozo (diferencia de volumen 0) y el STL está orientado como se imprime la torre (parada, agujeros horizontales). Verificado con `VerMontaje5840.cs`: agujeros de la torre, de CB-211, del motor, de la cara medida por el usuario y de los tornillos en el mismo centro; tornillos sin roce con la torre ni con CB-211; cabeza Ø7 (y Ø8) libre en todo el camino; los 7 resaltes apoyan en la pared; el motor queda a ≥ 5 mm de la torre en todas las direcciones y entra en línea recta desde el lado abierto. CB-000 con 0 problemas (243 componentes, 106 documentos). **Asiento del buje** (después de probar CB-211): el buje Ø18 quedaba suelto en el Ø32 (7 mm de juego) y al motor lo ubicaban solo los 2 M4, así que contra el par de J2 lo sostenía el rozamiento de dos tornillos a 27 mm entre sí (estimado: 1.1 a 1.5 veces el pico de 44 kg·cm). CB-210 tiene ahora un anillo de 2 mm dentro del Ø32, en la cara donde apoya el motor, que deja Ø18.3 (`CB_v713_Asiento_buje_D18.3`, y 191.2 … 193.2): el buje entra 2 mm (sobresale 4 y los resaltes ocupan 2) con 0.15 mm de juego por lado, el motor queda centrado en J2 y los M4 frenan el giro a 31.5 mm del eje (2.3 veces más agarre). Los resaltes del medio y de arriba, que apoyaban en parte sobre el Ø32, apoyan completos. El cubo de E2 tiene la punta más fina que Ø18.3 y no llega al asiento. CB-211 se rehízo con el asiento. **Final de carrera de J1**: J1 nunca pasa de −70°, así que la leva entra siempre por el mismo lado, y en la v7.11 llegaba a la punta libre de la palanca y la empujaba a lo largo, hacia la bisagra, con 0.3 mm entre la punta y la cara recta de la leva. Ahora el switch va girado 180° en su poste (mismos agujeros) y la leva llega por el lado de la bisagra; la leva es más corta (de 243.6° a 272.9° respecto del brazo, antes de 250° a 308°) y tiene rampas de 4 × 4 en las aristas de abajo. Opera de −68° a −95.5° (§6.17). Todos los ensamblajes con 0 problemas. Scripts `Montaje5840.cs` (modos `asiento` y `buje`), `VerMontaje5840.cs`, `Finales.cs` (modos `leva2` y `girarj1`) y `VerLevaJ1.cs`. |
 | **v7.12 (2026-11-07)** | **El prismático telescópico (variante B) es el diseño oficial.** `CB-000_CitriBot_Ensamblaje_General.SLDASM` es ahora el robot con el telescópico (era `CB-000B_CitriBot_v7B_Telescopico`); la variante A (correa, un tubo de 440 mm) queda como alternativa en `CB-000A_CitriBot_v7A_Correa.SLDASM`, con sus archivos de siempre (CB-300, CB-301, CB-307, CB-400 …). Lo que tenía solo la A pasa a la B: **final de carrera de J3** en un alojamiento de la pared trasera de E2-B (CB-301B: ventana y 2 × M2x12; lo aprieta el tapón del intermedio CB-412B en home), **sistemas de referencia DH** SR2 en CB-301B y SR3 en CB-421B (copiados, misma transformación), BOM (dos tubos, correa de 1,5 m, poleas 16T, tornillería del telescopio, piezas impresas de la B), firmware (J3 a 40 pasos por mm de q3) y documentos. Imágenes: `CB-000_*.png` muestra ahora el telescópico y `CB-000A_*.png` la A (las dos de la v7, con el tablero viejo). Verificado: 0 errores en CB-000, CB-000A y CB-450B; barrido de 24 poses (J1 −70°, −67°, 0°, +100°; J2 ±45°; J3 0 y 340) sin choques. CB-001 (brazo solo) también se rehízo con el telescópico (`BrazoSolo.cs telescopico`). Script `Telescopico.cs`. |
 | **v7.11 (2026-11-06)** | **Finales de carrera de J0, J1 y J3, PCA9685 y separador del eje de J1** (ver §6.17). Microswitch con palanca CB-516 (cuerpo 19.8 × 6.4 × 9.5, agujeros Ø2.35 a 9.5, opera a 10.2 sobre los agujeros) y módulo PCA9685 CB-517 (62.7 × 25.3, agujeros a 56.7 × 19.3), con las medidas del usuario. **PCA9685** en el soporte CB-142 sobre el tablero, al lado de la bandeja y sin tapar el USB del Mega (dentro de CB-140). **J1**: leva en la base de la torre CB-210 (sector de anillo r 76 … 98 con rampas) que aprieta el switch del poste CB-161 con J1 entre −127° y −66° (home en −67°, fuera del rango de software). **J3**: escuadra CB-307 en el fondo del canal de E2, atravesada por el M5 de la polea loca; el tapón CB-403 aprieta el switch con q3 = 0, 2 mm antes del tope; paso de cables Ø6 en la pared trasera de E2. **J0** (provisorio, el riel no está definido): placa CB-162 bajo el tablero, palanca 4 mm afuera del borde −y. Subconjunto nuevo **CB-160** en CB-100. Pilotos Ø2.5 de los 6 tirafondos en CB-111. **Separador M8 x 20** a Ø10 × Ø8 (tubo de aluminio 10 × 1): ya entra en el agujero Ø11 del plato. Scripts `Finales.cs`, `VerFinales.cs`, `Separador.cs`. |
@@ -59,7 +62,7 @@ Desde la v7.12 tiene el **prismático telescópico (variante B)**. La variante A
 1. Copiá o mové **siempre la carpeta `CitriBot_Ensamblaje` completa**. Las referencias son internas: ningún archivo apunta a las carpetas originales del BCN3D, del Rx-rcp-003 ni a `Cambios\`.
 2. Abrí `CB-000_CitriBot_Ensamblaje_General.SLDASM`. Si SolidWorks pregunta por referencias, elegí la carpeta `CitriBot_Ensamblaje`.
 3. Los eslabones son subensamblajes **rígidos**; las articulaciones son relaciones de posición en el ensamblaje general. Para mover el brazo, arrastrá la torre (J1), el eslabón E2 (J2) o el eslabón E3 (J3). En el telescópico el tramo intermedio (CB-410B) y el interior (CB-400B) tienen relaciones de límite separadas: para moverlo a mano, llevá el intermedio a la mitad de q3.
-4. Para Fusion 360 u otros CAD: `07_STEP\CB-000_CitriBot_Ensamblaje_General.step` (exportado antes de la v7.12: tiene la variante A).
+4. Para Fusion 360 u otros CAD: `07_STEP\CB-000_CitriBot_Ensamblaje_General.step` (exportado antes de la v7.12: tiene la variante A, ya borrada; volver a exportar).
 
 > La RAMPS (`CB-508`) viene del STEP `Shield Ramps 1.4.stp`. El cuerpo principal de ese STEP no forma un sólido válido, así que SolidWorks lo importa como **superficie**: se ve bien, pero no entra en el cálculo de interferencias ni de masa.
 
@@ -70,12 +73,12 @@ Desde la v7.12 tiene el **prismático telescópico (variante B)**. La variante A
 ```
 CitriBot_Ensamblaje\
 ├─ CB-000_CitriBot_Ensamblaje_General.SLDASM   ← ensamblaje general (abrir este)
-├─ CB-000A_CitriBot_v7A_Correa.SLDASM          ← variante A del prismático (alternativa)
+├─ CB-000C_CitriBot_v7C_Cremallera.SLDASM     ← el otro diseño final: prismático con cremallera y piñón
 ├─ README.md
 ├─ 01_Base_J0\              eslabón 0 (fijo): tablero y patas, lazy susan fija, motor J1, electrónica, mástil de las cámaras
 ├─ 02_Cintura_J1\           eslabón 1: plato 1M1B + torre 2M1D mod + motor del hombro + soporte del imán
-├─ 03_Hombro_E2_J2\         eslabón 2: tapa-soporte del AS5600, buje D8 y placa del NEMA 17 (comunes) + E2 de la variante A (CB-300, CB-301, CB-307)
-├─ 04_Prismatico_E3_J3\     eslabón 3 de la variante A (alternativa): tubo de 440 mm + brida + tapón con pinza de correa
+├─ 03_Hombro_E2_J2\         eslabón 2, piezas comunes: tapa-soporte del AS5600 (con el final de carrera de J2), buje D8, placa del NEMA 17 y escuadra del final de J3 de la cremallera (CB-307)
+├─ 04_Prismatico_E3_J3\     eslabón 3 de la cremallera: tubo de 440 mm + brida + tapón
 ├─ 05_Comerciales\          motores, imán, rodamientos, polea
 │   ├─ Electronica\         Arduino Mega, RAMPS 1.4, A4988, Sabertooth 2x60, AS5600 (modelos del usuario)
 │   └─ Tornilleria\         tornillos, tuercas, arandelas, separadores (prefijo HW_)
@@ -84,8 +87,8 @@ CitriBot_Ensamblaje\
 ├─ 08_Scripts_API_SolidWorks\  código C# (API SolidWorks) con el que se generó todo
 ├─ 09_Herramienta\          herramienta (CB-600) + STEP original del usuario
 ├─ 13_Brazo_Solo\           CB-001: el brazo solo (sin base de madera, electrónica, cámaras ni motores), con copias S de los subconjuntos
-├─ 12_Pruebas\               piezas que no van en el robot: CB-158 adaptador con bola para la rótula del trípode + CB-159 cámaras en el trípode + CB-211 prueba del montaje del 5840 (v7.13)
 ├─ 11_v7B_Prismatico_Telescopico\  **prismático oficial** (variante B, telescópica): E2 (CB-300B), tramo intermedio (CB-410B), tramo interior = E3 con la herramienta (CB-400B) y el mecanismo solo (CB-450B)
+├─ 14_Prismatico_Alternativas\  diseño con cremallera: E2-C, piñón, cremallera, subconjuntos CB-100C/150C/300C/400C, mástil atrás y el mecanismo solo (CB-450C)
 └─ Cambios\                 archivos originales de electrónica que pasó el usuario (no se usan directo)
 ```
 
@@ -130,7 +133,7 @@ CB-000_CitriBot_Ensamblaje_General
         └─ 2 × CB-614 horn D20, 2 × CB-615 + CB-616 rodamientos, CB-618 ventosa JXD Ø40, CB-619 racor 6 mm × G1/4
 ```
 
-La variante A (`CB-000A`) tiene CB-300 (E2 con cola de 377 mm, polea loca en un M5, correa CB-514, final de carrera en la escuadra CB-307) y CB-400 (tubo 30 × 30 × 2 de 440 mm, brida CB-402 y tapón con pinza CB-403).
+El de cremallera (`CB-000C`) tiene CB-100C (base con las cámaras atrás, CB-150C), CB-300C (E2-C con cola de 377 mm, piñón, final de carrera de J3 en la escuadra CB-307) y CB-400C (tubo 30 × 30 × 2 de 440 mm, brida CB-402 y tapón con pinza CB-403).
 
 ### Relaciones de posición (articulaciones) en `CB-000`
 
@@ -214,26 +217,22 @@ La esfera de trabajo necesita J2 entre −35° y +10° (sin carro de riel). Con 
 | CB-210_Torre_Cintura_2M1D_mod | **usuario** `2M1D.STEP` | impreso PETG | 1 | **modificado** (ver §6.3); v7.11: leva del final de carrera de J1 en la base (§6.17); v7.13: asiento Ø18.3 del buje del 5840 (§6.3) y leva de J1 más corta |
 | CB-232_Soporte_Iman_J2 | **nuevo** | impreso PETG | 1 | sostiene el imán del AS5600 (ver §6.6) |
 
-### 03_Hombro_E2_J2 (eslabón 2)
+### 03_Hombro_E2_J2 (eslabón 2: piezas comunes)
 
 | Archivo | Origen | Tipo | Cant. | Notas |
 |---|---|---|---|---|
-| CB-300_Hombro_E2_J2.SLDASM | nuevo | ensamblaje | – | **variante A** (alternativa); el oficial es CB-300B |
-| CB-301_Eslabon_E2_mod5840 | Rx `E2` | impreso | 1 | **variante A**. **modificado**: cubo del Rx + cola corta de la v7, 470 mm de largo (ver §6.4 y §6.8) |
-| CB-303_Tapa_E2_Soporte_AS5600 | **nuevo** | impreso PETG | 1 | reemplaza a `TE2` (ver §6.6) |
-| CB-304_Tapa_TE1_no_ubicada | Rx `TE1` | impreso | – | no estaba ubicada en el ensamblaje del Rx-rcp-003; se deja como referencia |
+| CB-303_Tapa_E2_Soporte_AS5600 | **nuevo** | impreso PETG | 1 | reemplaza a `TE2` (ver §6.6). v7.15: oreja con el final de carrera de J2 (§6.17). Los dos diseños |
 | CB-305_Buje_D8_Hombro | **nuevo** | impreso o aluminio | 1 | acople eje D8 ↔ cubo de E2 |
 | CB-306_Placa_Soporte_NEMA17_Prismatico | **nuevo** (v7) | impreso PETG 100 % | 1 | placa 62 × 62 × 5: el NEMA 17 se atornilla en la mesa (4 × M3x6) y la placa va a E2 con 4 × M3x10 en insertos |
-| CB-307_Soporte_Final_Carrera_J3 | **nuevo** (v7.11) | impreso PETG | 1 | **variante A**: escuadra en el fondo del canal de E2 (x −452 … −434.5): base en el piso atravesada por el M5 de la polea loca y brazo lateral para el switch; imprimir apoyada sobre la cara exterior del brazo |
+| CB-307_Soporte_Final_Carrera_J3 | **nuevo** (v7.11) | impreso PETG | 1 | **solo cremallera**: escuadra en el fondo del canal de E2 (x −452 … −434.5): base en el piso atravesada por el M5 del agujero de la polea loca (en la cremallera sin polea) y brazo lateral para el switch; imprimir apoyada sobre la cara exterior del brazo |
 
-### 04_Prismatico_E3_J3 (eslabón 3 de la variante A, alternativa)
+### 04_Prismatico_E3_J3 (eslabón 3 de la cremallera)
 
 | Archivo | Origen | Tipo | Cant. | Notas |
 |---|---|---|---|---|
-| CB-400_Prismatico_E3_J3.SLDASM | nuevo | ensamblaje | – | home = J3 retraído |
 | CB-401_Tubo_E3_Aluminio_30x30x2 | **nuevo** (v7) | aluminio | 1 | tubo cuadrado 30 × 30 × 2, largo 440 mm, 2 agujeros Ø3.2 para los pasadores (ver §6.5) |
 | CB-402_Brida_E3_Herramienta | **nuevo** (v6) | impreso PETG | 1 | placa 80 × 80 × 10 con 4 × Ø5.4 en rombo r = 28.5 + tapón 25.8 × 20 dentro del tubo |
-| CB-403_Tapon_Trasero_Pinza_Correa | **nuevo** (v7) | impreso PETG 100 % | 1 | tapón trasero del tubo con la pinza de los dos extremos de la correa GT2 |
+| CB-403_Tapon_Trasero_Pinza_Correa | **nuevo** (v7) | impreso PETG 100 % | 1 | tapón trasero del tubo; aprieta el final de carrera de J3 (la pinza de correa quedó de la variante A y no se usa) |
 
 ### 11_v7B_Prismatico_Telescopico (prismático oficial desde la v7.12)
 
@@ -254,6 +253,24 @@ La esfera de trabajo necesita J2 entre −35° y +10° (sin carro de riel). Con 
 | CB-432B_Brida_E3_Herramienta_20x20 | impreso PETG 100 % en el tapón | 1 | misma placa que CB-402, tapón para el tubo de 20 × 20 |
 | CB-420B_Tramo_Interior_v7B.SLDASM | ensamblaje | – | interior sin la herramienta (lo usa CB-450B) |
 | CB-450B_Prismatico_Telescopico_Solo.SLDASM | ensamblaje | – | el mecanismo solo, con el estudio de movimiento `Movimiento_telescopico` |
+
+### 14_Prismatico_Alternativas (diseño con cremallera, CB-000C)
+
+Coordenadas de E2 (eje del prismático = X, J2 en x = −80), J3 retraído, salvo las piezas de las cámaras (marco del árbol, §6.19). Usa además CB-303, CB-305, CB-306, CB-307, CB-505, CB-401, CB-402 y CB-403.
+
+| Archivo | Tipo | Cant. | Notas |
+|---|---|---|---|
+| CB-100C_Base_J0_Camaras_Atras.SLDASM | ensamblaje | – | CB-100 con CB-150C en lugar de CB-150 |
+| CB-150C_Modulo_Camaras_Atras.SLDASM | ensamblaje | – | mástil en (−415, 115), sobre el brazo CB-163C y el codo CB-165C (sin el pie CB-151) |
+| CB-163C_Brazo_Mastil_20x20x1.5_L367 | aluminio | 1 | tubo 20 × 20 × 1,5 de 367 mm apoyado en el tablero (y 105 … 125); 2 × M5 pasantes al tablero en x −80 y −140 (agujerear al montar) |
+| CB-165C_Codo_Mastil | impreso PETG 40 % | 1 | 44 × 44 × 62: encastre del brazo y del mástil (girado −8.18°), 2 × M4 × 50 con tuerca |
+| CB-300C_Hombro_E2_Cremallera.SLDASM | ensamblaje | – | E2-C + NEMA 17 + piñón + AS5600 + finales de carrera de J2 y J3 |
+| CB-301C_Eslabon_E2_Cremallera | impreso PETG | 1 | E2 de la variante A (470 mm, cola de 377 mm detrás de J2) con la ranura de la cremallera (z −14.5…−7.5, y 14.8…28.5, de x −415 al frente) y la del pie (z −14.5…6.5, y 14.8…18, desde x −62). No entra en la Ender 3 V2: partir en 2 tramos |
+| CB-400C_Prismatico_E3_Cremallera.SLDASM | ensamblaje | – | tubo + brida + tapón + 2 tramos de cremallera + herramienta; se mueve q3 |
+| CB-431C_Cremallera_m1_58d | impreso PETG 100 % | 2 | módulo 1, 20°, 58 dientes = 182.2 mm (número entero de pasos: los dos tramos siguen sin salto); pie de 20 × 2.5 sobre el tubo con 3 agujeros M3 avellanados (remaches o tornillos) |
+| CB-432C_Pinon_m1_18d | impreso o comprado | 1 | 18 dientes, Ø5, cubo Ø12 × 8 con prisionero M3 |
+| CB-420C_Tramo_E3_Cremallera.SLDASM | ensamblaje | – | tubo + brida + tapón + 2 tramos de cremallera (sin herramienta; lo usa CB-450C) |
+| CB-450C_Prismatico_Cremallera_Solo.SLDASM | ensamblaje | – | el mecanismo solo: relación `Pinon_cremallera_D18` y estudio `Movimiento_cremallera` |
 
 ### 09_Herramienta
 
@@ -285,7 +302,6 @@ La esfera de trabajo necesita J2 entre −35° y +10° (sin carro de riel). Con 
 | CB-506_Eje_Salida_5840_D8 | eje de salida del 5840 (Ø8, plano a 7, 15 mm desde el buje), modelado aparte porque gira con E2 (es parte del mismo motor) | (1) |
 | CB-504_Iman_Diametral_D6x2.5 | imán de neodimio diametral Ø6 × 2.5 mm | 1 |
 | CB-505_Motor_NEMA17_Prismatico | NEMA 17 de 40 mm (tipo 17HS4401); en la v7 va vertical sobre el cubo de E2 | 1 |
-| CB-514_Correa_GT2_6mm_J3 | correa GT2 de 6 mm, lazo de 810 mm (dibujo sin dientes) | 1 |
 | HW_Polea_GT2_20T_D5 | polea GT2 20 dientes, agujero 5 mm (eje del NEMA 17 de J3) | 1 |
 | HW_Polea_Loca_GT2_20T_D5 | polea loca GT2 20 dientes, agujero 5 mm, con rodamientos (punta de la cola) | 1 |
 | HW_Polea_Loca_GT2_16T_D3 | polea loca GT2 16 dientes, agujero 3 mm (solo variante B) | – |
@@ -388,7 +404,7 @@ Tu 2M1D trae la base Ø160 con los 6 × M4 en Ø136 que coinciden con el plato 1
   - agujero vertical Ø5.3 del eje de la polea loca, 362 mm detrás de J2;
   - salida del túnel de cables del AS5600 movida al nuevo extremo trasero.
 
-### 6.5 E3 y J3 de la variante A (v7: tubo de aluminio de 440 mm)
+### 6.5 E3 de un tubo (v7, hoy el de la cremallera): tubo de aluminio de 440 mm
 
 - **CB-401**: tubo cuadrado de aluminio 30 × 30 × 2, largo **440 mm**. Desliza en el canal 31 × 31 de E2 (0.5 mm de juego por lado; cinta de PTFE o patines si baila). Con J3 retraído va de x = −425 a 15. El tubo pasa por debajo de la ventana del AS5600, y la espiga de la tapa CB-303 queda 7 mm por encima.
 - **CB-402** (brida): placa 80 × 80 × 10 con los 4 × Ø5.4 de la horquilla y tapón 25.8 × 20 que entra en el tubo. Cara exterior a 105 mm del eje J2 con J3 retraído.
@@ -411,7 +427,7 @@ Con *direct drive*, el eje del 5840 gira junto con E2. Por eso el sensor y el im
 
 Si el sensor va en la tapa (que gira con E2), el imán tiene que quedar quieto respecto de la torre y sobre el eje J2, del lado de afuera de E2. El eje del 5840 no sale por atrás de la caja y no es hueco, así que la única forma de llegar al eje J2 desde la torre es rodeando E2 por afuera (CB-232). La alternativa que evita el soporte es medir J2 con otro sensor (ver la nota sobre la IMU en §9).
 
-### 6.8 Prismático de la variante A (v7): NEMA 17 + correa GT2 (CB-306, CB-505, CB-514, poleas GT2)
+### 6.8 Prismático de la variante A (v7, borrada en la v7.15): NEMA 17 + correa GT2. La cremallera usa su E2 y su placa del motor
 
 - **Por qué**: la ventosa tiene que llegar de 254 a 554 mm del eje J2 para cubrir la esfera de trabajo ([docs/espacio_de_trabajo.md](../../docs/espacio_de_trabajo.md)), con ≥ 300 mm de carrera y el brazo retraído de menos de ≈ 25 cm. En la v6 eso dejaba 451.5 mm de brazo detrás del hombro (cola + NEMA en la punta). Con la correa, el motor sube al cubo y la cola se acorta a 377 mm. Comparación con la variante telescópica: [docs/v7_prismatico.md](../../docs/v7_prismatico.md).
 - **Cadena de cotas** (x de E2, J3 retraído; u = x + 80 es la distancia al eje J2):
@@ -543,18 +559,34 @@ Medidas del usuario: microswitch con palanca de 19.8 × 6.4 × 9.5 (agujeros Ø2
 - **PCA9685 (CB-517 en CB-142, dentro de CB-140)**: sobre el tablero, al lado de la bandeja, del lado de la RAMPS (marco árbol x −148 … −79, y −94 … −51). La bandeja está llena y el USB del Mega sale por −x en y −170 … −115, así que el módulo queda fuera de esa franja. Tira de servos hacia el brazo, bornera V+ hacia la bandeja. Conexión: SDA/SCL a D20/D21 del Mega, VCC 5 V, V+ desde el UBEC de 6 V (A02 del BOM), nunca desde el 5 V del Mega.
 - **J1 (CB-161 + leva en CB-210)**: el switch va en un poste del lado de atrás del tablero (x = −92, r = 92 mm del eje), con la palanca hacia arriba justo debajo del borde de la torre. **v7.13**: el switch va girado 180° respecto de la v7.11, con la bisagra de la palanca en y −8.7 y la punta en y +7.4 (los agujeros, los M2 y el poste no cambian). Como J1 nunca pasa de −70°, la leva entra siempre por el mismo lado: en la v7.11 llegaba a la punta libre de la palanca y la empujaba a lo largo, hacia la bisagra, con 0.3 mm entre la punta y la cara recta de la leva. Ahora llega por el lado de la bisagra, y la palanca, que sube hacia la leva, hace de rampa. La leva es un sector de anillo impreso con la torre (r 76 … 98, z 91.5 … 96.5, **de 243.6° a 272.9°** respecto del brazo; en la v7.11, de 250° a 308°), con rampas de 4 × 4 en las aristas de abajo de las dos puntas (la cara recta queda 1.3 mm sobre la punta de la palanca), por encima de la correa T5 (que llega a z ≈ 83). Verificado con `VerLevaJ1.cs`, que gira la palanca sobre su bisagra hasta que deja de chocar con la leva (el switch opera con 6.7° de giro y la leva la gira hasta 9.4°): libre hasta −64.5°, empieza a tocar en −65°, **opera de −68° a −95.5°** y suelta de a poco hasta −97°. Con `VerFinales.cs`, la leva solo toca la palanca (ni el poste ni los tornillos). **Home en −68°** girando en negativo; si al arrancar el switch ya está apretado, el brazo está más allá del home: girar en positivo hasta que suelte. Altura del switch ajustable ±2 mm (colisas, M2x12 + tuerca).
 - **J3, telescópico (CB-301B en CB-300B, v7.12)**: detrás de la cara del tapón del intermedio (x −276 en home) quedan solo 3 mm hasta la pared trasera (x −284 … −279), así que el switch no entra en el canal. CB-301B tiene un **alojamiento de 8 mm detrás de la pared** (x −292 … −284) con una ventana pasante de 20.4 × 7: el switch entra desde atrás, acostado (largo en z, espesor en y, de y −12 a −5.6), con la base en x −289.1 y la palanca asomando en el canal. Opera con la cara del tapón CB-412B en x −276 (**q3 = 0**, el intermedio en 0); con el tope (la brida contra el frente de E2, q3 = −2, el intermedio en −1) quedan 2.6 mm hasta el cuerpo. 2 × M2x12 de arriba hacia abajo: pasantes Ø2.4 en la pared de arriba y piloto Ø1.6 en la de abajo. Los cables salen por atrás.
-- **J3, variante A (CB-307 en CB-300)**: escuadra en el fondo del canal de E2, pegada a la pared trasera (x −452 … −434.5): la base apoya en el piso del canal y la atraviesa el M5 de la polea loca, y el brazo lateral lleva el switch al costado del M5 (base en x −443.1; opera con la cara del tapón CB-403 en x −430). Paso de cables Ø6 en la pared trasera de CB-301.
+- **J3, cremallera (CB-307 en CB-300C; era el de la variante A)**: escuadra en el fondo del canal de E2, pegada a la pared trasera (x −452 … −434.5): la base apoya en el piso del canal y la atraviesa el M5 de la polea loca, y el brazo lateral lleva el switch al costado del M5 (base en x −443.1; opera con la cara del tapón CB-403 en x −430). Paso de cables Ø6 en la pared trasera de CB-301.
 - **J0 (CB-162 en CB-160, provisorio)**: el riel no está definido. Placa bajo el tablero en el borde −y (x ±24), switch con la palanca hacia −y, 4 mm afuera del borde: lo aprieta un tope fijo en la punta del riel. Cuando se defina el carro, el switch pasa al carro.
+
+| J2 en home (+45°): el brazo del imán aprieta la palanca | J2 = 0: palanca libre |
+|---|---|
+| ![J2 home](06_Imagenes/CB-000_final_J2_home.png) | ![J2 libre](06_Imagenes/CB-000_final_J2_libre.png) |
+
+- **J2 (v7.15, los dos diseños; `Alternativas.cs finJ2`)**: sin tocar la cintura. El switch va en una **oreja nueva de la tapa CB-303** (gira con E2), entre la cara del cubo de E2 (z 35 en el marco de E2) y el brazo del imán **CB-232**, que es fijo a la torre y pasa por afuera de la tapa (z 46.5 … 52, 23.6 mm de ancho, a 1.7° de la vertical). Con J2 = +45° (home arriba, lejos de la zona de trabajo de −35° a +10°) el borde del brazo del lado de la cola aprieta la palanca: la punta libre toca desde ≈ +40° y opera en +45°. El cuerpo del switch recién chocaría a ≈ +52°. Oreja de z 35 a 46.05 con 2 pilotos Ø1.7 para 2 × M2 × 12 autorroscantes (no modelados); el switch (CB-516) queda en z 46.05 … 52.45, la palanca en el plano del brazo del imán. Verificado con `IntfCuerpos.cs` en CB-000 y CB-000C: sin contacto a −45°, 0° y +38°; a +41°, 43°, 45° y 47° solo la palanca contra CB-232 (5 a 26 mm³). La oreja no toca nada. Cables por el costado de la tapa, junto al mazo del AS5600.
 
 ### 6.18 Prismático telescópico oficial (variante B) – v7.12
 
-- `CB-000_CitriBot_Ensamblaje_General` es el robot con el telescópico (el archivo que era `CB-000B_CitriBot_v7B_Telescopico`); la A quedó como `CB-000A_CitriBot_v7A_Correa`. Los dos usan los mismos CB-100 (base, electrónica, finales de J0 y J1) y CB-200 (cintura con la leva de J1), así que lo de la base y la cintura vale para los dos.
+- `CB-000_CitriBot_Ensamblaje_General` es el robot con el telescópico (el archivo que era `CB-000B_CitriBot_v7B_Telescopico`); la A quedó como `CB-000A_CitriBot_v7A_Correa` (borrada en la v7.15). Los dos usan los mismos CB-100 (base, electrónica, finales de J0 y J1) y CB-200 (cintura con la leva de J1), así que lo de la base y la cintura vale para los dos.
 - Cómo funciona y cómo se arma: [docs/v7_prismatico.md](../../docs/v7_prismatico.md) §3 y §5.2. En resumen: el NEMA mueve el **tramo intermedio** (tubo 30 × 30 × 2 de 275 mm) con la correa de la etapa 1; una segunda correa, anclada en E2 y sujeta al **tramo interior** (tubo 20 × 20 × 1.5 de 263 mm, con la brida), pasa por una polea 16T en cada punta del intermedio y lleva el interior al doble. La brida queda en el mismo lugar que en la A con J3 retraído, así que la herramienta, el alcance y los parámetros DH no cambian.
 - **Sistemas de referencia DH**: SR2_E2_eje_J3 en CB-301B y SR3_E3_eje_J4 en CB-421B, copiados de CB-301 y CB-401 con la misma transformación (las piezas de las dos variantes están en las coordenadas de E2).
 - **Final de carrera de J3**: alojamiento en la pared trasera de E2-B (§6.17).
 - **Firmware** (`firmware/include/config.h`): 40 pasos por mm de q3 a 1/16 (80 mm por vuelta en la brida); con el 17HS4401, limitar el motor a ≈ 150 rpm.
 - **Hombro**: ≈ 44 kg·cm de pico con el telescópico, contra 39 de la A (docs/v7_prismatico.md §1). `control/torques.py` todavía modela la A.
-- `CB-001` (brazo solo) se rehízo con el telescópico (`BrazoSolo.cs telescopico`): 121 componentes, 10 relaciones sin errores. La exportación a Simscape que está en `simulink/` es de antes (variante A): hay que volver a exportar CB-001.
+- `CB-001` (brazo solo) se rehízo con el telescópico (`BrazoSolo.cs telescopico`): 121 componentes, 10 relaciones sin errores. La exportación a Simscape del telescópico está en `simulink/brazo_telescopico` (la de la A, `simulink/brazo`, se borró en la v7.15).
+
+### 6.19 Diseño con cremallera (CB-000C) y cámaras fuera del barrido de la cola – v7.14/v7.15
+
+![CB-000C](06_Imagenes/CB-000C_trimetric.png)
+
+- **Prismático**: un tubo de 440 mm (como la variante A) movido por un **piñón m1 de 18 dientes** en el NEMA 17 (56.5 mm por vuelta, **56.6 pasos/mm** a 1/16) y **2 tramos de cremallera m1** atornillados arriba del tubo. E2-C (`CB-301C`) es E2 de la A con una ranura para que la cremallera salga por el frente. El mecanismo solo, con estudio de movimiento: `CB-450C_Prismatico_Cremallera_Solo`. Comparación y referencias: [docs/prismatico_alternativas.md](../../docs/prismatico_alternativas.md) §4.
+- **Por qué se mueven las cámaras**: la cola de E2 llega a 377 mm detrás de J2 y el plano del brazo está a 83 mm de J1, así que al girar J1 la cola barre un círculo de ≈ 400 mm de radio y **todo el tablero de 400 × 300 queda adentro** (esquinas a 250 mm). Con el mástil en el tablero (−80, 130), J1 quedaba en −70° … +100°.
+- **Dónde quedan**: mástil a **431 mm de J1**, en (x, y) = (−415, 115) del marco del árbol: 265 mm detrás del borde trasero y del lado +y (opuesto al plano del brazo cuando apunta al árbol). Lo sostiene un brazo de tubo 20 × 20 × 1.5 de 367 mm (`CB-163C`, apoyado en el tablero con 2 × M5) y un codo impreso (`CB-165C`). El mástil (CB-152) y el cabezal son los mismos, 16 mm más arriba: cámaras a z ≈ 680 … 735, rumbo −8.18°, 31.4° hacia abajo, al centro de la esfera (385, 0, 270), a ≈ 880 mm. Con eso: ≈ 1.6 px/mm y ±3.9 mm de error de profundidad (antes 565 mm). La línea de vista pasa sobre J1 a ≈ 460 mm de altura, encima de la torre (409.5).
+- **Verificado** (`IntfCuerpos.cs brazo`, J1 cada 15°, J2 −45°, 0° y +45°): con q3 = 0 **J1 da la vuelta entera** sin choques; con q3 = 170 tampoco en el sector de atrás (150° … 175°); con q3 = 340 la herramienta toca el mástil o su brazo solo con J1 de +150° a −165° (apuntando hacia atrás). **J1 libre de −160° a +145° con el brazo extendido** (305°). Límite por software recomendado: −155° … +140°, o la vuelta entera con q3 ≤ 170 mm.
+- El pie CB-151 no se usa en este diseño; CB-100 y CB-150 (los del telescópico) no cambian.
 
 ## 7. Interferencias (resultado del análisis en la pose inicial)
 
@@ -599,15 +631,15 @@ Resueltos: 1M1B ↔ separador M8x20 (359 mm³, v7.11: separador Ø10), 1M2A ↔ 
 
 ## 9. Pendientes / a revisar
 
-- **Motor del hombro (5840)**: los agujeros ya están con las medidas del motor comprado (v7.13). Antes de imprimir CB-210, imprimir la pieza de prueba **CB-211** (62 × 20 × 73.5, parada como la torre) y verificar que el buje entra justo en el asiento Ø18.3 (sin juego y sin forzar), que los resaltes apoyan en la pared y que, con el buje calzado, los 2 × M4x10 entran derechos, con la cabeza pasando por el anillo.
+- **Motor del hombro (5840)**: los agujeros ya están con las medidas del motor comprado (v7.13) y probados con la pieza CB-211 (borrada en la v7.15, está en el historial de git).
 - **Tamaño de impresión**: CB-210 mide 318 mm de alto y E2 (CB-301B) 305 mm, así que no entran en la Ender 3 V2 (220 × 220 × 250) y hay que partirlos. E2 va en 2 tramos, con uniones a media madera + tornillos. La bandeja CB-141 (210 × 100) sí entra.
 - **Torque del hombro**: pico ≈ 44 kg·cm con el telescópico (39 con la A; [docs/v7_prismatico.md](../../docs/v7_prismatico.md) §1 y §6; `control/torques.py` todavía modela la A). Medir el 5840 colgando 1 kg a 40 cm del eje antes de imprimir. Imprimir el cubo de E2 macizo y la manga liviana, y hacer el buje CB-305 en aluminio.
 - **J3**: imprimir primero el telescopio (intermedio + interior + bujes) y probar el juego antes de imprimir E2: el intermedio va en el canal 31 × 31 con 0.5 mm y el interior en el buje delantero con 0.2 mm. La correa no es autobloqueante: driver siempre habilitado. Modelar las placas de apriete de las correas (anclaje de E2 y placa dentada del interior).
 - **Carro del riel**: sube todo el robot; con la carrera de 340 mm el brazo cubre la esfera mientras el carro mida hasta **77 mm** (con el tablero de 550 × 550 eran 51 y con la v6, 79). Si el carro tiene que ser más alto, alargar el tubo y la cola 10 mm recupera 350 mm de carrera.
 - **Cables**: mazo AS5600 + NEMA 17 que cruza J2 cerca del eje y después J1; dejar lazo de servicio. Desde la v7.11 se suman los 2 cables del final de carrera de J3 (salen por la pared trasera de E2) y los de los 2 servos de la herramienta hasta el PCA9685 de la base.
-- **Finales de carrera (v7.11)**: el de J0 es provisorio hasta definir el riel y el carro.
+- **Finales de carrera (v7.11)**: el de J0 es provisorio hasta definir el riel y el carro. J2 (v7.15): firmware con home en +45° y tope por software antes de +45°; los M2 de la oreja no están modelados.
+- **Cremallera (CB-000C)**: el tubo tiene 0.5 mm de juego en el canal y puede alejar la cremallera del piñón; si salta un diente, agregar un patín del lado +z. Agujerear el tablero para los 2 × M5 del brazo del mástil (CB-163C). El STEP de `07_STEP` es de la variante A: volver a exportar.
 - **IMU en vez del AS5600 (opcional)**: una IMU sobre E2 mide la inclinación de E2 respecto de la gravedad, que es directamente el ángulo de J2 porque J1 es vertical. Eliminaría el soporte CB-232 y la restricción de rango. Ver la respuesta en el chat.
-- **TE1**: no estaba ubicada en el Rx-rcp-003 (`CB-304`).
 - **Herramienta**: articular cabeceo (servo MG996R de la muñeca) y torsión (MG996R + polea GT2) con relaciones; agregar los 4 × M5 horquilla–brida. Medir el racor (hexágono, anillo, cuello y rosca) antes de imprimir CB-606 y CB-620.
 
 ---
@@ -627,14 +659,10 @@ Resueltos: 1M1B ↔ separador M8x20 (359 mm³, v7.11: separador Ø10), 1M2A ↔ 
 | `Build.cs` | subensamblajes de eslabones con transformaciones exactas |
 | `Top.cs` | ensamblaje general y relaciones |
 | `Check.cs` / `Pose.cs` / `Sweep.cs` | relaciones, interferencias y rango de J2 |
-| `J3Largo.cs` | v6: piezas del prismático largo, cambios `CB_v6_*` en E2, CB-300/CB-400 y relaciones de J3 en CB-000 (reemplazado por la v7) |
-| `Alcance.cs` | v6: mide los bordes del tablero y el suelo, apunta J1 al árbol y barre J2 con J3 fijo, informando choques |
 | `Montaje5840.cs` | v7.13: agujeros del 5840 con las medidas del motor comprado en la torre CB-210 (y avellanados centrados que atraviesan el anillo Ø56), el motor CB-502 y los M4x10 de CB-200, y la pieza de prueba CB-211; modos `asiento` (asiento Ø18.3 × 2 del buje en CB-210) y `buje` (buje de CB-502 a Ø18 cambiando el radio del croquis, sin perder la relación de J2) |
 | `VerMontaje5840.cs` | v7.13, solo lectura: verifica CB-211 contra la torre, la alineación de agujeros (torre, prueba, motor, STEP medido, tornillos), interferencias, apoyo de los resaltes, lugar del motor, camino de la cabeza del tornillo y asiento del buje (cuánto entra y juego de costado); con `e2`, E2 de CB-000 contra el asiento |
-| `Hombro5840.cs` | v6: rehace CB-502 y CB-506 con el plano del vendedor, agujeros M4 en la torre, tornillos M4x10 en CB-200 y la relación `J2_eje_hombro` |
-| `V7.cs` | v7: piezas, E2 modificados, subensamblajes y ensamblajes generales de las variantes A (correa) y B (telescópica), en `10_v7A_…` y `11_v7B_…` |
-| `Promote.cs` | v7: pasa la variante A a los nombres oficiales (CB-000/300/301/400/401/403/514) con `ReplaceReferencedDocument` |
-| `Sweep7.cs` | v7: como `Alcance.cs`, pero parte de la pose guardada y mueve también el tramo intermedio de B (a q3/2) |
+| `V7.cs` | v7: piezas, E2 modificados, subensamblajes y ensamblajes generales de las variantes A (correa, borrada) y B (telescópica), en `10_v7A_…` y `11_v7B_…` |
+| `Sweep7.cs` | v7: barre J2 con J3 fijo; parte de la pose guardada y mueve también el tramo intermedio de B (a q3/2) |
 | `PropFix.cs` | v7: corrige la propiedad "Notas" de las piezas (fijaciones al ras) |
 | `Intf.cs` | v7: lista las interferencias de uno o varios ensamblajes, sin guardar |
 | `MechShot.cs` | v7: capturas con J3 extendido o con E2, base y torre ocultos, sin guardar |
@@ -642,9 +670,10 @@ Resueltos: 1M1B ↔ separador M8x20 (359 mm³, v7.11: separador Ø10), 1M2A ↔ 
 | `SweepJ1.cs` | v7.1: gira J1 con J2 y J3 fijos e informa choques (rango de J1 con el mástil). Desde la v7.7, J1 = 0 apunta al árbol |
 | `Tele.cs` | v7.8: prismático telescópico solo (CB-450B) movido por la variable `q3`, CB-420B, correa 2:1 en el intermedio, e imágenes del recorrido para la animación |
 | `Telescopico.cs` | v7.12: la variante B pasa a oficial: copia SR2 y SR3 a CB-301B y CB-421B (`sr`) y agrega el final de carrera de J3 en la pared trasera de E2-B (`j3b`) |
+| `Alternativas.cs` | v7.14: prismáticos solos C (cremallera y piñón) y D (cable con tambor): piezas, E2-C, tramos E3, ensamblajes con la relación cremallera-piñón, estudio de movimiento, choques en 0/170/340 e imágenes (modos `piezasC subC asmC estudioC verC infoC` (los de D quedaron, pero sus archivos se borraron en la v7.15), `copiarC armarC camC infoCam finJ2 caras:<pieza> cerrar`; compilar con `-r:SolidWorks.Interop.swmotionstudy.dll`) |
+| `PoseShot.cs` | v7.15: capturas de un ensamblaje en cualquier pose (J1, elevación de J2, q3, como `IntfCuerpos.cs`), con vistas `vista[:ocultar|solo=prefijos[:nombre]]`; abre con ventana y cierra sin guardar |
 | `Base3040.cs` | v7.7: tablero de 400 × 300 (CB-111 nuevo), patas, bandeja de electrónica y mástil de las cámaras en su lugar nuevo. v7.9 (`centrar`): J1 en el centro del tablero, patas y bandeja corridas |
 | `Horn21.cs` | v7.7: asiento del horn de plástico del MG996R en CB-603 y CB-605, y pestañas del servo de muñeca en 9 × 49 en CB-601 |
-| `Bola.cs` | pieza de pruebas CB-158 (soporte estéreo con bola Ø11.8 para la rótula del trípode) y el conjunto CB-159 |
 | `ExportStl.cs` | exporta un STL por pieza impresa a `cad/imprimir/<carpeta>/` (la herramienta a `00_Herramienta`) e informa si entra en la Ender 3 V2. v7.11: activa la pieza antes de exportar y no reemplaza el STL si su volumen difiere más de 1 % del de la pieza (`STL_OUT=<carpeta>` para exportar a otro lado) |
 | `CableServo.cs` | v7.3: ranura para el cable del servo de torsión en CB-602 y agujeros de las orejas corridos |
 | `Ventosa4.cs` | v7.2–v7.4: punta de CB-606 (alojamiento doble D, fondo, asiento del racor, punta +2 mm, ranura del seguro), ventosa CB-618, racor CB-619, llave CB-620, separador CB-621, arandela CB-622, seguro CB-623, cambio en CB-600 y STL; medidas como constantes al principio |

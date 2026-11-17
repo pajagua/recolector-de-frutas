@@ -32,6 +32,12 @@ public static class PB
         {
             if (f.GetTypeName2() == "RefPlane")
             {
+                var rp0 = (RefPlane)f.GetSpecificFeature2();
+                double[] t0 = (double[])((MathTransform)rp0.Transform).ArrayData;
+                // solo planos por el origen (los primeros de la pieza); si falta alguno, se sigue buscando
+                if (Math.Abs(t0[9]) + Math.Abs(t0[10]) + Math.Abs(t0[11]) > 1e-9) { f = (Feature)f.GetNextFeature(); continue; }
+                int ax0 = Math.Abs(t0[6]) > 0.9 ? 0 : Math.Abs(t0[7]) > 0.9 ? 1 : 2;
+                if (planes[ax0] != null) { f = (Feature)f.GetNextFeature(); continue; }
                 n++;
                 var rp = (RefPlane)f.GetSpecificFeature2();
                 double[] t = (double[])((MathTransform)rp.Transform).ArrayData;

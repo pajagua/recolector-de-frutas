@@ -9,7 +9,7 @@
 | Préstamo laboratorio | 6 |
 | Compra grupal | 13 |
 | Propio | 6 |
-| Impresión 3D | 37 |
+| Impresión 3D | 36 |
 | Por comprar | 65 |
 | Por definir | 7 |
 
@@ -18,7 +18,7 @@
 | En mano | 3 |
 | Prestado | 5 |
 | Pedido | 10 |
-| Falta | 108 |
+| Falta | 107 |
 | Por confirmar | 8 |
 
 **Gastado (compra grupal, sin envío): USD 135.69**
@@ -113,7 +113,7 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 | H30 | Tornillo autorroscante Ø3,5 × 10 | Cabeza plana | 4 | u | Por comprar |  |
 | H32 | Seguro (anillo elástico) para eje de 30 mm | DIN 471, 30 × 1,5 | 1 | u | Por comprar | Se pone con pinza de seguros (exterior). CAD: CB-623 |
 | H33 | Tornillo M2 × 10 autorroscante | Cabeza redonda | 2 | u | Por comprar | Pilotos de Ø1,6 en las piezas impresas |
-| H34 | Tornillo M2 × 12 | Cabeza redonda; 2 tuercas M2 para el de J1 | 4 | u | Por comprar | Piloto de Ø1,6 en la pared de abajo del alojamiento de CB-301B |
+| H34 | Tornillo M2 × 12 | Cabeza redonda; 2 tuercas M2 para el de J1 | 6 | u | Por comprar | Piloto de Ø1,6 en la pared de abajo del alojamiento de CB-301B |
 | H35 | Tornillo M2,5 × 8 autorroscante | Cabeza redonda | 4 | u | Por comprar |  |
 | H36 | Tirafondo Ø3,5 × 16 | Cabeza redonda | 6 | u | Por comprar | Pilotos de Ø2,5 en el tablero (CB-111) |
 | H37 | Tornillo M3 × 25 + tuerca M3 autoblocante |  | 1 | u | Por comprar |  |
@@ -178,7 +178,7 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 | S01 | Módulo AS5600 | Encoder magnético 12 bit, I2C | 1 | u | J2 hombro (ángulo real de E2) | Compra grupal | Por confirmar | En el pedido figura 'Encoder' (Amazon, USD 7.99): confirmar que es el AS5600 |
 | S02 | Imán de neodimio diametral | Ø6 × 2.5 mm | 1 | u | AS5600 del hombro | Compra grupal | Por confirmar | Suele venir con el módulo AS5600 |
 | S03 | Sensor de presión MPS20N0040D | 0–40 kPa, con conversor HX710B | 1 | u | Detectar agarre por vacío | Compra grupal | Pedido |  |
-| S04 | Final de carrera | Microswitch con palanca metálica plana (sin rueda), cuerpo 19,8 × 6,4 × 9,5, agujeros Ø2,35 a 9,5 mm, opera a 10,2 sobre los agujeros | 3 | u | Homing de J0 (riel), J1 (cintura) y J3 (prismático) | Propio | En mano | CAD: CB-516. Soportes CB-161 (J1), CB-162 (J0) y alojamiento en la pared trasera de CB-301B (J3) |
+| S04 | Final de carrera | Microswitch con palanca metálica plana (sin rueda), cuerpo 19,8 × 6,4 × 9,5, agujeros Ø2,35 a 9,5 mm, opera a 10,2 sobre los agujeros | 4 | u | Homing de J0 (riel), J1 (cintura), J2 (hombro, v7.15: en la oreja de CB-303, lo aprieta el brazo del imán CB-232 en +45°) y J3 (prismático) | Propio | En mano | CAD: CB-516. Soportes CB-161 (J1), CB-162 (J0) y alojamiento en la pared trasera de CB-301B (J3) |
 
 ### Visión
 
@@ -275,7 +275,7 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 | H30 | Tornillo autorroscante Ø3,5 × 10 | Cabeza plana | 4 | u | Tapas CB-157 → postes del soporte estéreo (agujeros de Ø3,25) | Por comprar | Falta |  |
 | H32 | Seguro (anillo elástico) para eje de 30 mm | DIN 471, 30 × 1,5 | 1 | u | Frena el eje hueco hacia arriba, debajo del rodamiento del piso | Por comprar | Falta | Se pone con pinza de seguros (exterior). CAD: CB-623 |
 | H33 | Tornillo M2 × 10 autorroscante | Cabeza redonda | 2 | u | Final de carrera de J0 → CB-162 | Por comprar | Falta | Pilotos de Ø1,6 en las piezas impresas |
-| H34 | Tornillo M2 × 12 | Cabeza redonda; 2 tuercas M2 para el de J1 | 4 | u | 2 final de carrera de J1 → poste CB-161 (con tuerca, en las colisas) · 2 final de carrera de J3 → alojamiento de CB-301B (autorroscantes) | Por comprar | Falta | Piloto de Ø1,6 en la pared de abajo del alojamiento de CB-301B |
+| H34 | Tornillo M2 × 12 | Cabeza redonda; 2 tuercas M2 para el de J1 | 6 | u | 2 final de carrera de J1 → poste CB-161 (con tuerca, en las colisas) · 2 final de carrera de J3 → alojamiento de CB-301B (autorroscantes) · 2 final de carrera de J2 → oreja de CB-303 (autorroscantes, pilotos Ø1,7) | Por comprar | Falta | Piloto de Ø1,6 en la pared de abajo del alojamiento de CB-301B |
 | H35 | Tornillo M2,5 × 8 autorroscante | Cabeza redonda | 4 | u | PCA9685 → soporte CB-142 | Por comprar | Falta |  |
 | H36 | Tirafondo Ø3,5 × 16 | Cabeza redonda | 6 | u | Soportes CB-142 (PCA9685), CB-161 (final de J1) y CB-162 (final de J0) → tablero | Por comprar | Falta | Pilotos de Ø2,5 en el tablero (CB-111) |
 | H37 | Tornillo M3 × 25 + tuerca M3 autoblocante |  | 1 | u | Eje de la polea 16T trasera (tapón CB-412B) | Por comprar | Falta |  |
@@ -313,7 +313,7 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 | P07 | CB-232 Soporte del imán | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta |  |
 | P08 | CB-301B Eslabón E2 telescópico | PETG: cubo ≥ 6 perímetros 50 %, manga 4 perímetros 25 % | 1 | u |  | Impresión 3D | Falta | 305 mm de largo: partir en 2 tramos. Alojamiento del final de carrera de J3 en la pared trasera (v7.12). STL: cad/imprimir/11_v7B_Prismatico_Telescopico/CB-301B_Eslabon_E2_v7B_Telescopico.stl |
 | P09 | CB-432B Brida de E3 para tubo 20 × 20 | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | Tapón al 100 % de relleno. STL: cad/imprimir/11_v7B_Prismatico_Telescopico/CB-432B_Brida_E3_Herramienta_20x20.stl |
-| P10 | CB-303 Tapa de E2 / soporte AS5600 | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta |  |
+| P10 | CB-303 Tapa de E2 / soporte AS5600 | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | v7.15: con la oreja del final de carrera de J2. STL: cad/imprimir/03_Hombro_E2_J2/CB-303_Tapa_E2_Soporte_AS5600.stl |
 | P11 | CB-305 Buje D8 del hombro | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | Mejor en aluminio: transmite el torque del hombro (≈ 39 kg·cm de pico) |
 | P12 | CB-412B Tapón trasero del intermedio con polea 16T | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | Relleno 100 %. STL: cad/imprimir/11_v7B_Prismatico_Telescopico/CB-412B_Tapon_Trasero_Intermedio_Polea.stl |
 | P13 | CB-601 Horquilla U | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta |  |
@@ -330,7 +330,6 @@ Todo lo de esta tabla es del laboratorio y se devuelve al terminar el TPF.
 | P24 | CB-154 Adaptador del soporte estéreo | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | Relleno 100 %. Une el pivote del cabezal con la base del soporte. STL: cad/imprimir/01_Base_J0/CB-154_Adaptador_Soporte_Estereo.stl |
 | P25 | CB-156 Base del soporte estéreo (StereoVision_03) | PETG, ≥ 4 perímetros | 1 | u |  | Impresión 3D | Falta | Remodelada del STL del usuario con los 4 agujeros para el adaptador ya hechos. STL: cad/imprimir/01_Base_J0/CB-156_Soporte_Estereo_C270_Base.stl |
 | P26 | CB-157 Tapa del soporte estéreo | PETG, ≥ 4 perímetros | 2 | u |  | Impresión 3D | Falta | Traba la pinza de cada C270. STL: cad/imprimir/01_Base_J0/CB-157_Soporte_Estereo_C270_Tapa.stl |
-| P27 | CB-158 Adaptador con bola para la rótula del trípode (pruebas) | PETG, 4 perímetros, 50 % | 1 | u | Probar las cámaras en el trípode antes de montar el brazo | Impresión 3D | Falta | No va en el robot. Bola Ø11,8 y cuello Ø4,8 en lugar del perno M6 del trípode; se cambia por CB-154 sin tocar las cámaras. Imprimir con la cara de arriba en la cama y soportes bajo la bola. STL: cad/imprimir/12_Pruebas/CB-158_Adaptador_Rotula_Bola12.stl |
 | P28 | CB-620 Llave de montaje del racor (herramienta) | PETG, 4 perímetros, 50 % | 1 | u | Apretar el racor N03 contra la ventosa desde el lado de la polea | Impresión 3D | Falta | No va en el robot. Hexágono de 12,4 para el racor de 12. STL: cad/imprimir/00_Herramienta/CB-620_Llave_Montaje_Racor.stl |
 | P29 | CB-621 Separador del eje hueco | PETG, 100 % | 1 | u | Entre el cubo de la polea del eje y el rodamiento 6806 de la tapa | Impresión 3D | Falta | Ø30,4 / Ø33,4 × 4,5. STL: cad/imprimir/00_Herramienta/CB-621_Separador_Eje_Hueco.stl |
 | P30 | CB-622 Arandela del seguro del eje hueco | PETG, 100 % | 1 | u | Entre el rodamiento 6806 del piso y el seguro H32 | Impresión 3D | Falta | Ø30,3 / Ø33,4 × 1. STL: cad/imprimir/00_Herramienta/CB-622_Arandela_Seguro_Eje.stl |

@@ -50,24 +50,21 @@ El anillo de retención de la `.scad` (BOM P20) no hace falta: en el CAD el eje 
 | `CB-210_Torre_Cintura_2M1D_mod.stl` | 1 | **no entra en la Ender 3 V2** (318 × 178 × 162 mm, con la leva del final de carrera de J1 en la base desde la v7.11): hay que partirla o imprimirla en una impresora más grande. La leva queda sobre la cama. v7.13: asiento Ø18,3 del buje del 5840 y leva de J1 más corta (de 243,6° a 272,9° respecto del brazo, rampas de 4 × 4); el switch de J1 se monta girado 180° respecto de la v7.11 |
 | `CB-232_Soporte_Iman_J2.stl` | 1 | |
 
-## 03_Hombro_E2_J2 (CB-300)
+## 03_Hombro_E2_J2 (piezas comunes del hombro)
 
 | Archivo | Cant. | Notas |
 |---|---|---|
-| `CB-301_Eslabon_E2_mod5840.stl` | 1 | **solo variante A** (alternativa): no imprimir para el telescópico. **no entra en la Ender 3 V2** (470 × 93 × 87 mm): hay que partirlo o imprimirlo en una impresora más grande. Cola con 3 perímetros y 15 %. v7.11: paso de cables Ø6 en la pared trasera |
-| `CB-303_Tapa_E2_Soporte_AS5600.stl` | 1 | |
-| `CB-305_Buje_D8_Hombro.stl` | 1 | |
-| `CB-306_Placa_Soporte_NEMA17_Prismatico.stl` | 1 | |
-| `CB-307_Soporte_Final_Carrera_J3.stl` | 1 | **solo variante A** (alternativa): no imprimir para el telescópico. soporte del final de carrera de J3 en el fondo del canal de E2 (v7.11); apoyado sobre la cara del brazo del switch |
+| `CB-303_Tapa_E2_Soporte_AS5600.stl` | 1 | los dos diseños. v7.15: con la oreja del final de carrera de J2 (2 × M2 × 12 autorroscantes); imprimir con la brida sobre la cama |
+| `CB-305_Buje_D8_Hombro.stl` | 1 | los dos diseños |
+| `CB-306_Placa_Soporte_NEMA17_Prismatico.stl` | 1 | los dos diseños |
+| `CB-307_Soporte_Final_Carrera_J3.stl` | 1 | **solo cremallera**: soporte del final de carrera de J3 en el fondo del canal de E2-C; apoyado sobre la cara del brazo del switch |
 
-## 04_Prismatico_E3_J3 (CB-400, variante A: alternativa)
-
-Solo para la variante A (correa y un tubo). Para el telescópico, que es el oficial desde la v7.12, no se imprimen.
+## 04_Prismatico_E3_J3 (solo cremallera)
 
 | Archivo | Cant. | Notas |
 |---|---|---|
-| `CB-402_Brida_E3_Herramienta.stl` | 1 | |
-| `CB-403_Tapon_Trasero_Pinza_Correa.stl` | 1 | |
+| `CB-402_Brida_E3_Herramienta.stl` | 1 | 100 % en el tapón |
+| `CB-403_Tapon_Trasero_Pinza_Correa.stl` | 1 | tapón trasero del tubo; aprieta el final de carrera de J3 (la pinza de correa no se usa) |
 
 ## 11_v7B_Prismatico_Telescopico (prismático oficial desde la v7.12)
 
@@ -85,13 +82,15 @@ Piezas del prismático telescópico 2:1. Lista completa (también lo que hay que
 
 La placa del motor CB-306 es la de `03_Hombro_E2_J2`.
 
-## 12_Pruebas (no van en el robot)
+## 14_Prismatico_Alternativas (diseño con cremallera, CB-000C)
 
 | Archivo | Cant. | Notas |
 |---|---|---|
-| `CB-211_Prueba_Montaje_5840.stl` | 1 | **prueba del motor del hombro antes de imprimir la torre** (v7.13): el trozo de CB-210 donde va el motor, idéntico a la torre: pared de 12 mm con el agujero Ø32 del buje y el asiento Ø18,3 × 2 del lado del motor, los 2 agujeros de los M4 con sus avellanados Ø11,5 y el anillo Ø44/Ø56 de la cara de afuera. 62 × 20 × 73,5 mm. **Imprimir parada, como viene en el STL** (igual que la torre: agujeros horizontales), con el mismo perfil y una orla (brim). Probar: buje calzado en el asiento (sin juego y sin forzar), resaltes apoyados en la pared, 2 × M4x10 que entran derechos con el buje calzado y cuya cabeza pasa por el anillo |
-| `CB-158_Adaptador_Rotula_Bola12.stl` | 1 | soporte estéreo sobre la rótula del trípode, con bola Ø11,8 integrada (cuello macizo), 4 × M3x12 a la base. Cara de arriba en la cama, soportes bajo la bola |
+| `CB-301C_Eslabon_E2_Cremallera.stl` | 1 | E2 del diseño con cremallera. **No entra en la Ender 3 V2** (470 × 93 × 87 mm): partir en 2 tramos (cubo hasta x ≈ −100 + cola). Cubo ≥ 6 perímetros y 50 %, cola 3 perímetros y 15 % |
+| `CB-431C_Cremallera_m1_58d.stl` | 2 | 100 %, de costado (la aleta de los dientes vertical). Los dos tramos van seguidos arriba del tubo |
+| `CB-432C_Pinon_m1_18d.stl` | 1 | 100 %, PETG o nailon; o comprar un piñón m1 de 18 dientes de aluminio con agujero de 5 mm |
+| `CB-165C_Codo_Mastil.stl` | 1 | codo del mástil de las cámaras (40 %, 4 paredes) |
 
-No hay STL de las piezas compradas (`05_Comerciales`), del tablero de madera (CB-111), ni de los tubos de aluminio (CB-152, CB-401, CB-411B, CB-421B).
+No hay STL de las piezas compradas (`05_Comerciales`), del tablero de madera (CB-111), ni de los tubos de aluminio (CB-152, CB-163C, CB-401, CB-411B, CB-421B).
 
 Para volver a exportar: `cad/solidworks/08_Scripts_API_SolidWorks/ExportStl.cs` (manda las piezas de `09_Herramienta` a `00_Herramienta`).
