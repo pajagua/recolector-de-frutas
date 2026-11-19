@@ -83,11 +83,22 @@ class PoseShot
             Math.Atan2(tree[0] * d[1] / dh - tree[1] * d[0] / dh, tree[0] * d[0] / dh + tree[1] * d[1] / dh) * 180 / Math.PI, Elev(d),
             e2.Inv().Apply(Xf.FromComp(brida).T)[0]));
 
-        // PoseShot.exe <asm> <j1> <elev> <q3> <salida_sin_ext> <vista[:ocultar1,ocultar2]> ... : capturas sin guardar
+        // PoseShot.exe <asm> <j1> <elev> <q3> <salida_sin_ext> <vista[:ocultar1,ocultar2]> | archivo=<ruta.step> ... : capturas o exportación sin guardar
         m.Visible = true; int er = 0; SW.App.ActivateDoc3(m.GetTitle(), false, 0, ref er);
         var todas = ((object[])asm.GetComponents(false)).Cast<Component2>().ToList();
         foreach (var v in a.Skip(5))
         {
+            if (v.StartsWith("archivo="))   // exporta en la pose pedida (STEP AP214 con colores, o el formato que diga la extensión); no guarda el ensamblaje
+            {
+                string outf = v.Substring(8);
+                SW.App.SetUserPreferenceIntegerValue((int)swUserPreferenceIntegerValue_e.swStepAP, 214);
+                SW.App.SetUserPreferenceToggle((int)swUserPreferenceToggle_e.swStepExportFaceEdgeProps, true);
+                SW.App.SetUserPreferenceToggle((int)swUserPreferenceToggle_e.swStepExportAppearances, true);
+                int e1 = 0, w1 = 0;
+                bool ok = m.Extension.SaveAs3(outf, 0, (int)swSaveAsOptions_e.swSaveAsOptions_Silent | (int)swSaveAsOptions_e.swSaveAsOptions_Copy, null, null, ref e1, ref w1);
+                Console.WriteLine((ok ? "exportado " : "FALLO exportar ") + outf + " e=" + e1 + " w=" + w1);
+                continue;
+            }
             var partes = v.Split(':'); string vista = partes[0];
             var ocultos = new List<Component2>();
             if (partes.Length > 1 && partes[1].StartsWith("solo="))   // deja visibles solo las hojas cuyo archivo empieza con esos prefijos
